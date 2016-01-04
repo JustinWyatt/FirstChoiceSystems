@@ -68,7 +68,34 @@ namespace FirstChoiceSystems.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        
+
+        [Display(Name = "Person of Contact")]
+        public string PersonOfContact { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Display(Name = "Company Address")]
+        public string CompanyAddress { get; set; }
+
+        [Display(Name = "Company Name")]
+        public string CompanyName { get; set; }
+
+        [Display(Name = "Company Website")]
+        public string CompanyWebsite { get; set; }
+
+        [Display(Name = "Postal")]
+        public int Postal { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+       
+        [Display(Name = "Business Category")]
+        public string BusinessCategory { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]

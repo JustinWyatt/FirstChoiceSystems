@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstChoiceSystems.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,8 @@ namespace FirstChoiceSystems.Controllers
 {
     public class MarketplaceController : Controller
     {
-        // GET: Marketplace
-        public ActionResult Index()
-        {
-            return View();
-        }
+        ApplicationDbContext db = new ApplicationDbContext();
+        
+
     }
 }

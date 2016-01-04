@@ -139,30 +139,47 @@ namespace FirstChoiceSystems.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            ViewBag.BusinessCategories = new SelectList(db.BusinessCategories.Select(x => new { x.Id, x.CategoryName }), "Id", "CategoryName");
+
             return View();
         }
 
-        //
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            ViewBag.BusinessCategories = new SelectList(db.BusinessCategories.Select(x => new { x.Id, x.CategoryName }), "Id", "CategoryName");
+
             if (ModelState.IsValid)
             {
                 var user = new Business
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    DateRegistered = DateTime.Now
+                    PersonOfContact = model.PersonOfContact,
+                    City = model.City,
+                    CompanyAddress = model.CompanyAddress,
+                    CompanyName = model.CompanyName,
+                    CompanyWebsite = model.CompanyWebsite,
+                    Postal = model.Postal,
+                    PhoneNumber = model.PhoneNumber,
+                    DateRegistered = DateTime.Now,
+                    BusinessCategory = db.BusinessCategories.First(x => x.CategoryName == model.BusinessCategory),
+                    State = model.State,
+                    Balance = 500,
+                    
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

@@ -27,7 +27,7 @@ namespace FirstChoiceSystems.Models
         public int Postal { get; set; }
         public string CompanyWebsite { get; set; }
         public int Balance { get; set; }
-        public BusinessCategory Category { get; set; }
+        public BusinessCategory BusinessCategory { get; set; }
         public int AccountNumber { get; set; }
         public DateTime DateRegistered { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
