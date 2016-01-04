@@ -5,9 +5,10 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models
 {
-    public class BusinessCategory
+    public class Inventory
     {
         public int Id { get; set; }
-        public string CategoryName { get; set; }
+        public Business Business { get; set; }
+        public ICollection<Item> Items { get; set; }
     }
 }

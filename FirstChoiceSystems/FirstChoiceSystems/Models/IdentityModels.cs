@@ -27,7 +27,7 @@ namespace FirstChoiceSystems.Models
         public int Postal { get; set; }
         public string CompanyWebsite { get; set; }
         public int Balance { get; set; }
-        public Category Category { get; set; }
+        public BusinessCategory Category { get; set; }
         public int AccountNumber { get; set; }
         public DateTime DateRegistered { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
@@ -45,7 +45,11 @@ namespace FirstChoiceSystems.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<BusinessCategory> BusinessCategories { get; set; }
+        public DbSet<ItemCategory> ItemCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<ItemImage> Images { get; set; }
+        public DbSet<Item> Items { get; set; }
     }
 }

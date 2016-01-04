@@ -12,6 +12,7 @@ namespace FirstChoiceSystems.Models
         public Business Buyer { get; set; }
         public int Amount { get; set; }
         public DateTime DateOfTransaction { get; set;}
+        public DateTime? DateOfApproval { get; set; }
         public string Description { get; set; }
     }
 }

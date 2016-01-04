@@ -5,9 +5,9 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models
 {
-    public class BusinessCategory
+    public class ItemImage
     {
         public int Id { get; set; }
-        public string CategoryName { get; set; }
+        public string ImagePath { get; set; }
     }
 }

@@ -179,7 +179,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarketplaceController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,10 +198,22 @@
     <Compile Include="Migrations\201601042059352_Update.Designer.cs">
       <DependentUpon>201601042059352_Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601042136281_UpdatedTransaction.cs" />
+    <Compile Include="Migrations\201601042136281_UpdatedTransaction.Designer.cs">
+      <DependentUpon>201601042136281_UpdatedTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601042206255_ChangedDatabaseAddedInventory.cs" />
+    <Compile Include="Migrations\201601042206255_ChangedDatabaseAddedInventory.Designer.cs">
+      <DependentUpon>201601042206255_ChangedDatabaseAddedInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemCategory.cs" />
+    <Compile Include="Models\ItemImage.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -262,6 +277,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Inventory\" />
+    <Folder Include="Views\Marketplace\" />
+    <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -280,6 +298,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601042059352_Update.resx">
       <DependentUpon>201601042059352_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601042136281_UpdatedTransaction.resx">
+      <DependentUpon>201601042136281_UpdatedTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601042206255_ChangedDatabaseAddedInventory.resx">
+      <DependentUpon>201601042206255_ChangedDatabaseAddedInventory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
