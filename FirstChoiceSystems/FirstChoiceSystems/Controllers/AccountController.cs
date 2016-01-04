@@ -155,13 +155,7 @@ namespace FirstChoiceSystems.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    PersonOfContact = model.PersonOfContact,
-                    City = model.City,
-                    CompanyAddress = model.CompanyAddress,
-                    CompanyName = model.CompanyName,
-                    CompanyWebsite = model.CompanyWebsite,
-                    Postal = model.Postal,
-                    PhoneNumber = model.PhoneNumber,
+                    DateRegistered = DateTime.Now
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

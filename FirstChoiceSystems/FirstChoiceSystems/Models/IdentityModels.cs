@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 
 namespace FirstChoiceSystems.Models
 {
@@ -29,6 +30,7 @@ namespace FirstChoiceSystems.Models
         public Category Category { get; set; }
         public int AccountNumber { get; set; }
         public DateTime DateRegistered { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<Business>

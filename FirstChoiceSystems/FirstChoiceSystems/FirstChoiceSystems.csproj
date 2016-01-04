@@ -183,6 +183,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601041956473_CreatedTables.cs" />
+    <Compile Include="Migrations\201601041956473_CreatedTables.Designer.cs">
+      <DependentUpon>201601041956473_CreatedTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601042037414_UpdatedCategoryTable.cs" />
+    <Compile Include="Migrations\201601042037414_UpdatedCategoryTable.Designer.cs">
+      <DependentUpon>201601042037414_UpdatedCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601042059352_Update.cs" />
+    <Compile Include="Migrations\201601042059352_Update.Designer.cs">
+      <DependentUpon>201601042059352_Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -258,6 +270,17 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601041956473_CreatedTables.resx">
+      <DependentUpon>201601041956473_CreatedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601042037414_UpdatedCategoryTable.resx">
+      <DependentUpon>201601042037414_UpdatedCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601042059352_Update.resx">
+      <DependentUpon>201601042059352_Update.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
