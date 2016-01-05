@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FirstChoiceSystems.Models.DBModels;
 
 namespace FirstChoiceSystems.Models
 {
@@ -32,7 +33,8 @@ namespace FirstChoiceSystems.Models
         public virtual BusinessCategory BusinessCategory { get; set; }
         public int AccountNumber { get; set; }
         public DateTime DateRegistered { get; set; }
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Purchase> Purchases { get; set; }
+        public virtual ICollection<Sale> Sales { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<Business>
@@ -73,9 +75,10 @@ namespace FirstChoiceSystems.Models
 
         public DbSet<BusinessCategory> BusinessCategories { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<ItemImage> Images { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<Sale> Sales { get; set; }
     }
 }

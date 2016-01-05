@@ -11,7 +11,7 @@ namespace FirstChoiceSystems.Models
         Approved = 1,
         Voided = 2
     }
-    public class Transaction : Entity
+    public class Purchase : Entity
     {
         public virtual ICollection<Business> Sellers { get; set; }
         public virtual Business Buyer { get; set; }

@@ -14,7 +14,7 @@ namespace FirstChoiceSystems.Controllers
 
         // GET: /Order/Order
         [HttpGet]
-        public ActionResult ShoppingCart()
+        public ActionResult Order()
         {
             return View(currentOrder);
         }
@@ -37,6 +37,7 @@ namespace FirstChoiceSystems.Controllers
             else
             {
                 item.Quantity = 1;
+                //order view moel
                 currentOrder.Items.Add(item);
             }
             currentOrder.SaveCart(currentOrder);    

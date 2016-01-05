@@ -7,13 +7,13 @@ namespace FirstChoiceSystems.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class TransactionTweaks : IMigrationMetadata
+    public sealed partial class AddedSalesTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TransactionTweaks));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedSalesTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601051739119_TransactionTweaks"; }
+            get { return "201601052114449_AddedSalesTable"; }
         }
         
         string IMigrationMetadata.Source
