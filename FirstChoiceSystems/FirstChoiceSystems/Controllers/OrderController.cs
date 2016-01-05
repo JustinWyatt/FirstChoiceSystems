@@ -10,7 +10,7 @@ namespace FirstChoiceSystems.Controllers
     public class OrderController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        OrderViewModel currentOrder = OrderViewModel.OrderInstance.GetOrders();
+        OrderViewModel currentOrder = OrderViewModel.OrderInstance;
 
         // GET: /Order/Order
         [HttpGet]
@@ -62,53 +62,9 @@ namespace FirstChoiceSystems.Controllers
             else
             {
                 currentOrder.Items.Remove(item);
-
             }
             currentOrder.SaveCart(currentOrder);
             return RedirectToAction("Order", "Order");
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//private void AddToCart(int itemId)
-//{
-
-//}
-
-//private void SaveCart(OrderViewModel order)
-//{
-//    HttpContext.Session["currentOrder"] = order;
-
-//}
-
-//private OrderViewModel GetCart()
-//{
-//    var order = (OrderViewModel)HttpContext.Session["currentOrder"];
-
-//    if (order == null)
-//    {
-//        order = new OrderViewModel();
-//        HttpContext.Session["currentCart"] = order;
-//    }
-
-//    return order;
-//}

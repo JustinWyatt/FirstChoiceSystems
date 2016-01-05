@@ -13,6 +13,7 @@ namespace FirstChoiceSystems.Controllers
     public class PurchaseController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        OrderViewModel currentOrder = OrderViewModel.OrderInstance;
 
         // GET: /Purchase/PurchaseForm    
         [HttpGet]
@@ -21,19 +22,28 @@ namespace FirstChoiceSystems.Controllers
             return View();
         }
 
+        // GET: /Purchase/PurchaseHistory
+        [HttpGet]
+        public ActionResult PurchaseHistory()
+        {
+            var userId = User.Identity.GetUserId();
+            //returns transactions for users who have made purchases
+            return View(db.Purchases.Where(x => x.Buyer.Id == userId).ToList());
+        }
+
         // POST: /Purchase/PurchaseRequest
         [HttpPost]
-        public ActionResult PurchaseRequest(OrderViewModel order)
+        public ActionResult PurchaseRequest()
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
             var purchaseRequest = new Purchase()
             {
-                Amount = order.SubTotal,
+                Amount = currentOrder.SubTotal,
                 Buyer = user,
                 Status = TransactionStatus.Pending,
-                ListOfItems = order.Items,
-                Sellers = order.Items.Select(x => x.Seller).ToList()
+                ListOfItems = currentOrder.Items,
+                Sellers = currentOrder.Items.Select(x => x.Seller).ToList()
             };
 
             if (user.Balance < purchaseRequest.Amount)
@@ -42,9 +52,9 @@ namespace FirstChoiceSystems.Controllers
                 return RedirectToAction("");
             }
 
-            foreach (var seller in purchaseRequest.Sellers)
+            foreach (var seller in currentOrder.Items.Select(x => x.Seller).ToList())
             {
-                foreach (var individualItem in order.Items.Where(x => x.Seller.Id == seller.Id).ToList())
+                foreach (var individualItem in currentOrder.Items.Where(x => x.Seller.Id == seller.Id).ToList())
                 {
                     var sale = new Sale()
                     {
@@ -62,15 +72,6 @@ namespace FirstChoiceSystems.Controllers
             user.Purchases.Add(purchaseRequest);
             db.SaveChanges();
             return RedirectToAction("PurchaseHistory", "Purchase");
-        }
-
-        // GET: /Purchase/PurchaseHistory
-        [HttpGet]
-        public ActionResult PurchaseHistory()
-        {
-            var userId = User.Identity.GetUserId();
-            //returns transactions for users who have made purchases
-            return View(db.Purchases.Where(x => x.Buyer.Id == userId).ToList());
         }
 
     }

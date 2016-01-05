@@ -17,8 +17,14 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult ViewInventory()
         {
             var userId = User.Identity.GetUserId();
-            return View(db.Inventories.Find(userId));
+            return View(db.Inventories.Where(x=>x.Business.Id == userId).ToList());
         }
         
+        // GET: /Inventory/AddItem
+        [HttpGet]
+        public ActionResult AddItem(int itemId)
+        {
+            return RedirectToAction("");
+        }                
     }
 }
