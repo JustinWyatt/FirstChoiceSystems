@@ -26,18 +26,18 @@ namespace FirstChoiceSystems.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            var newTransaction = new Transaction()
+            var transaction = new Transaction()
             {
-                Amount = order.Items.Sum(x => x.Price),
+                Amount = order.SubTotal,
                 Buyer = user,
                 Status = TransactionStatus.Pending,
             };
 
-            user.Transactions.Add(newTransaction);
+            user.Transactions.Add(transaction);
             db.SaveChanges();
-            if (newTransaction.Status == TransactionStatus.Pending)
+            if (transaction.Status == TransactionStatus.Pending)
             {
-                return Json(newTransaction, JsonRequestBehavior.AllowGet);
+                return Json(transaction, JsonRequestBehavior.AllowGet);
             }
 
             return RedirectToAction("TransactionHistory", "Transaction");
@@ -61,10 +61,9 @@ namespace FirstChoiceSystems.Controllers
             {
                 return RedirectToAction("TransactionHistory", "Transaction");
             }
-
             transaction.ApprovalDate = DateTime.Now;
-            transaction.Status = TransactionStatus.Approved;
 
+            db.SaveChanges();
             return RedirectToAction("TransactionHistory", "Transaction");
         }
 
@@ -79,6 +78,5 @@ namespace FirstChoiceSystems.Controllers
             return RedirectToAction("TransactionHistory", "Transaction");
         }
 
-        
     }
 }

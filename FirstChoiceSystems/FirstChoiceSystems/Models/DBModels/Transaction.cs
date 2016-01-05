@@ -13,11 +13,11 @@ namespace FirstChoiceSystems.Models
     }
     public class Transaction : Entity
     {
-        public Business Seller { get; set; }
-        public Business Buyer { get; set; }
-        public int Amount { get; set; }
+        public virtual Business Seller { get; set; }
+        public virtual Business Buyer { get; set; }
+        public double Amount { get; set; }
         public DateTime? ApprovalDate { get; set; }
         public string Description { get; set; }
-        public TransactionStatus Status { get; set; }
+        public virtual TransactionStatus Status { get; set; }
     }
 }

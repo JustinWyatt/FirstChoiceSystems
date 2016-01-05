@@ -24,13 +24,11 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult AddItem(int itemId)
         {
             var item = db.Items.Find(itemId);
-            currentOrder.AddItem(item);
-            currentOrder.Items.Add(item);
             if (currentOrder.Items.Contains(item))
             {
                 foreach (Item i in currentOrder.Items)
                 {
-                    if (i.Equals(item))
+                    if (i.Id == item.Id)
                     {
                         item.Quantity++;
                     }
@@ -50,7 +48,21 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult RemoveItem(int itemId)
         {
             var item = db.Items.Find(itemId);
-            currentOrder.RemoveItem(item);
+            if (currentOrder.Items.Contains(item))
+            {
+                foreach (Item i in currentOrder.Items)
+                {
+                    if (i.Equals(item))
+                    {
+                        item.Quantity--;
+                    }
+                }
+            }
+            else
+            {
+                currentOrder.Items.Remove(item);
+
+            }
             currentOrder.SaveCart(currentOrder);
             return RedirectToAction("Order", "Order");
         }

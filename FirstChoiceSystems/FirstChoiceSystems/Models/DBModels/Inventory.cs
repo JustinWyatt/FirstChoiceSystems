@@ -7,7 +7,7 @@ namespace FirstChoiceSystems.Models
 {
     public class Inventory : Entity
     {
-        public Business Business { get; set; }
-        public ICollection<Item> Items { get; set; }
+        public virtual Business Business { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

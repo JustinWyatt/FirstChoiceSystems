@@ -10,6 +10,13 @@ namespace FirstChoiceSystems.Models
         public int Id { get; set; }
         public ICollection<Item> Items { get; set; }
         public static OrderViewModel OrderInstance { get; set; }
+        public double SubTotal
+        {
+            get
+            {
+               return Items.Sum(x => x.Price);
+            }
+        }
 
         static OrderViewModel()
         {
@@ -26,11 +33,6 @@ namespace FirstChoiceSystems.Models
         }
 
         protected OrderViewModel() { }
-        
-        public void RemoveItem(Item item)
-        {
-            Items.Remove(item);
-        }
 
         public void SaveCart(OrderViewModel order)
         {
@@ -50,13 +52,5 @@ namespace FirstChoiceSystems.Models
             return order;
         }
 
-        public decimal GetSubTotal()
-        {
-            decimal subTotal = 0;
-            foreach (Item item in Items)
-                subTotal += item.Price;
-
-            return subTotal;
-        }
     }
 }

@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201601051450494_ModelChanges.Designer.cs">
       <DependentUpon>201601051450494_ModelChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601051739119_TransactionTweaks.cs" />
+    <Compile Include="Migrations\201601051739119_TransactionTweaks.Designer.cs">
+      <DependentUpon>201601051739119_TransactionTweaks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\DBModels\Category.cs" />
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601051450494_ModelChanges.resx">
       <DependentUpon>201601051450494_ModelChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601051739119_TransactionTweaks.resx">
+      <DependentUpon>201601051739119_TransactionTweaks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
