@@ -53,9 +53,9 @@ namespace FirstChoiceSystems.Controllers
             return View();
         }
 
-        // GET: /Transaction/GetPendingTransactions
+        // GET: /Transaction/PendingTransactions
         [HttpGet]
-        public ActionResult GetPendingTransactions(int transactionId)
+        public ActionResult PendingTransactions(int transactionId)
         {
             var transaction = db.Transactions.Find(transactionId);
 
@@ -69,11 +69,16 @@ namespace FirstChoiceSystems.Controllers
 
         // POST: /Transaction/ApproveTransaction    
         [HttpPost]
-        public ActionResult ApproveTransaction(int itemId)
+        public ActionResult ApproveTransaction(int transactionId)
         {
-            var items = db.Items.Find(itemId);
+            var transaction = db.Transactions.Find(transactionId);
             var user = db.Users.Find(User.Identity.GetUserId());
-            user.Balance += items.Price;
+
+            var usersItems = transaction.ListOfItems.Where(x => x.Seller.Id == user.Id);
+            foreach (var item in usersItems)
+            {
+                user.Balance += item.Price;
+            }
             db.SaveChanges();
             return RedirectToAction("GetPendingTransactions", "Transaction");
         }
@@ -88,7 +93,6 @@ namespace FirstChoiceSystems.Controllers
             db.SaveChanges();
             return RedirectToAction("TransactionHistory", "Transaction");
         }
-
         
     }
 }
