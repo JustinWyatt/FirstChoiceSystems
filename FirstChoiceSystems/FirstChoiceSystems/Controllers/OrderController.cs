@@ -25,12 +25,35 @@ namespace FirstChoiceSystems.Controllers
         {
             var item = db.Items.Find(itemId);
             currentOrder.AddItem(item);
+            currentOrder.Items.Add(item);
+            if (currentOrder.Items.Contains(item))
+            {
+                foreach (Item i in currentOrder.Items)
+                {
+                    if (i.Equals(item))
+                    {
+                        item.Quantity++;
+                    }
+                }
+            }
+            else
+            {
+                item.Quantity = 1;
+                currentOrder.Items.Add(item);
+            }
             currentOrder.SaveCart(currentOrder);    
             return RedirectToAction("Order", "Order");
         }
 
         // POST: /Order/RemoveItem
-
+        [HttpPost]
+        public ActionResult RemoveItem(int itemId)
+        {
+            var item = db.Items.Find(itemId);
+            currentOrder.RemoveItem(item);
+            currentOrder.SaveCart(currentOrder);
+            return RedirectToAction("Order", "Order");
+        }
     }
 }
 

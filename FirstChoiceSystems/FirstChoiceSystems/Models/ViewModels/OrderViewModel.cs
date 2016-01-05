@@ -26,31 +26,7 @@ namespace FirstChoiceSystems.Models
         }
 
         protected OrderViewModel() { }
-
-        public void AddItem(Item item)
-        {
-            Items.Add(item);
-
-            // If this item already exists in our list of items, increase the quantity
-            // Otherwise, add the new item to the list
-            if (Items.Contains(item))
-            {
-                foreach (Item i in Items)
-                {
-                    if (i.Equals(item))
-                    {
-                        item.Quantity++;
-                        return;
-                    }
-                }
-            }
-            else
-            {
-                item.Quantity = 1;
-                Items.Add(item);
-            }
-        }
-
+        
         public void RemoveItem(Item item)
         {
             Items.Remove(item);
@@ -72,6 +48,15 @@ namespace FirstChoiceSystems.Models
             }
 
             return order;
+        }
+
+        public decimal GetSubTotal()
+        {
+            decimal subTotal = 0;
+            foreach (Item item in Items)
+                subTotal += item.Price;
+
+            return subTotal;
         }
     }
 }
