@@ -21,9 +21,9 @@ namespace FirstChoiceSystems.Controllers
             return View();
         }
 
-        // POST: /Purchase/SubmitPurchaseRequest
+        // POST: /Purchase/PurchaseRequest
         [HttpPost]
-        public ActionResult SubmitPurchaseRequest(OrderViewModel order)
+        public ActionResult PurchaseRequest(OrderViewModel order)
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
@@ -50,11 +50,12 @@ namespace FirstChoiceSystems.Controllers
                     {
                         Status = TransactionStatus.Pending,
                         ItemSold = individualItem,
-                        SaleAmount = individualItem.Price,
+                        SaleAmount = individualItem.Price * individualItem.Quantity,
                         Seller = seller                        
                     };
 
                     sale.Buyers.Add(user);
+                    seller.Sales.Add(sale);
                 }
             }
 
@@ -70,47 +71,6 @@ namespace FirstChoiceSystems.Controllers
             var userId = User.Identity.GetUserId();
             //returns transactions for users who have made purchases
             return View(db.Purchases.Where(x => x.Buyer.Id == userId).ToList());
-        }
-
-        // GET: /Purchase/PendingPurchases
-        [HttpGet]
-        public ActionResult PendingPurchases(int purchaseId)
-        {
-            var purchase = db.Purchases.Find(purchaseId);
-
-            var userId = User.Identity.GetUserId();
-
-            var listOfItemsInPurchasesThatBelongToUser = purchase.Sellers.Where(x => x.Id == userId).ToList();
-
-            //returns a list of items that must be checked by this user, who is the seller
-            return View(listOfItemsInPurchasesThatBelongToUser);
-        }
-
-        // POST: /Purchase/ApprovePurchase    
-        [HttpPost]
-        public ActionResult ApprovePurchase(int purchaseId)
-        {
-            var purchase = db.Purchases.Find(purchaseId);
-            var user = db.Users.Find(User.Identity.GetUserId());
-
-            var usersItems = purchase.ListOfItems.Where(x => x.Seller.Id == user.Id);
-            foreach (var item in usersItems)
-            {
-                user.Balance += item.Price;
-            }
-            db.SaveChanges();
-            return RedirectToAction("PendingPurchases", "Purchase");
-        }
-
-        // POST: /Purchase/RejectPurchase 
-        [HttpPost]
-        public ActionResult RejectPurchase(int purchaseId)
-        {
-            var transaction = db.Purchases.Find(purchaseId);
-            transaction.Status = TransactionStatus.Voided;
-
-            db.SaveChanges();
-            return RedirectToAction("PurchaseHistory", "Purchase");
         }
 
     }
