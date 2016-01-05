@@ -20,6 +20,18 @@ namespace FirstChoiceSystems.Controllers
             return View(db.Users.Find(user));
         }
 
-        // POST: /Sales/ApproveUser
+        // POST: /Sales/PendingSales
+        [HttpGet]
+        public ActionResult PendingSales(int purchaseId)
+        {
+            var purchase = db.Purchases.Find(purchaseId);
+
+            var userId = User.Identity.GetUserId();
+
+            var listOfItemsInPurchasesThatBelongThisUser = purchase.ListOfItems.Where(x => x.Seller.Id == userId && x.DateSold == null).ToList();
+
+            //returns a list of items that must be checked by this user, who is the seller
+            return View(listOfItemsInPurchasesThatBelongThisUser);
+        }
     }
 }

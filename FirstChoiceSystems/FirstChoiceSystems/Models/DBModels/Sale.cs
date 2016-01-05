@@ -12,5 +12,6 @@ namespace FirstChoiceSystems.Models.DBModels
         public TransactionStatus Status { get; set;}
         public double SaleAmount { get; set; }
         public Item ItemSold { get; set; }
+        public DateTime? DateSold { get; set; }
     }
 }
