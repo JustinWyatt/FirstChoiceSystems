@@ -182,6 +182,7 @@
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarketplaceController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -293,6 +294,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Inventory\" />
     <Folder Include="Views\Marketplace\" />
+    <Folder Include="Views\ShoppingCart\" />
     <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>

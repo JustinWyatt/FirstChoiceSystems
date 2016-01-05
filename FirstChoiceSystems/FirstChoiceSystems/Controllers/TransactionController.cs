@@ -34,6 +34,7 @@ namespace FirstChoiceSystems.Controllers
             };
 
             user.Transactions.Add(newTransaction);
+            db.SaveChanges();
             if (newTransaction.Status == TransactionStatus.Pending)
             {
                 return Json(newTransaction, JsonRequestBehavior.AllowGet);
@@ -54,6 +55,7 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult ApproveTransaction(int transactionId)
         {
             var transaction = db.Transactions.Find(transactionId);
+
             //don't update the transaction if its not pending.
             if (transaction.Status != TransactionStatus.Pending)
             {
@@ -73,12 +75,10 @@ namespace FirstChoiceSystems.Controllers
             var transaction = db.Transactions.Find(transasctionId);
             transaction.Status = TransactionStatus.Voided;
 
-            //var c = new CartViewModel(); // you'll convert this to a cart 
-
-            //HttpContext.Session["currentCart"] = new CartViewModel;
             db.SaveChanges();
-
             return RedirectToAction("TransactionHistory", "Transaction");
         }
+
+        
     }
 }

@@ -27,7 +27,7 @@ namespace FirstChoiceSystems.Migrations
             AddColumn("dbo.Transactions", "CreatedBy", c => c.String());
             AddColumn("dbo.Items", "Quantity", c => c.Int(nullable: false));
             AddColumn("dbo.Items", "CreatedOn", c => c.DateTime(nullable: false));
-            AddColumn("dbo.Items", "ModifiedOn", c => c.DateTime(nullable: false));
+            AddColumn("dbo.Items", "ModifiedOn", c => c.DateTime(nullable: false)); 
             AddColumn("dbo.Items", "ModifiedBy", c => c.String());
             AddColumn("dbo.Items", "CreatedBy", c => c.String());
             AddColumn("dbo.Items", "Seller_Id", c => c.String(maxLength: 128));
