@@ -5,9 +5,8 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models
 {
-    public class Inventory
+    public class Inventory : Entity
     {
-        public int Id { get; set; }
         public Business Business { get; set; }
         public ICollection<Item> Items { get; set; }
     }

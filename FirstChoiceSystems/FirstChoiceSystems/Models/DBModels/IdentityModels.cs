@@ -5,6 +5,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace FirstChoiceSystems.Models
 {
@@ -37,7 +39,31 @@ namespace FirstChoiceSystems.Models
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
+        { 
+           
+        }
+
+        public override int SaveChanges()
         {
+            var entities = ChangeTracker.Entries().Where(x => x.Entity is IEntity<int> && (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+            var currentUsername = HttpContext.Current != null && HttpContext.Current.User != null
+                ? HttpContext.Current.User.Identity.Name
+                : "Anonymous";
+
+            foreach (var entity in entities)
+            {
+                if (entity.State == EntityState.Added)
+                {
+                    ((IEntity<int>)entity.Entity).CreatedOn = DateTime.Now;
+                    ((IEntity<int>)entity.Entity).CreatedBy = currentUsername;
+                }
+
+                ((IEntity<int>)entity.Entity).ModifiedOn = DateTime.Now;
+                ((IEntity<int>)entity.Entity).ModifiedBy = currentUsername;
+            }
+
+            return base.SaveChanges();
         }
 
         public static ApplicationDbContext Create()

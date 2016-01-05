@@ -5,9 +5,8 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models
 {
-    public class ItemImage
+    public class ItemImage : Entity
     {
-        public int Id { get; set; }
         public string ImagePath { get; set; }
     }
 }

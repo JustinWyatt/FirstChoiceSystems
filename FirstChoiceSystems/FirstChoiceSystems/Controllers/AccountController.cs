@@ -158,7 +158,8 @@ namespace FirstChoiceSystems.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new Business
+                
+                var business = new Business
                 {
                     UserName = model.Email,
                     Email = model.Email,
@@ -170,16 +171,16 @@ namespace FirstChoiceSystems.Controllers
                     Postal = model.Postal,
                     PhoneNumber = model.PhoneNumber,
                     DateRegistered = DateTime.Now,
-                    BusinessCategory = db.BusinessCategories.First(x => x.CategoryName == model.BusinessCategory),
+                    BusinessCategory = db.BusinessCategories.Find(model.BusinessCategory),
                     State = model.State,
-                    Balance = 500,
+                    Balance = 500
                     
                 };
 
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(business, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await SignInManager.SignInAsync(business, isPersistent: false, rememberBrowser: false);
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
