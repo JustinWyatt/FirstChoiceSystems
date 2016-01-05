@@ -12,7 +12,7 @@ namespace FirstChoiceSystems.Controllers
     public class TransactionController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // POST: /Transaction/TransactionForm    
         [HttpGet]
         public ActionResult TransactionForm()
@@ -31,15 +31,17 @@ namespace FirstChoiceSystems.Controllers
                 Amount = order.SubTotal,
                 Buyer = user,
                 Status = TransactionStatus.Pending,
+                ListOfItems = order.Items,
+                Sellers = order.Items.Select(x=>x.Seller).ToList()                               
             };
+
+            if (user.Balance < transaction.Amount)
+            {
+                return RedirectToAction("");
+            }
 
             user.Transactions.Add(transaction);
             db.SaveChanges();
-            if (transaction.Status == TransactionStatus.Pending)
-            {
-                return Json(transaction, JsonRequestBehavior.AllowGet);
-            }
-
             return RedirectToAction("TransactionHistory", "Transaction");
         }
 
@@ -47,24 +49,33 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult TransactionHistory()
         {
+            //returns transactions for users who have made purchases
             return View();
+        }
+
+        // GET: /Transaction/GetPendingTransactions
+        [HttpGet]
+        public ActionResult GetPendingTransactions(int transactionId)
+        {
+            var transaction = db.Transactions.Find(transactionId);
+
+            var userId = User.Identity.GetUserId();
+
+            var listOfItemsInTransactionThatBelongToUser = transaction.Sellers.Where(x => x.Id == userId).ToList();
+
+            //returns a list of items that must be checked by this user, who is the seller
+            return View(listOfItemsInTransactionThatBelongToUser);
         }
 
         // POST: /Transaction/ApproveTransaction    
         [HttpPost]
-        public ActionResult ApproveTransaction(int transactionId)
+        public ActionResult ApproveTransaction(int itemId)
         {
-            var transaction = db.Transactions.Find(transactionId);
-
-            //don't update the transaction if its not pending.
-            if (transaction.Status != TransactionStatus.Pending)
-            {
-                return RedirectToAction("TransactionHistory", "Transaction");
-            }
-            transaction.ApprovalDate = DateTime.Now;
-
+            var items = db.Items.Find(itemId);
+            var user = db.Users.Find(User.Identity.GetUserId());
+            user.Balance += items.Price;
             db.SaveChanges();
-            return RedirectToAction("TransactionHistory", "Transaction");
+            return RedirectToAction("GetPendingTransactions", "Transaction");
         }
 
         // POST: /Transaction/RejectTransaction 
@@ -78,5 +89,6 @@ namespace FirstChoiceSystems.Controllers
             return RedirectToAction("TransactionHistory", "Transaction");
         }
 
+        
     }
 }

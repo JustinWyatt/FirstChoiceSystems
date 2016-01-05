@@ -14,7 +14,7 @@ namespace FirstChoiceSystems.Models
         {
             get
             {
-               return Items.Sum(x => x.Price);
+               return Items.Sum(x => x.Price * x.Quantity);
             }
         }
 
