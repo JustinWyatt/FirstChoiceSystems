@@ -19,26 +19,6 @@ namespace FirstChoiceSystems.Controllers
             var userId = User.Identity.GetUserId();
             return View(db.Inventories.Find(userId));
         }
-
-
-        private void SaveCart(OrderViewModel order)
-        {
-            HttpContext.Session["currentOrder"] = order;
-            
-        }
-
-        private OrderViewModel GetCart()
-        {
-            var order = (OrderViewModel)HttpContext.Session["currentOrder"];
-
-            if (order == null)
-            {
-                order = new OrderViewModel();
-                HttpContext.Session["currentCart"] = order;
-            }
-
-            return order;
-        }
         
     }
 }
