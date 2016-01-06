@@ -200,6 +200,18 @@
     <Compile Include="Migrations\201601061920310_UpdatingPendingChanges1.Designer.cs">
       <DependentUpon>201601061920310_UpdatingPendingChanges1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601062105293_Clear.cs" />
+    <Compile Include="Migrations\201601062105293_Clear.Designer.cs">
+      <DependentUpon>201601062105293_Clear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601062124306_MadeNullableDateRegistered.cs" />
+    <Compile Include="Migrations\201601062124306_MadeNullableDateRegistered.Designer.cs">
+      <DependentUpon>201601062124306_MadeNullableDateRegistered.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601062127275_MadeNullableDates.cs" />
+    <Compile Include="Migrations\201601062127275_MadeNullableDates.Designer.cs">
+      <DependentUpon>201601062127275_MadeNullableDates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\DashboardViewModel.cs" />
     <Compile Include="Models\DBModels\PurchaseItem.cs" />
@@ -302,6 +314,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601061920310_UpdatingPendingChanges1.resx">
       <DependentUpon>201601061920310_UpdatingPendingChanges1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601062105293_Clear.resx">
+      <DependentUpon>201601062105293_Clear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601062124306_MadeNullableDateRegistered.resx">
+      <DependentUpon>201601062124306_MadeNullableDateRegistered.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601062127275_MadeNullableDates.resx">
+      <DependentUpon>201601062127275_MadeNullableDates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

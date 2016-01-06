@@ -66,7 +66,7 @@ namespace FirstChoiceSystems.Controllers
             {
                 AccountNumber = user.AccountNumber,
                 Balance = user.Balance,
-                DateRegistered = user.DateRegistered.ToShortDateString(),
+                DateRegistered = user.DateRegistered.ToString(),
                 CompanyAddress = user.CompanyAddress,
                 CompanyName = user.CompanyName,
                 CompanyWebsite = user.CompanyName,
