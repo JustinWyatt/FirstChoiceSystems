@@ -1,4 +1,5 @@
 ﻿using FirstChoiceSystems.Models;
+using FirstChoiceSystems.Models.DBModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,16 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult SalesHistory()
         {
             var userId = User.Identity.GetUserId();
-
             var user = db.Users.Find(userId);
-            return View(user.Purchases.Where(x => x.Item.Seller.Id == userId).ToList());
+
+            var purchase = db.Purchases.Select(x => x.PurchaseItems).ToList();
+
+            var salesHistory = new List<PurchaseItem>();
+            foreach (var p in purchase)
+            {
+                salesHistory = p.Where(x => x.Item.Seller.Id == userId).ToList();
+            }
+            return View(salesHistory);
         }
 
         // GET: /Sales/PendingSales
@@ -28,7 +36,12 @@ namespace FirstChoiceSystems.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            var pendingSales = user.Purchases.Where(x => x.Status == TransactionStatus.Pending && x.Item.Seller.Id == userId).ToList();
+
+            var pendingSales = new List<PurchaseItem>();
+            foreach (var p in db.Purchases.Select(x => x.PurchaseItems).ToList())
+            {
+                pendingSales = p.Where(x => x.Item.Seller.Id == userId && x.Status == TransactionStatus.Pending).ToList();
+            }
             return View(pendingSales);
         }
 

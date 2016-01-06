@@ -20,7 +20,7 @@ namespace FirstChoiceSystems.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
-        }
+        }   
 
         public string PersonOfContact { get; set; }
         public string CompanyName { get; set; }

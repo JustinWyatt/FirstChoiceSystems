@@ -13,6 +13,5 @@ namespace FirstChoiceSystems.Models.DBModels
         public virtual decimal PricePerUnitBoughtAt { get; set; }
         public virtual TransactionStatus Status { get; set; }
         public DateTime? ApprovalDate { get; set; }
-
     }
 }

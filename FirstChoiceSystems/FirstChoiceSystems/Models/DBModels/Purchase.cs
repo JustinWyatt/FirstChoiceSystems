@@ -17,7 +17,4 @@ namespace FirstChoiceSystems.Models
         Approved = 1,
         Voided = 2
     }
-   
-
-    
 }

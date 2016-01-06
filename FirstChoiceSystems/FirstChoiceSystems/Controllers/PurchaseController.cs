@@ -39,7 +39,7 @@ namespace FirstChoiceSystems.Controllers
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
 
-            var newPurchaseRequest = new List<PurchaseItem>();
+            var newPurchaseRequest = new Purchase();
             foreach (var itemVM in currentOrder.Items)
             {
                 var itemFromDB = db.Items.Find(itemVM.Id);
@@ -52,11 +52,11 @@ namespace FirstChoiceSystems.Controllers
                     Status = TransactionStatus.Pending,
                 };
 
-                newPurchaseRequest.Add(newPurchase);
+                newPurchaseRequest.PurchaseItems.Add(newPurchase);
             }
-            user.Purchases.AddRange(newPurchaseRequest);
+            user.Purchases.Add(newPurchaseRequest);
             db.SaveChanges();
-            return RedirectToAction("PurchaseDetail", "Purchase", new { purchaseId =  user.Purchases.Select(x=>x.Id) });
+            return RedirectToAction("PurchaseDetail", "Purchase", new { purchaseId =  newPurchaseRequest.Id });
         }
 
     }
