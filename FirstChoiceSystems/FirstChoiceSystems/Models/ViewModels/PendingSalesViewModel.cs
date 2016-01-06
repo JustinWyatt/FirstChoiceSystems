@@ -7,6 +7,5 @@ namespace FirstChoiceSystems.Models.ViewModels
 {
     public class PendingSalesViewModel
     {
-        public 
     }
 }

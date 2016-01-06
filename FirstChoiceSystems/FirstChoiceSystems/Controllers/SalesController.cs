@@ -20,12 +20,10 @@ namespace FirstChoiceSystems.Controllers
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
 
-            var purchase = db.Purchases.Select(x => x.PurchaseItems).ToList();
-
             var salesHistory = new List<PurchaseItem>();
-            foreach (var p in purchase)
+            foreach (var purchaseItem in db.Purchases.Select(x => x.PurchaseItems).ToList())
             {
-                salesHistory = p.Where(x => x.Item.Seller.Id == userId).ToList();
+                salesHistory = purchaseItem.Where(x => x.Item.Seller.Id == userId).ToList();
             }
             return View(salesHistory);
         }
@@ -38,9 +36,9 @@ namespace FirstChoiceSystems.Controllers
             var user = db.Users.Find(userId);
 
             var pendingSales = new List<PurchaseItem>();
-            foreach (var p in db.Purchases.Select(x => x.PurchaseItems).ToList())
+            foreach (var purchaseItem in db.Purchases.Select(x => x.PurchaseItems).ToList())
             {
-                pendingSales = p.Where(x => x.Item.Seller.Id == userId && x.Status == TransactionStatus.Pending).ToList();
+                pendingSales = purchaseItem.Where(x => x.Item.Seller.Id == userId && x.Status == TransactionStatus.Pending).ToList();
             }
             return View(pendingSales);
         }

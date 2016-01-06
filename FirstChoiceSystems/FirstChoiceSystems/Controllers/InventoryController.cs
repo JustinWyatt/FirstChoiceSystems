@@ -14,11 +14,10 @@ namespace FirstChoiceSystems.Controllers
          
         // GET: /Inventory/ItemsUpForSale
         [HttpGet]
-        public ActionResult ItemsUpForSale()
+        public ActionResult ItemsUpForSale(string userId)
         {
-            var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            return View(user.ItemsUpForSale.ToList());
+            return View(user.ItemsUpForSale);
         }
 
         // GET: /Inventory/AddItem
@@ -34,7 +33,7 @@ namespace FirstChoiceSystems.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            return View(user.ItemsUpForSale.Where(x=>x.Id == itemId));
+            return View(user.ItemsUpForSale.First(x=>x.Id == itemId));
         }
 
         // POST: /Inventory/PostItem
@@ -55,7 +54,7 @@ namespace FirstChoiceSystems.Controllers
             };
             user.ItemsUpForSale.Add(newItem);
             db.SaveChanges();
-            return RedirectToAction("ItemDetails", "Inventory", new { itemId = newItem.Id});
+            return RedirectToAction("ItemDetails", "Inventory", new { itemId = newItem.Id });
         }
     }   
 }
