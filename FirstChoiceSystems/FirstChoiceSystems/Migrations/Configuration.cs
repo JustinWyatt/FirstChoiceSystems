@@ -20,30 +20,18 @@ namespace FirstChoiceSystems.Migrations
 
         protected override void Seed(FirstChoiceSystems.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
             var db = new ApplicationDbContext();
 
-            //context.BusinessCategories.AddOrUpdate(b => b.CategoryName, new BusinessCategory { CategoryName = "Restaraunt" });
-            //context.ItemCategories.AddOrUpdate(i => i.CategoryName,
-            //    new ItemCategory { CategoryName = "Silverware" },
-            //    new ItemCategory { CategoryName = "Stationery" },
-            //    new ItemCategory { CategoryName = "Advertisement Media" },
-            //    new ItemCategory { CategoryName = "Beverages" },
-            //    new ItemCategory { CategoryName = "Produce" },
-            //    new ItemCategory { CategoryName = "Real Estate" },
-            //    new ItemCategory { CategoryName = "Dry Goods" }
-            //    );
+            context.BusinessCategories.AddOrUpdate(b => b.CategoryName, new BusinessCategory { CategoryName = "Restaraunt" });
+            context.ItemCategories.AddOrUpdate(i => i.CategoryName,
+                new ItemCategory { CategoryName = "Silverware" },
+                new ItemCategory { CategoryName = "Stationery" },
+                new ItemCategory { CategoryName = "Advertisement Media" },
+                new ItemCategory { CategoryName = "Beverages" },
+                new ItemCategory { CategoryName = "Produce" },
+                new ItemCategory { CategoryName = "Real Estate" },
+                new ItemCategory { CategoryName = "Dry Goods" }
+                );
 
             var userStore = new UserStore<BusinessUser>(context);
             var manager = new ApplicationUserManager(userStore);

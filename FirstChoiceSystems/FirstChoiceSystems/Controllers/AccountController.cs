@@ -55,7 +55,7 @@ namespace FirstChoiceSystems.Controllers
             }
         }
 
-        // GET: /Acount/Dashboard
+        // GET: /Account/Dashboard
         [HttpGet]
         public ActionResult Dashboard()
         {
@@ -75,24 +75,24 @@ namespace FirstChoiceSystems.Controllers
                 City = user.City,
                 State = user.State,
                 Postal = user.Postal,
-                ItemsUpForSale = user.ItemsUpForSale.Select(x =>
+                ItemsUpForSale = user.ItemsUpForSale.Select(item =>
                 new ItemViewModel
                 {
-                    Id = x.Id,
-                    ItemDescription = x.ItemDescription,
-                    Price = x.PricePerUnit,
-                    Quantity = x.UnitsAvailable
+                    Id = item.Id,
+                    ItemDescription = item.ItemDescription,
+                    Price = item.PricePerUnit,
+                    Quantity = item.UnitsAvailable
                 }),
-                Purchases = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Select(x=> 
+                Purchases = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Select(purchase=> 
                 new PurchaseItem
                 {
-                    Id = x.Id,
-                    PricePerUnitBoughtAt = x.PricePerUnitBoughtAt,
-                    QuanityBought = x.QuanityBought,
-                    Status = x.Status,
-                    ApprovalDate = x.ApprovalDate,
-                    Buyer = x.Buyer,
-                    Item = x.Item
+                    Id = purchase.Id,
+                    PricePerUnitBoughtAt = purchase.PricePerUnitBoughtAt,
+                    QuanityBought = purchase.QuanityBought,
+                    Status = purchase.Status,
+                    ApprovalDate = purchase.ApprovalDate,
+                    Buyer = purchase.Buyer,
+                    Item = purchase.Item
                 })
             };
             return View(dashboard);

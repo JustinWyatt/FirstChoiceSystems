@@ -41,7 +41,7 @@ namespace FirstChoiceSystems.Controllers
             }
             else
             {
-                i.Quantity+= requestedQuantity;
+                i.Quantity += requestedQuantity;
             }
 
             //if they are asking for more than what is available, cap it to just whats avaiable.
