@@ -13,7 +13,6 @@ namespace FirstChoiceSystems.Controllers
     public class PurchaseController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        OrderViewModel currentOrder = OrderViewModel.OrderInstance;
 
         // GET: /Purchase/PurchaseForm    
         [HttpGet]
@@ -26,51 +25,40 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult PurchaseHistory()
         {
+            var model = db.PurchaseItems.AsNoTracking().Where(x => x.CreatedOn > DateTime.Parse("1/1/2015"));
             var userId = User.Identity.GetUserId();
             //returns transactions for users who have made purchases
-            return View(db.Purchases.Where(x => x.Buyer.Id == userId).ToList());
+            return View(db.Users.Find(userId).Purchases.ToList());
         }
 
         // POST: /Purchase/PurchaseRequest
         [HttpPost]
         public ActionResult PurchaseRequest()
         {
+            var currentOrder = OrderViewModel.Retrieve();
+
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            var purchaseRequest = new Purchase()
-            {
-                Amount = currentOrder.SubTotal,
-                Buyer = user,
-                Status = TransactionStatus.Pending,
-                ListOfItems = currentOrder.Items,
-                Sellers = currentOrder.Items.Select(x => x.Seller).ToList()
-            };
 
-            if (user.Balance < purchaseRequest.Amount)
+            var purchases = new List<PurchaseItem>();
+            foreach(var itemVM in currentOrder.Items)
             {
-                //return not enough funds
-                return RedirectToAction("");
-            }
-
-            foreach (var seller in currentOrder.Items.Select(x => x.Seller).ToList())
-            {
-                foreach (var individualItem in currentOrder.Items.Where(x => x.Seller.Id == seller.Id).ToList())
+                var itemFromDB = db.Items.Find(itemVM.Id);
+                var newPurchase = new PurchaseItem()
                 {
-                    var sale = new Sale()
-                    {
-                        Status = TransactionStatus.Pending,
-                        ItemSold = individualItem,
-                        SaleAmount = individualItem.Price * individualItem.Quantity,
-                        Seller = seller                        
-                    };
+                    Buyer = user,
+                    Item = itemFromDB,
+                    PricePerUnitBoughtAt = itemFromDB.PricePerUnit,
+                    QuanityBought = itemVM.Quantity,
+                    Status = TransactionStatus.Pending
+                };
 
-                    sale.Buyers.Add(user);
-                    seller.Sales.Add(sale);
-                }
+                purchases.Add(newPurchase);
             }
 
-            user.Purchases.Add(purchaseRequest);
+            db.PurchaseItems.AddRange(purchases);
             db.SaveChanges();
+         
             return RedirectToAction("PurchaseHistory", "Purchase");
         }
 

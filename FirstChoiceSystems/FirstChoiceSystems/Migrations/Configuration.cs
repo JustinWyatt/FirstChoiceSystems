@@ -1,5 +1,7 @@
 namespace FirstChoiceSystems.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System;
     using System.Data.Entity;
@@ -27,7 +29,20 @@ namespace FirstChoiceSystems.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-           
+            var userStore = new UserStore<Business>(context);
+            var userManager = new UserManager<Business>(userStore);
+
+            if (!(context.Users.Any(u => u.UserName == "justin@test.com")))
+            {
+                var userToInsert = new Business { UserName = "justin@test.com", PhoneNumber = "0797697898" };
+                userManager.Create(userToInsert, "Password@123");
+            }
+
+            if (!(context.Users.Any(u => u.UserName == "daniel@test.com")))
+            {
+                var userToInsert = new Business { UserName = "daniel@test.com", PhoneNumber = "0797697898" };
+                userManager.Create(userToInsert, "Password@123");
+            }
         }
     }
 }

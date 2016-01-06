@@ -10,37 +10,45 @@ namespace FirstChoiceSystems.Controllers
     public class OrderController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        OrderViewModel currentOrder = OrderViewModel.OrderInstance;
 
         // GET: /Order/Order
         [HttpGet]
         public ActionResult Order()
         {
-            return View(currentOrder);
+            return View(OrderViewModel.Retrieve());
         }
 
         // POST: /Order/AddItem
         [HttpPost]
-        public ActionResult AddItem(int itemId)
+        public ActionResult AddItem(int itemId, int requestedQuantity)
         {
-            var item = db.Items.Find(itemId);
-            if (currentOrder.Items.Contains(item))
+            var currentOrder = OrderViewModel.Retrieve();
+            var dbItem = db.Items.Find(itemId);
+
+            var i = currentOrder.Items.FirstOrDefault(x => x.Id == itemId);
+            if (i == null)
             {
-                foreach (Item i in currentOrder.Items)
+                i = new ItemViewModel()
                 {
-                    if (i.Id == item.Id)
-                    {
-                        item.Quantity++;
-                    }
-                }
+                    Id = dbItem.Id,
+                    ItemDescription = dbItem.ItemDescription,
+                    Price = dbItem.PricePerUnit,
+                    Quantity = requestedQuantity
+                };
+
+                currentOrder.Items.Add(i);
             }
             else
             {
-                item.Quantity = 1;
-                //order view moel
-                currentOrder.Items.Add(item);
+                i.Quantity+= requestedQuantity;
             }
-            currentOrder.SaveCart(currentOrder);    
+
+            //if they are asking for more than what is available, cap it to just whats avaiable.
+            i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
+            
+
+
+            currentOrder.Save();
             return RedirectToAction("Order", "Order");
         }
 
@@ -48,22 +56,18 @@ namespace FirstChoiceSystems.Controllers
         [HttpPost]
         public ActionResult RemoveItem(int itemId)
         {
-            var item = db.Items.Find(itemId);
-            if (currentOrder.Items.Contains(item))
+            var currentOrder = OrderViewModel.Retrieve();
+            var i = currentOrder.Items.FirstOrDefault(x => x.Id == itemId);
+            if (i != null)
             {
-                foreach (Item i in currentOrder.Items)
+                i.Quantity--;
+                if (i.Quantity <= 0)
                 {
-                    if (i.Equals(item))
-                    {
-                        item.Quantity--;
-                    }
+                    currentOrder.Items.Remove(i);
                 }
+                currentOrder.Save();
             }
-            else
-            {
-                currentOrder.Items.Remove(item);
-            }
-            currentOrder.SaveCart(currentOrder);
+
             return RedirectToAction("Order", "Order");
         }
     }

@@ -7,39 +7,7 @@ namespace FirstChoiceSystems.Models
 {
     public class OrderViewModel
     {
-        public int Id { get; set; }
-        public ICollection<Item> Items { get; set; }
-        public static OrderViewModel OrderInstance { get; set; }
-        public double SubTotal
-        {
-            get
-            {
-               return Items.Sum(x => x.Price * x.Quantity);
-            }
-        }
-
-        static OrderViewModel()
-        {
-            if (HttpContext.Current.Session["currentOrder"] == null)
-            {
-                OrderInstance = new OrderViewModel();
-                OrderInstance.Items = new List<Item>();
-                HttpContext.Current.Session["currentOrder"] = OrderInstance;
-            }
-            else
-            {
-                OrderInstance = (OrderViewModel)HttpContext.Current.Session["currentOrder"];
-            }
-        }
-
-        protected OrderViewModel() { }
-
-        public void SaveCart(OrderViewModel order)
-        {
-            HttpContext.Current.Session["currentOrder"] = order;
-        }
-
-        public OrderViewModel GetOrders()
+        public static OrderViewModel Retrieve()
         {
             var order = (OrderViewModel)HttpContext.Current.Session["currentOrder"];
 
@@ -52,5 +20,29 @@ namespace FirstChoiceSystems.Models
             return order;
         }
 
+        public void Save()
+        {
+            HttpContext.Current.Session["currentOrder"] = this;
+        }
+
+
+        public ICollection<ItemViewModel> Items { get; set; }
+        public double SubTotal
+        {
+            get
+            {
+                return Items.Sum(x => x.Price * x.Quantity);
+            }
+        }
+
+        
+    }
+
+    public class ItemViewModel
+    {
+        public int Id { get; set; }
+        public string ItemDescription { get; set; }
+        public int Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

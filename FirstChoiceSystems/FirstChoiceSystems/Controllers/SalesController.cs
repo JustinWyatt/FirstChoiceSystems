@@ -26,7 +26,7 @@ namespace FirstChoiceSystems.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            var sales = user.Sales.Where(x => x.Id == saleId && x.Status == TransactionStatus.Pending).ToList();
+            var sales = user.Purchases.Where(x => x.Id == saleId && x.Status == TransactionStatus.Pending).ToList();
             return View(sales);
         }
 

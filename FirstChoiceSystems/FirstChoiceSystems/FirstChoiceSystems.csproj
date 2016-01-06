@@ -188,41 +188,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601041956473_CreatedTables.cs" />
-    <Compile Include="Migrations\201601041956473_CreatedTables.Designer.cs">
-      <DependentUpon>201601041956473_CreatedTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601042037414_UpdatedCategoryTable.cs" />
-    <Compile Include="Migrations\201601042037414_UpdatedCategoryTable.Designer.cs">
-      <DependentUpon>201601042037414_UpdatedCategoryTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601042059352_Update.cs" />
-    <Compile Include="Migrations\201601042059352_Update.Designer.cs">
-      <DependentUpon>201601042059352_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601042136281_UpdatedTransaction.cs" />
-    <Compile Include="Migrations\201601042136281_UpdatedTransaction.Designer.cs">
-      <DependentUpon>201601042136281_UpdatedTransaction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601042206255_ChangedDatabaseAddedInventory.cs" />
-    <Compile Include="Migrations\201601042206255_ChangedDatabaseAddedInventory.Designer.cs">
-      <DependentUpon>201601042206255_ChangedDatabaseAddedInventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601042326515_Test.cs" />
-    <Compile Include="Migrations\201601042326515_Test.Designer.cs">
-      <DependentUpon>201601042326515_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601050244532_AddedPendingOptionToTransactionTable.cs" />
-    <Compile Include="Migrations\201601050244532_AddedPendingOptionToTransactionTable.Designer.cs">
-      <DependentUpon>201601050244532_AddedPendingOptionToTransactionTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601051450494_ModelChanges.cs" />
-    <Compile Include="Migrations\201601051450494_ModelChanges.Designer.cs">
-      <DependentUpon>201601051450494_ModelChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601052114449_AddedSalesTable.cs" />
-    <Compile Include="Migrations\201601052114449_AddedSalesTable.Designer.cs">
-      <DependentUpon>201601052114449_AddedSalesTable.cs</DependentUpon>
+    <Compile Include="Migrations\201601060029086_Recreate.cs" />
+    <Compile Include="Migrations\201601060029086_Recreate.Designer.cs">
+      <DependentUpon>201601060029086_Recreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DBModels\Sale.cs" />
@@ -313,32 +281,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601041956473_CreatedTables.resx">
-      <DependentUpon>201601041956473_CreatedTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601042037414_UpdatedCategoryTable.resx">
-      <DependentUpon>201601042037414_UpdatedCategoryTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601042059352_Update.resx">
-      <DependentUpon>201601042059352_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601042136281_UpdatedTransaction.resx">
-      <DependentUpon>201601042136281_UpdatedTransaction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601042206255_ChangedDatabaseAddedInventory.resx">
-      <DependentUpon>201601042206255_ChangedDatabaseAddedInventory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601042326515_Test.resx">
-      <DependentUpon>201601042326515_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601050244532_AddedPendingOptionToTransactionTable.resx">
-      <DependentUpon>201601050244532_AddedPendingOptionToTransactionTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601051450494_ModelChanges.resx">
-      <DependentUpon>201601051450494_ModelChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601052114449_AddedSalesTable.resx">
-      <DependentUpon>201601052114449_AddedSalesTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601060029086_Recreate.resx">
+      <DependentUpon>201601060029086_Recreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

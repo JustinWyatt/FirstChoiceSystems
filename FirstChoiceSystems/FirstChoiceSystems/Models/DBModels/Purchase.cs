@@ -11,14 +11,16 @@ namespace FirstChoiceSystems.Models
         Approved = 1,
         Voided = 2
     }
-    public class Purchase : Entity
+   
+
+    public class PurchaseItem : Entity
     {
-        public virtual ICollection<Business> Sellers { get; set; }
         public virtual Business Buyer { get; set; }
-        public double Amount { get; set; }
-        public DateTime? ApprovalDate { get; set; }
-        public string Description { get; set; }
+        public virtual Item Item { get; set; }
+        public virtual int QuanityBought { get; set; }
+        public virtual decimal PricePerUnitBoughtAt { get; set; }
         public virtual TransactionStatus Status { get; set; }
-        public virtual ICollection<Item> ListOfItems { get; set; }
+        public DateTime? ApprovalDate { get; set; }
+
     }
 }

@@ -7,13 +7,13 @@ namespace FirstChoiceSystems.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ModelChanges : IMigrationMetadata
+    public sealed partial class Recreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModelChanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Recreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601051450494_ModelChanges"; }
+            get { return "201601060029086_Recreate"; }
         }
         
         string IMigrationMetadata.Source
