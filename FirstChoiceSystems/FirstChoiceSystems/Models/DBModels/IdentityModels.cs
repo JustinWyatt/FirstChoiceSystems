@@ -78,5 +78,7 @@ namespace FirstChoiceSystems.Models
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
         public DbSet<ItemImage> Images { get; set; }
         public DbSet<Item> Items { get; set; }
+
+        public System.Data.Entity.DbSet<FirstChoiceSystems.Models.DBModels.DashboardViewModel> DashboardViewModels { get; set; }
     }
 }

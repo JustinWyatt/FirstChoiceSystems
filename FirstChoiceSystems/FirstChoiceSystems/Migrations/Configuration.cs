@@ -32,7 +32,7 @@ namespace FirstChoiceSystems.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            ApplicationDbContext db = new ApplicationDbContext();
+            var db = new ApplicationDbContext();
 
             //context.BusinessCategories.AddOrUpdate(b => b.CategoryName, new BusinessCategory { CategoryName = "Restaraunt" });
             //context.ItemCategories.AddOrUpdate(i => i.CategoryName,
