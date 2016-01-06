@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FirstChoiceSystems.Models;
+using FirstChoiceSystems.Models.DBModels;
+using System.Collections.Generic;
+using FirstChoiceSystems.Models.ViewModels;
 
 namespace FirstChoiceSystems.Controllers
 {
@@ -56,7 +59,33 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult Dashboard()
         {
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            var account = new AccountViewModel()
+            {
+                AccountNumber = user.AccountNumber,
+                Balance = user.Balance,
+                DateRegistered = user.DateRegistered.ToShortDateString(),
+                CompanyAddress = user.CompanyAddress,
+                CompanyName = user.CompanyName,
+                CompanyWebsite = user.CompanyName,
+                PersonOfContact = user.PersonOfContact,
+                BusinessCategory = user.BusinessCategory.CategoryName,
+                City = user.City,
+                State = user.State,
+                Postal = user.Postal,
+                ItemsUpForSale = user.ItemsUpForSale.Select(x =>
+                new ItemViewModel
+                {
+                    Id = x.Id,
+                    ItemDescription = x.ItemDescription,
+                    Price = x.PricePerUnit,
+                    Quantity = x.UnitsAvailable
+                }),
+
+            };
+            return View(account);
         }
 
         // GET: /Account/Login
@@ -164,7 +193,7 @@ namespace FirstChoiceSystems.Controllers
 
             if (ModelState.IsValid)
             {
-                
+
                 var business = new BusinessUser
                 {
                     UserName = model.Email,
@@ -180,7 +209,7 @@ namespace FirstChoiceSystems.Controllers
                     BusinessCategory = db.BusinessCategories.Find(model.BusinessCategory),
                     State = model.State,
                     Balance = 500
-                    
+
                 };
 
                 var result = await UserManager.CreateAsync(business, model.Password);
