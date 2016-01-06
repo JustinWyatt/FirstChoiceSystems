@@ -17,6 +17,10 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult ItemsUpForSale(string userId)
         {
             var user = db.Users.Find(userId);
+            if (userId == User.Identity.GetUserId())
+            {
+                return View(user.ItemsUpForSale);
+            }
             return View(user.ItemsUpForSale);
         }
 

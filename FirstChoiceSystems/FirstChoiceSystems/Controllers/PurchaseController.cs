@@ -14,20 +14,13 @@ namespace FirstChoiceSystems.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Purchase/PurchaseHistory
+        // GET: /Purchase/PurchaseRequestHistory
         [HttpGet]
-        public ActionResult PurchaseHistory()
+        public ActionResult PurchaseRequestHistory()
         {
+            //user can only view his own purchases
             var userId = User.Identity.GetUserId();
-            return View(db.Users.Find(userId).Purchases.ToList());
-        }
-
-        // GET: /Purchase/PurchaseDetail
-        [HttpGet]
-        public ActionResult PurchaseDetail(int purchaseId)
-        {
-            var userId = User.Identity.GetUserId();
-            return View(db.Users.Find(userId).Purchases.Find(x => x.Id == purchaseId));
+            return View(db.Users.Find(userId).Purchases);
         }
 
         // POST: /Purchase/PurchaseRequest
@@ -39,24 +32,24 @@ namespace FirstChoiceSystems.Controllers
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
 
-            var newPurchaseRequest = new Purchase();
+            var newPurchaseRequest = new List<PurchaseItem>();
             foreach (var itemVM in currentOrder.Items)
             {
                 var itemFromDB = db.Items.Find(itemVM.Id);
-                var newPurchase = new PurchaseItem()
+                var newPurchaseItem = new PurchaseItem()
                 {
                     Buyer = user,
                     Item = itemFromDB,
                     PricePerUnitBoughtAt = itemFromDB.PricePerUnit,
                     QuanityBought = itemVM.Quantity,
-                    Status = TransactionStatus.Pending,
+                    Status = TransactionStatus.Pending
                 };
 
-                newPurchaseRequest.PurchaseItems.Add(newPurchase);
+                newPurchaseRequest.Add(newPurchaseItem);
             }
-            user.Purchases.Add(newPurchaseRequest);
+            user.Purchases.AddRange(newPurchaseRequest);
             db.SaveChanges();
-            return RedirectToAction("PurchaseDetail", "Purchase", new { purchaseId =  newPurchaseRequest.Id });
+            return RedirectToAction("PurchaseRequestHistory", "Purchase");
         }
 
     }

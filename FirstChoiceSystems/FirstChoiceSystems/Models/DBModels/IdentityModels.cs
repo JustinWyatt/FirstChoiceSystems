@@ -33,7 +33,7 @@ namespace FirstChoiceSystems.Models
         public virtual BusinessCategory BusinessCategory { get; set; }
         public int AccountNumber { get; set; }
         public DateTime DateRegistered { get; set; }
-        public virtual List<Purchase> Purchases { get; set; }
+        public virtual List<PurchaseItem> Purchases { get; set; }
         public virtual ICollection<Item> ItemsUpForSale { get; set; }
         //public virtual Inventory Invetory { get; set; }
     }
@@ -77,7 +77,6 @@ namespace FirstChoiceSystems.Models
         public DbSet<BusinessCategory> BusinessCategories { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
-        public DbSet<Purchase> Purchases { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<ItemImage> Images { get; set; }
         public DbSet<Item> Items { get; set; }

@@ -191,9 +191,14 @@
     <Compile Include="Migrations\201601060029086_Recreate.Designer.cs">
       <DependentUpon>201601060029086_Recreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601061812003_UpdatingPendingChanges.cs" />
+    <Compile Include="Migrations\201601061812003_UpdatingPendingChanges.Designer.cs">
+      <DependentUpon>201601061812003_UpdatingPendingChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DBModels\PurchaseItem.cs" />
     <Compile Include="Models\DBModels\Sale.cs" />
+    <Compile Include="Models\DBModels\TransactionStatus.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\DBModels\Category.cs" />
     <Compile Include="Models\DBModels\IdentityModels.cs" />
@@ -284,6 +289,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601060029086_Recreate.resx">
       <DependentUpon>201601060029086_Recreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601061812003_UpdatingPendingChanges.resx">
+      <DependentUpon>201601061812003_UpdatingPendingChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
