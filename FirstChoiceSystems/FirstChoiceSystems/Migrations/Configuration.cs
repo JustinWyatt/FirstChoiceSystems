@@ -455,7 +455,7 @@ namespace FirstChoiceSystems.Migrations
                 if (!(context.Users.Any(x => x.UserName == "test@irianaspizza.com")))
                 {
                     var userToInsert = new BusinessUser //Todo Business User 7
-                    {
+                   { 
                         PersonOfContact = "Mike Rowe",
                         PhoneNumber = "555-555-5555",
                         DateRegistered = DateTime.Parse("1/7/2015"),
