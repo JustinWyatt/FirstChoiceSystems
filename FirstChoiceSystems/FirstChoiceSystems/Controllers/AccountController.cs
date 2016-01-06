@@ -62,7 +62,7 @@ namespace FirstChoiceSystems.Controllers
             ApplicationDbContext db = new ApplicationDbContext();
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            var account = new AccountViewModel()
+            var dashboard = new DashboardViewModel()
             {
                 AccountNumber = user.AccountNumber,
                 Balance = user.Balance,
@@ -83,9 +83,19 @@ namespace FirstChoiceSystems.Controllers
                     Price = x.PricePerUnit,
                     Quantity = x.UnitsAvailable
                 }),
-
+                Purchases = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Select(x=> 
+                new PurchaseItem
+                {
+                    Id = x.Id,
+                    PricePerUnitBoughtAt = x.PricePerUnitBoughtAt,
+                    QuanityBought = x.QuanityBought,
+                    Status = x.Status,
+                    ApprovalDate = x.ApprovalDate,
+                    Buyer = x.Buyer,
+                    Item = x.Item
+                })
             };
-            return View(account);
+            return View(dashboard);
         }
 
         // GET: /Account/Login

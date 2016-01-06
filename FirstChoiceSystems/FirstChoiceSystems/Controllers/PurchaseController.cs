@@ -47,7 +47,7 @@ namespace FirstChoiceSystems.Controllers
 
                 newPurchaseRequest.Add(newPurchaseItem);
             }
-            user.Purchases.AddRange(newPurchaseRequest);
+            db.PurchaseItems.AddRange(newPurchaseRequest);
             db.SaveChanges();
             return RedirectToAction("PurchaseRequestHistory", "Purchase");
         }

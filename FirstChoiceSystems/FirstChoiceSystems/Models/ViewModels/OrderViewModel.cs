@@ -26,8 +26,8 @@ namespace FirstChoiceSystems.Models
             HttpContext.Current.Session["currentOrder"] = this;
         }
 
-
         public ICollection<ItemViewModel> Items { get; set; }
+
         public double SubTotal
         {
             get
@@ -35,9 +35,5 @@ namespace FirstChoiceSystems.Models
                 return Items.Sum(x => x.Price * x.Quantity);
             }
         }
-
-
     }
-
-
 }

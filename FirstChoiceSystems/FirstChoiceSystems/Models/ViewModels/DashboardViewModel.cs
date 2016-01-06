@@ -6,7 +6,7 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models.DBModels
 {
-    public class AccountViewModel : Entity
+    public class DashboardViewModel : Entity
     {
         public int AccountNumber { get; set; }
         public string PersonOfContact { get; set; }
@@ -20,5 +20,6 @@ namespace FirstChoiceSystems.Models.DBModels
         public string BusinessCategory { get; set; }
         public string DateRegistered { get; set; }
         public IEnumerable<ItemViewModel> ItemsUpForSale { get; set; }
+        public IEnumerable<PurchaseItem> Purchases { get; set; }
     }
 }

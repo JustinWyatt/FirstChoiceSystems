@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarketPlaceController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -195,8 +196,12 @@
     <Compile Include="Migrations\201601061817085_UpdatingPendingChanges.Designer.cs">
       <DependentUpon>201601061817085_UpdatingPendingChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601061920310_UpdatingPendingChanges1.cs" />
+    <Compile Include="Migrations\201601061920310_UpdatingPendingChanges1.Designer.cs">
+      <DependentUpon>201601061920310_UpdatingPendingChanges1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ViewModels\AccountViewModel.cs" />
+    <Compile Include="Models\ViewModels\DashboardViewModel.cs" />
     <Compile Include="Models\DBModels\PurchaseItem.cs" />
     <Compile Include="Models\DBModels\Sale.cs" />
     <Compile Include="Models\DBModels\TransactionStatus.cs" />
@@ -294,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601061817085_UpdatingPendingChanges.resx">
       <DependentUpon>201601061817085_UpdatingPendingChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601061920310_UpdatingPendingChanges1.resx">
+      <DependentUpon>201601061920310_UpdatingPendingChanges1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

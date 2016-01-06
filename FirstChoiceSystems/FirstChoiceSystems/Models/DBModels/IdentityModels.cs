@@ -33,10 +33,8 @@ namespace FirstChoiceSystems.Models
         public virtual BusinessCategory BusinessCategory { get; set; }
         public int AccountNumber { get; set; }
         public DateTime DateRegistered { get; set; }
-        public virtual ICollection<PurchaseItem> Purchases { get; set; }
+        public virtual List<PurchaseItem> Purchases { get; set; }
         public virtual ICollection<Item> ItemsUpForSale { get; set; }
-        //public virtual Inventory Invetory { get; set; }
-
     }
 
     public class ApplicationDbContext : IdentityDbContext<BusinessUser>
