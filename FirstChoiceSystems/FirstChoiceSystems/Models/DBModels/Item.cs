@@ -15,6 +15,6 @@ namespace FirstChoiceSystems.Models
         public virtual BusinessUser Seller { get; set; }
         public virtual Inventory Inventory { get; set; }
 
-        public virtual ICollection<PurchaseItem> PurchaseItems { get; set; }
+        public virtual Purchase PurchaseItems { get; set; }
     }
 }

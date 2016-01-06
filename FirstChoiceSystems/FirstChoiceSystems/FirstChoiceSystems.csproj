@@ -192,6 +192,7 @@
       <DependentUpon>201601060029086_Recreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DBModels\PurchaseItem.cs" />
     <Compile Include="Models\DBModels\Sale.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\DBModels\Category.cs" />

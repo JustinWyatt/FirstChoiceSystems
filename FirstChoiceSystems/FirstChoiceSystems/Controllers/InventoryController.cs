@@ -12,13 +12,13 @@ namespace FirstChoiceSystems.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
          
-        // GET: /Inventory/ItemsForSale
+        // GET: /Inventory/ItemsUpForSale
         [HttpGet]
-        public ActionResult ItemsForSale()
+        public ActionResult ItemsUpForSale()
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            return View(user.ItemsUpForSale);
+            return View(user.ItemsUpForSale.ToList());
         }
 
         // GET: /Inventory/AddItem
@@ -32,7 +32,9 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult ItemDetails(int itemId)
         {
-            return View(db.Items.Find(itemId));
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            return View(user.ItemsUpForSale.Where(x=>x.Id == itemId));
         }
 
         // POST: /Inventory/PostItem
@@ -49,10 +51,11 @@ namespace FirstChoiceSystems.Controllers
                 ItemCategory = item.ItemCategory,
                 Seller = user,
                 UnitsAvailable = item.UnitsAvailable,
+                Images = item.Images
             };
             user.ItemsUpForSale.Add(newItem);
             db.SaveChanges();
             return RedirectToAction("ItemDetails", "Inventory", new { itemId = newItem.Id});
         }
-    }
+    }   
 }

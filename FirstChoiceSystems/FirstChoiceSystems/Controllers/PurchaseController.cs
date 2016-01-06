@@ -14,19 +14,20 @@ namespace FirstChoiceSystems.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Purchase/PurchaseForm    
-        [HttpGet]
-        public ActionResult PurchaseForm()
-        {
-            return View();
-        }
-
         // GET: /Purchase/PurchaseHistory
         [HttpGet]
         public ActionResult PurchaseHistory()
         {
             var userId = User.Identity.GetUserId();
             return View(db.Users.Find(userId).Purchases.ToList());
+        }
+
+        // GET: /Purchase/PurchaseDetail
+        [HttpGet]
+        public ActionResult PurchaseDetail(int purchaseId)
+        {
+            var userId = User.Identity.GetUserId();
+            return View(db.Users.Find(userId).Purchases.Find(x => x.Id == purchaseId));
         }
 
         // POST: /Purchase/PurchaseRequest
@@ -38,8 +39,8 @@ namespace FirstChoiceSystems.Controllers
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
 
-            var purchases = new List<PurchaseItem>();
-            foreach(var itemVM in currentOrder.Items)
+            var newPurchaseRequest = new List<PurchaseItem>();
+            foreach (var itemVM in currentOrder.Items)
             {
                 var itemFromDB = db.Items.Find(itemVM.Id);
                 var newPurchase = new PurchaseItem()
@@ -51,11 +52,11 @@ namespace FirstChoiceSystems.Controllers
                     Status = TransactionStatus.Pending,
                 };
 
-                purchases.Add(newPurchase);
+                newPurchaseRequest.Add(newPurchase);
             }
-            user.Purchases.AddRange(purchases);
-            db.SaveChanges();         
-            return RedirectToAction("PurchaseHistory", "Purchase");
+            user.Purchases.AddRange(newPurchaseRequest);
+            db.SaveChanges();
+            return RedirectToAction("PurchaseDetail", "Purchase", new { purchaseId =  user.Purchases.Select(x=>x.Id) });
         }
 
     }

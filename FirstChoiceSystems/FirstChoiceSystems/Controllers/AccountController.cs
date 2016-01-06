@@ -56,10 +56,7 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult Dashboard()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            var userId = User.Identity.GetUserId();
-            var user = db.Users.Find(userId);
-            return View(user.);
+            return View();
         }
 
         // GET: /Account/Login
