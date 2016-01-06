@@ -29,18 +29,18 @@ namespace FirstChoiceSystems.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            var userStore = new UserStore<Business>(context);
-            var userManager = new UserManager<Business>(userStore);
+            var userStore = new UserStore<BusinessUser>(context);
+            var userManager = new UserManager<BusinessUser>(userStore);
 
             if (!(context.Users.Any(u => u.UserName == "justin@test.com")))
             {
-                var userToInsert = new Business { UserName = "justin@test.com", PhoneNumber = "0797697898" };
+                var userToInsert = new BusinessUser { UserName = "justin@test.com", PhoneNumber = "0797697898" };
                 userManager.Create(userToInsert, "Password@123");
             }
 
             if (!(context.Users.Any(u => u.UserName == "daniel@test.com")))
             {
-                var userToInsert = new Business { UserName = "daniel@test.com", PhoneNumber = "0797697898" };
+                var userToInsert = new BusinessUser { UserName = "daniel@test.com", PhoneNumber = "0797697898" };
                 userManager.Create(userToInsert, "Password@123");
             }
         }

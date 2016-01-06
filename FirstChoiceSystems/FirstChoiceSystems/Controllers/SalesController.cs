@@ -16,37 +16,42 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult SalesHistory()
         {
-            var user = User.Identity.GetUserId();
-            return View(db.Sales.Where(x => x.Seller.Id == user).ToList());
+            var userId = User.Identity.GetUserId();
+
+            var user = db.Users.Find(userId);
+            return View(user.Purchases.Where(x => x.Item.Seller.Id == userId).ToList());
         }
 
         // GET: /Sales/PendingSales
         [HttpGet]
-        public ActionResult PendingSales(int saleId)
+        public ActionResult PendingSales()
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            var sales = user.Purchases.Where(x => x.Id == saleId && x.Status == TransactionStatus.Pending).ToList();
-            return View(sales);
+            var pendingSales = user.Purchases.Where(x => x.Status == TransactionStatus.Pending && x.Item.Seller.Id == userId).ToList();
+            return View(pendingSales);
         }
 
         // POST: /Sales/ApproveSale
-        [HttpGet]
-        public ActionResult ApproveSale(int saleId)
+        [HttpPost]
+        public ActionResult ApproveSale(int purchaseItemId)
         {
-            var sale = db.Sales.Find(saleId);
-            sale.DateSold = DateTime.Now;
-            sale.Status = TransactionStatus.Approved;
+            var purchaseItems = db.PurchaseItems.Find(purchaseItemId);
+            purchaseItems.ApprovalDate = DateTime.Now;
+            purchaseItems.Item.Seller.Balance += purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
+            purchaseItems.Buyer.Balance -= purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
+            purchaseItems.Item.UnitsAvailable -= purchaseItems.QuanityBought;
+            purchaseItems.Status = TransactionStatus.Approved;
             db.SaveChanges();
             return RedirectToAction("PendingSales", "Sales");
         }
 
         // POST: /Sales/RejectSale
-        [HttpGet]
-        public ActionResult RejectSale(int saleId)
+        [HttpPost]
+        public ActionResult RejectSale(int purchaseItemId)
         {
-            var sale = db.Sales.Find(saleId);
-            sale.Status = TransactionStatus.Voided;
+            var purchaseItems = db.PurchaseItems.Find(purchaseItemId);
+            purchaseItems.Status = TransactionStatus.Voided;
             db.SaveChanges();
             return RedirectToAction("PendingSales", "Sales");
         }

@@ -15,7 +15,7 @@ namespace FirstChoiceSystems.Models
 
     public class PurchaseItem : Entity
     {
-        public virtual Business Buyer { get; set; }
+        public virtual BusinessUser Buyer { get; set; }
         public virtual Item Item { get; set; }
         public virtual int QuanityBought { get; set; }
         public virtual decimal PricePerUnitBoughtAt { get; set; }

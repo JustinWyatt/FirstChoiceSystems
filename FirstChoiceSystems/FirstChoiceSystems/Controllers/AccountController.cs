@@ -52,7 +52,16 @@ namespace FirstChoiceSystems.Controllers
             }
         }
 
-        //
+        // GET: /Acount/Dashboard
+        [HttpGet]
+        public ActionResult Dashboard()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            return View(user.);
+        }
+
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -159,7 +168,7 @@ namespace FirstChoiceSystems.Controllers
             if (ModelState.IsValid)
             {
                 
-                var business = new Business
+                var business = new BusinessUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
@@ -391,7 +400,7 @@ namespace FirstChoiceSystems.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new Business { UserName = model.Email, Email = model.Email };
+                var user = new BusinessUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

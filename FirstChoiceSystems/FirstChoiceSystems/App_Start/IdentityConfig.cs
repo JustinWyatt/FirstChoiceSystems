@@ -33,18 +33,18 @@ namespace FirstChoiceSystems
     }
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserManager : UserManager<Business>
+    public class ApplicationUserManager : UserManager<BusinessUser>
     {
-        public ApplicationUserManager(IUserStore<Business> store)
+        public ApplicationUserManager(IUserStore<BusinessUser> store)
             : base(store)
         {
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<Business>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<BusinessUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<Business>(manager)
+            manager.UserValidator = new UserValidator<BusinessUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -67,11 +67,11 @@ namespace FirstChoiceSystems
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<Business>
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<BusinessUser>
             {
                 MessageFormat = "Your security code is {0}"
             });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<Business>
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<BusinessUser>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -82,21 +82,21 @@ namespace FirstChoiceSystems
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<Business>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<BusinessUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
     }
 
     // Configure the application sign-in manager which is used in this application.
-    public class ApplicationSignInManager : SignInManager<Business, string>
+    public class ApplicationSignInManager : SignInManager<BusinessUser, string>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(Business user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(BusinessUser user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }

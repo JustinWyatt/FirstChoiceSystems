@@ -7,8 +7,8 @@ namespace FirstChoiceSystems.Models.DBModels
 {
     public class Sale : Entity
     {
-        public Business Seller { get; set; }
-        public ICollection<Business> Buyers { get; set; }    
+        public BusinessUser Seller { get; set; }
+        public ICollection<BusinessUser> Buyers { get; set; }    
         public TransactionStatus Status { get; set;}
         public double SaleAmount { get; set; }
         public Item ItemSold { get; set; }

@@ -25,9 +25,7 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult PurchaseHistory()
         {
-            var model = db.PurchaseItems.AsNoTracking().Where(x => x.CreatedOn > DateTime.Parse("1/1/2015"));
             var userId = User.Identity.GetUserId();
-            //returns transactions for users who have made purchases
             return View(db.Users.Find(userId).Purchases.ToList());
         }
 
@@ -50,15 +48,13 @@ namespace FirstChoiceSystems.Controllers
                     Item = itemFromDB,
                     PricePerUnitBoughtAt = itemFromDB.PricePerUnit,
                     QuanityBought = itemVM.Quantity,
-                    Status = TransactionStatus.Pending
+                    Status = TransactionStatus.Pending,
                 };
 
                 purchases.Add(newPurchase);
             }
-
-            db.PurchaseItems.AddRange(purchases);
-            db.SaveChanges();
-         
+            user.Purchases.AddRange(purchases);
+            db.SaveChanges();         
             return RedirectToAction("PurchaseHistory", "Purchase");
         }
 

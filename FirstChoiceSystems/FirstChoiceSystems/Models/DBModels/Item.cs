@@ -9,11 +9,11 @@ namespace FirstChoiceSystems.Models
     {
         public string ItemDescription { get; set; }
         public int PricePerUnit { get; set; }
-        //public DateTime? DateSold { get; set; }
         public virtual ICollection<ItemImage> Images { get; set; }
         public virtual ItemCategory ItemCategory { get; set; }
         public int UnitsAvailable { get; set; }
-        public virtual Business Seller { get; set; }
+        public virtual BusinessUser Seller { get; set; }
+        public virtual Inventory Inventory { get; set; }
 
         public virtual ICollection<PurchaseItem> PurchaseItems { get; set; }
     }
