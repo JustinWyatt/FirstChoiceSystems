@@ -16,7 +16,7 @@ namespace FirstChoiceSystems.Models.DBModels
         public string State { get; set; }
         public int Postal { get; set; }
         public string CompanyWebsite { get; set; }
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
         public string BusinessCategory { get; set; }
         public string DateRegistered { get; set; }
         public IEnumerable<ItemViewModel> ItemsUpForSale { get; set; }

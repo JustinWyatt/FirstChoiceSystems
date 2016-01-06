@@ -172,7 +172,7 @@ namespace FirstChoiceSystems.Migrations
                 {
                     PersonOfContact = "Rick Smith",
                     PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
+                    DateRegistered = DateTime.Parse("1/3/2015"),
                     Balance = 500,
                     CompanyAddress = "2400 Cantrell Rd",
                     City = "Little Rock",
@@ -232,22 +232,88 @@ namespace FirstChoiceSystems.Migrations
                 };
                 userManager.Create(userToInsert, "Password@123");
             }
-            if (!(context.Users.Any(x => x.Email == "test@chipotle.com")))
+            if (!(context.Users.Any(x => x.Email == "test@cafebossanova.com")))
             {
-                var userToInsert = new BusinessUser //Todo Business User 1
+                var userToInsert = new BusinessUser //Todo Business User 4
                 {
-                    PersonOfContact = "Jimmy Calhoun",
+                    PersonOfContact = "Pam Michaels",
                     PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
+                    DateRegistered = DateTime.Parse("1/4/2015"),
                     Balance = 500,
-                    CompanyAddress = "100 S University Ave",
+                    CompanyAddress = "2701 Kavanaugh Blvd #105",
                     City = "Little Rock",
                     State = "Arkansas",
                     Postal = 72205,
-                    CompanyName = "Chipotle Mexican Grill",
+                    CompanyName = "Cafe Bossa Nova",
                     BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
-                    Email = "test@chipotle.com",
-                    CompanyWebsite = "www.chipotle.com",
+                    Email = "test@cafebossanova.com",
+                    CompanyWebsite = "www.cafebossanova.com",
+                    ItemsUpForSale = new List<Item>()
+                    {
+                        new Item()
+                        {
+                            ItemName = "License",
+                            ItemDescription = "",
+                            PricePerUnit = 230.25,
+                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
+                            UnitsAvailable = 15
+                        },
+                        new Item()
+                        {
+                            ItemName = "Wheat",
+                            ItemDescription = "",
+                            PricePerUnit = 15.50,
+                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Dry Goods"),
+                            UnitsAvailable = 42
+                        },new Item()
+                        {
+                            ItemName = "Rice",
+                            ItemDescription = "",
+                            PricePerUnit = 15.50,
+                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Dry Goods"),
+                            UnitsAvailable = 6
+                        },new Item()
+                        {
+                            ItemName = "Knives",
+                            ItemDescription = "",
+                            PricePerUnit = 15.50,
+                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
+                            UnitsAvailable = 15
+                        },new Item()
+                        {
+                            ItemName = "Shirts",
+                            ItemDescription = "",
+                            PricePerUnit = 15.50,
+                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
+                            UnitsAvailable = 34
+                        },new Item()
+                        {
+                            ItemName = "Ice Cream Scoop",
+                            ItemDescription = "",
+                            PricePerUnit = 15.50,
+                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
+                            UnitsAvailable = 24
+                        }
+                    }
+                };
+                userManager.Create(userToInsert, "Password@123");
+            }
+            if (!(context.Users.Any(x => x.Email == "test@oneeleven.com")))
+            {
+                var userToInsert = new BusinessUser //Todo Business User 5
+                {
+                    PersonOfContact = "Baxley Porter",
+                    PhoneNumber = "555-555-5555",
+                    DateRegistered = DateTime.Parse("1/5/2015"),
+                    Balance = 500,
+                    CompanyAddress = "111 W Markham St",
+                    City = "Little Rock",
+                    State = "Arkansas",
+                    Postal = 72201,
+                    CompanyName = "One Eleven",
+                    BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
+                    Email = "test@oneeleven.com",
+                    CompanyWebsite = "www.oneelevenatthecapital.com",
                     ItemsUpForSale = new List<Item>()
                     {
                         new Item()
@@ -298,22 +364,22 @@ namespace FirstChoiceSystems.Migrations
                 };
                 userManager.Create(userToInsert, "Password@123");
             }
-            if (!(context.Users.Any(x => x.Email == "test@chipotle.com")))
+            if (!(context.Users.Any(x => x.Email == "test@ejseatsanddrinks.com")))
             {
-                var userToInsert = new BusinessUser //Todo Business User 1
+                var userToInsert = new BusinessUser //Todo Business User 6
                 {
-                    PersonOfContact = "Jimmy Calhoun",
+                    PersonOfContact = "Dane Bradford",
                     PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
+                    DateRegistered = DateTime.Parse("1/6/2015"),
                     Balance = 500,
-                    CompanyAddress = "100 S University Ave",
+                    CompanyAddress = "523 Center St.",
                     City = "Little Rock",
                     State = "Arkansas",
                     Postal = 72205,
-                    CompanyName = "Chipotle Mexican Grill",
+                    CompanyName = "EJ's Eats and Drinks",
                     BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
-                    Email = "test@chipotle.com",
-                    CompanyWebsite = "www.chipotle.com",
+                    Email = "test@ejseatsanddrinks.com",
+                    CompanyWebsite = "www.ejslittlerock.com",
                     ItemsUpForSale = new List<Item>()
                     {
                         new Item()
@@ -364,22 +430,22 @@ namespace FirstChoiceSystems.Migrations
                 };
                 userManager.Create(userToInsert, "Password@123");
             }
-            if (!(context.Users.Any(x => x.Email == "test@chipotle.com")))
+            if (!(context.Users.Any(x => x.Email == "test@irianaspizza.com")))
             {
-                var userToInsert = new BusinessUser //Todo Business User 1
+                var userToInsert = new BusinessUser //Todo Business User 7
                 {
-                    PersonOfContact = "Jimmy Calhoun",
+                    PersonOfContact = "Mike Rowe",
                     PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
+                    DateRegistered = DateTime.Parse("1/7/2015"),
                     Balance = 500,
-                    CompanyAddress = "100 S University Ave",
+                    CompanyAddress = "201 E Markham St",
                     City = "Little Rock",
                     State = "Arkansas",
-                    Postal = 72205,
-                    CompanyName = "Chipotle Mexican Grill",
+                    Postal = 72201,
+                    CompanyName = "Iriana's Pizza",
                     BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
-                    Email = "test@chipotle.com",
-                    CompanyWebsite = "www.chipotle.com",
+                    Email = "test@irianaspizza.com",
+                    CompanyWebsite = "www.irianaspizza.com",
                     ItemsUpForSale = new List<Item>()
                     {
                         new Item()
@@ -430,22 +496,22 @@ namespace FirstChoiceSystems.Migrations
                 };
                 userManager.Create(userToInsert, "Password@123");
             }
-            if (!(context.Users.Any(x => x.Email == "test@chipotle.com")))
+            if (!(context.Users.Any(x => x.Email == "test@sushicafe.com")))
             {
-                var userToInsert = new BusinessUser //Todo Business User 1
+                var userToInsert = new BusinessUser //Todo Business User 8
                 {
-                    PersonOfContact = "Jimmy Calhoun",
+                    PersonOfContact = "Bruce Smith",
                     PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
+                    DateRegistered = DateTime.Parse("1/8/2015"),
                     Balance = 500,
-                    CompanyAddress = "100 S University Ave",
+                    CompanyAddress = "5823 Kavanaugh Blvd",
                     City = "Little Rock",
                     State = "Arkansas",
                     Postal = 72205,
-                    CompanyName = "Chipotle Mexican Grill",
+                    CompanyName = "Sushi Cafe",
                     BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
-                    Email = "test@chipotle.com",
-                    CompanyWebsite = "www.chipotle.com",
+                    Email = "test@sushicafe.com",
+                    CompanyWebsite = "www.sushicaferocks.com",
                     ItemsUpForSale = new List<Item>()
                     {
                         new Item()
@@ -496,22 +562,22 @@ namespace FirstChoiceSystems.Migrations
                 };
                 userManager.Create(userToInsert, "Password@123");
             }
-            if (!(context.Users.Any(x => x.Email == "test@chipotle.com")))
+            if (!(context.Users.Any(x => x.Email == "test@flyingfish.com")))
             {
-                var userToInsert = new BusinessUser //Todo Business User 1
+                var userToInsert = new BusinessUser //Todo Business User 9
                 {
-                    PersonOfContact = "Jimmy Calhoun",
+                    PersonOfContact = "Jeremy Gibson",
                     PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
+                    DateRegistered = DateTime.Parse("1/9/2015"),
                     Balance = 500,
-                    CompanyAddress = "100 S University Ave",
+                    CompanyAddress = "511 President Clinton Ave",
                     City = "Little Rock",
                     State = "Arkansas",
-                    Postal = 72205,
-                    CompanyName = "Chipotle Mexican Grill",
+                    Postal = 72201,
+                    CompanyName = "Flying Fish",
                     BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
-                    Email = "test@chipotle.com",
-                    CompanyWebsite = "www.chipotle.com",
+                    Email = "test@flyingfish.com",
+                    CompanyWebsite = "www.flyingfishinthe.net",
                     ItemsUpForSale = new List<Item>()
                     {
                         new Item()
@@ -562,88 +628,22 @@ namespace FirstChoiceSystems.Migrations
                 };
                 userManager.Create(userToInsert, "Password@123");
             }
-            if (!(context.Users.Any(x => x.Email == "test@chipotle.com")))
+            if (!(context.Users.Any(x => x.Email == "test@reddoor.com")))
             {
-                var userToInsert = new BusinessUser //Todo Business User 1
+                var userToInsert = new BusinessUser //Todo Business User 10
                 {
-                    PersonOfContact = "Jimmy Calhoun",
+                    PersonOfContact = "Rose Arnolds",
                     PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
+                    DateRegistered = DateTime.Parse("1/10/2015"),
                     Balance = 500,
-                    CompanyAddress = "100 S University Ave",
+                    CompanyAddress = "3701 Cantrell Rd.",
                     City = "Little Rock",
                     State = "Arkansas",
-                    Postal = 72205,
-                    CompanyName = "Chipotle Mexican Grill",
+                    Postal = 72202,
+                    CompanyName = "Red Door Restaraunt",
                     BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
-                    Email = "test@chipotle.com",
-                    CompanyWebsite = "www.chipotle.com",
-                    ItemsUpForSale = new List<Item>()
-                    {
-                        new Item()
-                        {
-                            ItemName = "Spatula",
-                            ItemDescription = "",
-                            PricePerUnit = 15.50,
-                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
-                            UnitsAvailable = 15
-                        },
-                        new Item()
-                        {
-                            ItemName = "Stationery",
-                            ItemDescription = "",
-                            PricePerUnit = 15.50,
-                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
-                            UnitsAvailable = 42
-                        },new Item()
-                        {
-                            ItemName = "Signage",
-                            ItemDescription = "",
-                            PricePerUnit = 15.50,
-                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                            UnitsAvailable = 6
-                        },new Item()
-                        {
-                            ItemName = "Knives",
-                            ItemDescription = "",
-                            PricePerUnit = 15.50,
-                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
-                            UnitsAvailable = 15
-                        },new Item()
-                        {
-                            ItemName = "Shirts",
-                            ItemDescription = "",
-                            PricePerUnit = 15.50,
-                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                            UnitsAvailable = 34
-                        },new Item()
-                        {
-                            ItemName = "Hats",
-                            ItemDescription = "",
-                            PricePerUnit = 15.50,
-                            ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                            UnitsAvailable = 24
-                        }
-                    }
-                };
-                userManager.Create(userToInsert, "Password@123");
-            }
-            if (!(context.Users.Any(x => x.Email == "test@chipotle.com")))
-            {
-                var userToInsert = new BusinessUser //Todo Business User 1
-                {
-                    PersonOfContact = "Jimmy Calhoun",
-                    PhoneNumber = "555-555-5555",
-                    DateRegistered = DateTime.Parse("1/1/2015"),
-                    Balance = 500,
-                    CompanyAddress = "100 S University Ave",
-                    City = "Little Rock",
-                    State = "Arkansas",
-                    Postal = 72205,
-                    CompanyName = "Chipotle Mexican Grill",
-                    BusinessCategory = db.BusinessCategories.FirstOrDefault(x => x.CategoryName == "Restaraunt"),
-                    Email = "test@chipotle.com",
-                    CompanyWebsite = "www.chipotle.com",
+                    Email = "test@reddoor.com",
+                    CompanyWebsite = "www.reddoorrestaraunt.com",
                     ItemsUpForSale = new List<Item>()
                     {
                         new Item()

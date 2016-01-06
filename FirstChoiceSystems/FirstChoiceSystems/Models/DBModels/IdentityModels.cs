@@ -29,7 +29,7 @@ namespace FirstChoiceSystems.Models
         public string State { get; set; }
         public int Postal { get; set; }
         public string CompanyWebsite { get; set; }
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
         public virtual BusinessCategory BusinessCategory { get; set; }
         public int AccountNumber { get; set; }
         public DateTime DateRegistered { get; set; }
