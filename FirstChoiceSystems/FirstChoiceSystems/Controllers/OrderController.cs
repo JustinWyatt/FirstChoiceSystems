@@ -47,8 +47,6 @@ namespace FirstChoiceSystems.Controllers
             //if they are asking for more than what is available, cap it to just whats avaiable.
             i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
             
-
-
             currentOrder.Save();
             return RedirectToAction("Order", "Order");
         }
