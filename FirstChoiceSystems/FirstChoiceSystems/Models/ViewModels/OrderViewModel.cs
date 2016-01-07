@@ -1,10 +1,8 @@
-﻿using FirstChoiceSystems.Models.ViewModels;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FirstChoiceSystems.Models
+namespace FirstChoiceSystems.Models.ViewModels
 {
     public class OrderViewModel
     {
@@ -15,7 +13,7 @@ namespace FirstChoiceSystems.Models
             if (order == null)
             {
                 order = new OrderViewModel();
-                HttpContext.Current.Session["currentCart"] = order;
+                HttpContext.Current.Session["currentOrder"] = order;
             }
 
             return order;

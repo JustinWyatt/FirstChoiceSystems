@@ -7,7 +7,10 @@
 <h2>ItemDetails</h2>
 
 <div>
-    <h4>ItemViewModel</h4>
+    <h3>ItemViewModel</h3>
+
+    <h4>@Html.ActionLink("AddItem", "AddItem", "Order", new {itemId = Model.ItemId, requestedQuantity = 1}) (Adds 1 Item To Cart) </h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -58,7 +61,6 @@
             @Html.DisplayFor(model => model.Seller)
         </dd>
 
-        @Html.ActionLink("AddItem", "AddItem", "Order", new { itemId = Model.ItemId, requestedQuantity = 1})
 
     </dl>
 </div>

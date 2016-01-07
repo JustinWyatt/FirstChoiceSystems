@@ -1,4 +1,4 @@
-﻿@model FirstChoiceSystems.Models.OrderViewModel
+﻿@model FirstChoiceSystems.Models.ViewModels.OrderViewModel
 
 @{
     ViewBag.Title = "Order";
@@ -6,18 +6,21 @@
 
 <h2>Order</h2>
 <div>
+    <p>Note: "Remove Item" Removes 1 Item On Click</p>
+    <p>If Item Quantity Is 1, Remove Item</p>
     @foreach (var item in Model.Items)
     {
         <table>
             <thead>
-                <tr>Item Name</tr>
-                <tr>Item Description</tr>
-                <tr>Price</tr>
-                <tr>Quantity</tr>
-                <tr>Seller</tr>
+            <tr>Item Name</tr>
+            <tr>Item Description</tr>
+            <tr>Price</tr>
+            <tr>Quantity</tr>
+            <tr>Seller</tr>
             </thead>
             <tbody>
-            @Html.ActionLink("View Item", "ItemDetails", "Inventory",  new { itemId = item.ItemId })
+            <tr>@Html.ActionLink("View Item", "ItemDetails", "Inventory", new {itemId = item.ItemId})</tr>
+            <tr>@Html.ActionLink("Remove Item", "RemoveItem", "Inventory", new {itemId = item.ItemId}) </tr>
             <tr>@item.ItemName</tr>
             <tr>@item.ItemDescription</tr>
             <tr>@item.Price</tr>
@@ -26,5 +29,6 @@
             <tr></tr>
             </tbody>
         </table>
+        @Html.ActionLink("Purchase", "PurchaseRequest", "Purchase")
     }
 </div>
