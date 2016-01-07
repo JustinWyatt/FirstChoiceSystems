@@ -34,7 +34,8 @@ namespace FirstChoiceSystems.Controllers
                     ItemId = dbItem.Id,
                     ItemDescription = dbItem.ItemDescription,
                     Price = dbItem.PricePerUnit,
-                    Quantity = requestedQuantity
+                    Quantity = requestedQuantity,
+                    Seller = dbItem.Seller.CompanyName
                 };
 
                 currentOrder.Items.Add(i);
@@ -46,7 +47,7 @@ namespace FirstChoiceSystems.Controllers
 
             //if they are asking for more than what is available, cap it to just whats avaiable.
             i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
-            
+
             currentOrder.Save();
             return RedirectToAction("Order", "Order");
         }

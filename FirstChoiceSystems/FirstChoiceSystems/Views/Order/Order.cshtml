@@ -1,0 +1,30 @@
+﻿@model FirstChoiceSystems.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Order</h2>
+<div>
+    @foreach (var item in Model.Items)
+    {
+        <table>
+            <thead>
+                <tr>Item Name</tr>
+                <tr>Item Description</tr>
+                <tr>Price</tr>
+                <tr>Quantity</tr>
+                <tr>Seller</tr>
+            </thead>
+            <tbody>
+            @Html.ActionLink("View Item", "ItemDetails", "Inventory",  new { itemId = item.ItemId })
+            <tr>@item.ItemName</tr>
+            <tr>@item.ItemDescription</tr>
+            <tr>@item.Price</tr>
+            <tr>@item.Quantity</tr>
+            <tr>@item.Seller</tr>
+            <tr></tr>
+            </tbody>
+        </table>
+    }
+</div>
