@@ -5,8 +5,9 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models.DBModels
 {
-    public class PurchaseItem : Entity
+    public class PurchaseItem 
     {
+        public int Id { get; set; }
         public virtual BusinessUser Buyer { get; set; }
         public virtual Item Item { get; set; }
         public virtual int QuanityBought { get; set; }

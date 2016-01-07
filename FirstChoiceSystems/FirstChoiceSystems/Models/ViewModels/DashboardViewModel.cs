@@ -20,6 +20,6 @@ namespace FirstChoiceSystems.Models.DBModels
         public string BusinessCategory { get; set; }
         public string DateRegistered { get; set; }
         public IEnumerable<ItemViewModel> ItemsUpForSale { get; set; }
-        public IEnumerable<PurchaseItem> Purchases { get; set; }
+        public IEnumerable<PurchaseItemViewModel> Purchases { get; set; }
     }
 }

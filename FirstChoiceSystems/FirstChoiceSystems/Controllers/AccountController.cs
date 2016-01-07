@@ -55,7 +55,7 @@ namespace FirstChoiceSystems.Controllers
             }
         }
 
-        // GET: /Account/Dashboard
+        // GET: /Acount/Dashboard
         [HttpGet]
         public ActionResult Dashboard()
         {
@@ -84,15 +84,14 @@ namespace FirstChoiceSystems.Controllers
                     Quantity = item.UnitsAvailable
                 }),
                 Purchases = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Select(purchase=> 
-                new PurchaseItem
+                new PurchaseItemViewModel()
                 {
-                    Id = purchase.Id,
-                    PricePerUnitBoughtAt = purchase.PricePerUnitBoughtAt,
+                    ItemId = purchase.Item.Id,
+                    Price = purchase.PricePerUnitBoughtAt * purchase.QuanityBought,
                     QuanityBought = purchase.QuanityBought,
-                    Status = purchase.Status,
+                    Status = purchase.Status.ToString(),
                     ApprovalDate = purchase.ApprovalDate,
-                    Buyer = purchase.Buyer,
-                    Item = purchase.Item
+                    Buyer = purchase.Buyer.CompanyName,
                 })
             };
             return View(dashboard);

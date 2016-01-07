@@ -1,3 +1,5 @@
+using FirstChoiceSystems.Models.DBModels;
+
 namespace FirstChoiceSystems.Migrations
 {
     using Microsoft.AspNet.Identity;

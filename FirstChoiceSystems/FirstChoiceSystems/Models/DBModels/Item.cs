@@ -1,10 +1,6 @@
-﻿using FirstChoiceSystems.Models.DBModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace FirstChoiceSystems.Models
+namespace FirstChoiceSystems.Models.DBModels
 {
     public class Item : Entity
     {
