@@ -60,50 +60,100 @@ namespace FirstChoiceSystems.Migrations
                     {
                         new Item()
                         {
-                            ItemName = "Spatula",
+                            ItemName = "Chipotle Tortilla",
                             ItemDescription = "",
-                            PricePerUnit = 15.50,
+                            PricePerUnit = 41.25,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
-                            UnitsAvailable = 15
+                            UnitsAvailable = 15,
+                            Images = new List<ItemImage>()
+                            {
+                                new ItemImage()
+                                {
+                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleTortilla.jpg"
+                                }
+                            }
                         },
                         new Item()
                         {
-                            ItemName = "Stationery",
+                            ItemName = "Unique Chipolte Foil Wrap",
                             ItemDescription = "",
-                            PricePerUnit = 15.50,
+                            PricePerUnit = 89.98,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
-                            UnitsAvailable = 42
-                        },new Item()
+                            UnitsAvailable = 100,
+                            Images = new List<ItemImage>()
+                            {
+                                new ItemImage()
+                                {
+                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleFoilWrap.jpg"
+                                },
+
+                                new ItemImage()
+                                {
+                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleFoilWrap2.jpg"
+                                }
+                            }
+                        },
+                        new Item()
                         {
-                            ItemName = "Signage",
+                            ItemName = "Chipotle Signage",
                             ItemDescription = "",
-                            PricePerUnit = 15.50,
+                            PricePerUnit = 263.25,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                            UnitsAvailable = 6
-                        },new Item()
+                            UnitsAvailable = 0,
+                            Images = new List<ItemImage>()
+                            {
+                                new ItemImage()
+                                {
+                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleSignage.jpg"
+                                }
+                            }
+                        },
+                        new Item()
                         {
-                            ItemName = "Knives",
+                            ItemName = "Chipotle Knives",
                             ItemDescription = "",
-                            PricePerUnit = 15.50,
+                            PricePerUnit = 89.55,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
-                            UnitsAvailable = 15
-                        },new Item()
+                            UnitsAvailable = 185,
+                            Images = new List<ItemImage>()
+                            {
+                                new ItemImage()
+                                {
+                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleKnives.jpg"
+                                }
+                            }
+                        },
+                        new Item()
                         {
-                            ItemName = "Shirts",
+                            ItemName = "Chipotle Shirts",
                             ItemDescription = "",
-                            PricePerUnit = 15.50,
+                            PricePerUnit = 10.25,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                            UnitsAvailable = 34
-                        },new Item()
+                            UnitsAvailable = 78,
+                            Images = new List<ItemImage>()
+                            {
+                                new ItemImage()
+                                {
+                                    ImagePath =  @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleShirt.jpg"
+                                }
+                            }
+                        },
+                        new Item()
                         {
-                            ItemName = "Hats",
+                            ItemName = "Chipotle Hats",
                             ItemDescription = "",
-                            PricePerUnit = 15.50,
+                            PricePerUnit = 78.25,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                            UnitsAvailable = 24
+                            UnitsAvailable = 29,
+                            Images = new List<ItemImage>()
+                            {
+                                new ItemImage()
+                                {
+                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleHat.jpg"
+                                }
+                            }
                         }
                     }
-
                 };
                 manager.Create(user, "P@ssword1");
             };
@@ -128,11 +178,11 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Spatula",
+                        ItemName = "Whole Hog Spatula",
                         ItemDescription = "",
-                        PricePerUnit = 15.50,
+                        PricePerUnit = 33.65,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
-                        UnitsAvailable = 15,
+                        UnitsAvailable = 89,
                         Images = new List<ItemImage>()
                         {
                             new ItemImage()
@@ -143,23 +193,23 @@ namespace FirstChoiceSystems.Migrations
                     },
                     new Item()
                     {
-                        ItemName = "Stationery",
+                        ItemName = "Whole Hog Stationery",
                         ItemDescription = "",
-                        PricePerUnit = 15.50,
+                        PricePerUnit = 100.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
                         Images = new List<ItemImage>()
                         {
                             new ItemImage()
                             {
-                                
+
                             }
                         }
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "Whole Hog Signage",
                         ItemDescription = "",
-                        PricePerUnit = 15.50,
+                        PricePerUnit = 89.25,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
                         Images = new List<ItemImage>()
@@ -171,11 +221,11 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "Whole Hog Knives",
                         ItemDescription = "",
-                        PricePerUnit = 15.50,
+                        PricePerUnit = 25.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
-                        UnitsAvailable = 15,
+                        UnitsAvailable = 200,
                         Images = new List<ItemImage>()
                         {
                             new ItemImage()
@@ -185,11 +235,11 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "Whole Hog Shirts",
                         ItemDescription = "",
-                        PricePerUnit = 15.50,
+                        PricePerUnit = 26.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                        UnitsAvailable = 34,
+                        UnitsAvailable = 340,
                         Images = new List<ItemImage>()
                         {
                             new ItemImage()
@@ -199,11 +249,11 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "Whole Hog Screen Time",
                         ItemDescription = "",
-                        PricePerUnit = 15.50,
+                        PricePerUnit = 2622.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
-                        UnitsAvailable = 24,
+                        UnitsAvailable = 50,
                         Images = new List<ItemImage>()
                         {
                             new ItemImage()
@@ -237,7 +287,7 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Soda",
+                        ItemName = "Cajun's Warf Soda",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Beverages"),
@@ -564,7 +614,7 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Spatula",
+                        ItemName = "Restaurant Equipment For Sale - EJ's",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -673,7 +723,7 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Spatula",
+                        ItemName = "Dough Rollers",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -688,7 +738,7 @@ namespace FirstChoiceSystems.Migrations
                     },
                     new Item()
                     {
-                        ItemName = "Stationery",
+                        ItemName = "Pizza Paper - Irania's Pizza",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
@@ -716,7 +766,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "Knives By Irania's Pizza Restaurant",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -731,7 +781,7 @@ namespace FirstChoiceSystems.Migrations
 
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "Irania's Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -745,7 +795,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "Pizza Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -783,7 +833,7 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Spatula",
+                        ItemName = "Sushi Cafe Bowls",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -798,7 +848,7 @@ namespace FirstChoiceSystems.Migrations
                     },
                     new Item()
                     {
-                        ItemName = "Stationery",
+                        ItemName = "Stationery By Sushi Cafe",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
@@ -812,7 +862,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "Signage - Sushi Cafe Material",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -826,7 +876,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "Spoons And Delicates - Sushi Cafe",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -840,7 +890,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "Sushi Shirts For Advertisement",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -854,7 +904,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "Sushi Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -892,7 +942,7 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Spatula",
+                        ItemName = "Flying Fish Sliverware Stock",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -907,7 +957,7 @@ namespace FirstChoiceSystems.Migrations
                     },
                     new Item()
                     {
-                        ItemName = "Stationery",
+                        ItemName = "Flying Stationery",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
@@ -921,7 +971,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "Signs By Flying Fish",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -935,7 +985,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "Flying Fish Pots",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -949,7 +999,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "Flying Fish Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -963,7 +1013,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "Flyig Fish Hat Stock",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -1001,7 +1051,7 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Spatula",
+                        ItemName = "Red Door Spoons",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -1010,13 +1060,12 @@ namespace FirstChoiceSystems.Migrations
                         {
                             new ItemImage()
                             {
-                                ImagePath = 
                             }
                         }
                     },
                     new Item()
                     {
-                        ItemName = "Stationery",
+                        ItemName = "Red Door Paper Products",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
@@ -1030,7 +1079,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "Signs By Red Door",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -1044,7 +1093,7 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "Red Door Knives",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -1058,10 +1107,10 @@ namespace FirstChoiceSystems.Migrations
                         }
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "Red Door Wine Bottles",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
-                        ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
+                        ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Beverages"),
                         UnitsAvailable = 34,
                         Images = new List<ItemImage>()
                         {
@@ -1070,9 +1119,10 @@ namespace FirstChoiceSystems.Migrations
 
                             }
                         }
-                    },new Item()
+                    },
+                        new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "Red Door Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
