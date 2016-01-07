@@ -75,23 +75,26 @@ namespace FirstChoiceSystems.Controllers
                 City = user.City,
                 State = user.State,
                 Postal = user.Postal,
-                ItemsUpForSale = user.ItemsUpForSale.Select(item =>
+                ItemsUpForSale = user.ItemsUpForSale.Where(x=>x.Seller.Id == userId).Select(saleitem =>
                 new ItemViewModel
                 {
-                    Id = item.Id,
-                    ItemDescription = item.ItemDescription,
-                    Price = item.PricePerUnit,
-                    Quantity = item.UnitsAvailable
+                    ItemId = saleitem.Id,
+                    ItemName =  saleitem.ItemName,
+                    ItemDescription = saleitem.ItemDescription,
+                    Price = saleitem.PricePerUnit,
+                    Quantity = saleitem.UnitsAvailable
                 }),
-                Purchases = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Select(purchase=> 
+                Purchases = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Select(purchaseitem=> 
                 new PurchaseItemViewModel()
                 {
-                    ItemId = purchase.Item.Id,
-                    Price = purchase.PricePerUnitBoughtAt * purchase.QuanityBought,
-                    QuanityBought = purchase.QuanityBought,
-                    Status = purchase.Status.ToString(),
-                    ApprovalDate = purchase.ApprovalDate,
-                    Buyer = purchase.Buyer.CompanyName,
+                    ItemId = purchaseitem.Item.Id,
+                    ItemName = purchaseitem.Item.ItemName,
+                    Seller = purchaseitem.Item.Seller.CompanyName,
+                    Price = purchaseitem.PricePerUnitBoughtAt * purchaseitem.QuanityBought,
+                    QuanityBought = purchaseitem.QuanityBought,
+                    Status = purchaseitem.Status.ToString(),
+                    ApprovalDate = purchaseitem.ApprovalDate,
+                    Buyer = purchaseitem.Buyer.CompanyName,
                 })
             };
             return View(dashboard);

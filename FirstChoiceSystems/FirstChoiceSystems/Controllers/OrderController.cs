@@ -26,12 +26,12 @@ namespace FirstChoiceSystems.Controllers
             var currentOrder = OrderViewModel.Retrieve();
             var dbItem = db.Items.Find(itemId);
 
-            var i = currentOrder.Items.FirstOrDefault(x => x.Id == itemId);
+            var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
             if (i == null)
             {
                 i = new ItemViewModel()
                 {
-                    Id = dbItem.Id,
+                    ItemId = dbItem.Id,
                     ItemDescription = dbItem.ItemDescription,
                     Price = dbItem.PricePerUnit,
                     Quantity = requestedQuantity
@@ -56,7 +56,7 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult RemoveItem(int itemId)
         {
             var currentOrder = OrderViewModel.Retrieve();
-            var i = currentOrder.Items.FirstOrDefault(x => x.Id == itemId);
+            var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
             if (i != null)
             {
                 i.Quantity--;
