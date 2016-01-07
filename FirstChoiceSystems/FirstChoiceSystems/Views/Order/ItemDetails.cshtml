@@ -4,20 +4,17 @@
     ViewBag.Title = "ItemDetails";
 }
 
-<h2>ItemDetails</h2>
+<h2>@Model.ItemName</h2>
 
 <div>
-    <h3>ItemViewModel</h3>
-
-    <h5>@Html.ActionLink("AddItem", "AddItem", "Order", new {itemId = Model.ItemId, requestedQuantity = 1}) (Adds 1 Item To Cart, Redirects To Current User's Order) </h5>
-
+    <h4>@Html.ActionLink("Add Item", "AddItem", "Inventory", new { itemId = Model.ItemId })</h4>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ItemName)
+            @Html.DisplayNameFor(model => model.ItemId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ItemName)
+            @Html.DisplayFor(model => model.ItemId)
         </dd>
 
         <dt>
@@ -45,6 +42,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Seller)
         </dt>
 
@@ -52,6 +57,6 @@
             @Html.DisplayFor(model => model.Seller)
         </dd>
 
-
     </dl>
 </div>
+

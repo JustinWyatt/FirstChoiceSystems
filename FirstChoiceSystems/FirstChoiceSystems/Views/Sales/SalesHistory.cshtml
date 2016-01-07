@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<FirstChoiceSystems.Models.ViewModels.PurchaseItemViewModel>
+
+@{
+    ViewBag.Title = "SalesHistory";
+}
+
+<h2> Sales History</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Buyer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuanityBought)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePurchased)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.ActionLink("View Item", "ItemDetails", "Order", new { itemId = item.ItemId})</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Buyer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuanityBought)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePurchased)
+        </td>
+    </tr>
+}
+
+</table>

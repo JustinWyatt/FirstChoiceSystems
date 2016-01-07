@@ -1,9 +1,6 @@
 ﻿using FirstChoiceSystems.Models;
 using FirstChoiceSystems.Models.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FirstChoiceSystems.Controllers
@@ -70,5 +67,24 @@ namespace FirstChoiceSystems.Controllers
 
             return RedirectToAction("Order", "Order");
         }
+
+
+        [HttpGet]
+        public ActionResult ItemDetails(int itemId)
+        {
+            var item = db.Items.First(x => x.Id == itemId);
+
+            var itemDetail = new ItemViewModel()
+            {
+                ItemDescription = item.ItemDescription,
+                ItemName = item.ItemName,
+                Seller = item.Seller.CompanyName,
+                Price = item.PricePerUnit,
+                ItemId = item.Id,
+                Quantity = item.UnitsAvailable
+            };
+            return View(itemDetail);
+        }
+
     }
 }

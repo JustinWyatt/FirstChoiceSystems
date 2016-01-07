@@ -24,16 +24,20 @@
         {
             <tbody>
                 <tr>
-                    <td>@Html.ActionLink("View Item", "ItemDetails", "Inventory", new { itemId = item.ItemId })</td>
+                    <td>
+                        @Html.ActionLink("View Item", "ItemDetails", "Order", new { itemId = item.ItemId })
+                    </td>
                     <td>@item.ItemName</td>
                     <td>@item.ItemDescription</td>
                     <td>@item.Price</td>
                     <td>@item.Quantity</td>
                     <td>@item.Seller</td>
-                    <td>@Html.ActionLink("Remove Item From Current Order", "RemoveItem", "Order", new { itemId = item.ItemId }) </td>
+                    <td>
+                        @Html.ActionLink("Remove Item From Current Order", "RemoveItem", "Order", new { itemId = item.ItemId })
+                </td>
 
-                </tr>
-            </tbody>
+            </tr>
+        </tbody>
         }
     </table>
     <h3> @Html.ActionLink("Purchase", "PurchaseRequest", "Purchase") (Takes Current Order And Makes Purchase, Redirects To Current User's Purchase History) </h3>

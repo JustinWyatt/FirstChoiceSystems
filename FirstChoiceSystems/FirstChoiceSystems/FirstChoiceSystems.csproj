@@ -298,16 +298,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Dashboard.cshtml" />
     <Content Include="Views\Order\Order.cshtml" />
-    <Content Include="Views\Inventory\ItemDetails.cshtml" />
     <Content Include="Views\Inventory\AllItemsUpForSale.cshtml" />
+    <Content Include="Views\Purchase\PurchaseRequestHistory.cshtml" />
+    <Content Include="Views\Inventory\AddItem.cshtml" />
+    <Content Include="Views\Order\ItemDetails.cshtml" />
+    <Content Include="Views\Sales\SalesHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Marketplace\" />
-    <Folder Include="Views\Purchase\" />
-    <Folder Include="Views\Sales\" />
-    <Folder Include="Views\ShoppingCart\" />
-    <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

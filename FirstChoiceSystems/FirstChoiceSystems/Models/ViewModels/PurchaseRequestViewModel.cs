@@ -8,7 +8,7 @@ namespace FirstChoiceSystems.Models.ViewModels
     public class PurchaseRequestViewModel
     {
         public int Id { get; set; }
-        public DateTime DateOfPurchaseRequest { get; set; }
+        public string DateOfPurchaseRequest { get; set; }
         public double Total { get; set; }
     }
 }

@@ -54,7 +54,7 @@ namespace FirstChoiceSystems.Controllers
         [HttpPost]
         public ActionResult ApproveSale(int purchaseItemVmId)
         {
-            var purchaseItems = db.PurchaseItems.FirstOrDefault(x=>x.Id == purchaseItemVmId);
+            var purchaseItems = db.PurchaseItems.First(x=>x.Id == purchaseItemVmId);
             purchaseItems.ApprovalDate = DateTime.Now;
             purchaseItems.Item.Seller.Balance += purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
             purchaseItems.Buyer.Balance -= purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
