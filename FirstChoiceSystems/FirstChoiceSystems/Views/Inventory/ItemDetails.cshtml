@@ -9,16 +9,15 @@
 <div>
     <h3>ItemViewModel</h3>
 
-    <h4>@Html.ActionLink("AddItem", "AddItem", "Order", new {itemId = Model.ItemId, requestedQuantity = 1}) (Adds 1 Item To Cart) </h4>
+    <h5>@Html.ActionLink("AddItem", "AddItem", "Order", new {itemId = Model.ItemId, requestedQuantity = 1}) (Adds 1 Item To Cart, Redirects To Current User's Order) </h5>
 
-    <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ItemId)
+            @Html.DisplayNameFor(model => model.ItemName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ItemId)
+            @Html.DisplayFor(model => model.ItemName)
         </dd>
 
         <dt>
@@ -43,14 +42,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemName)
         </dd>
 
         <dt>

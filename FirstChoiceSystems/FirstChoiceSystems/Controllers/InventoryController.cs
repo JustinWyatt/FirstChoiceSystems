@@ -14,12 +14,20 @@ namespace FirstChoiceSystems.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Inventory/ItemsUpForSale
+        // GET: /Inventory/AllItemsUpForSale
         [HttpGet]
-        public ActionResult ItemsUpForSale(string userId)
+        public ActionResult AllItemsUpForSale()
         {
-            var user = db.Users.Find(userId);
-            return userId == User.Identity.GetUserId() ? View(user.ItemsUpForSale) : View(user.ItemsUpForSale);
+            //For testing purposes, user can view all items, including himself
+            return View(db.Users.Max(x => x.ItemsUpForSale).Select(x => new ItemViewModel()
+            {
+                ItemId = x.Id,
+                ItemDescription = x.ItemDescription,
+                ItemName = x.ItemName,
+                Seller = x.Seller.CompanyName,
+                Quantity = x.UnitsAvailable,
+                Price = x.PricePerUnit
+            }));
         }
 
         // GET: /Inventory/AddItem
@@ -37,10 +45,10 @@ namespace FirstChoiceSystems.Controllers
             var itemDetail = new ItemViewModel()
             {
                 ItemDescription = item.ItemDescription,
-                ItemName =  item.ItemName,
+                ItemName = item.ItemName,
                 Seller = item.Seller.CompanyName,
                 Price = item.PricePerUnit,
-                ItemId =  item.Id,
+                ItemId = item.Id,
                 Quantity = item.UnitsAvailable
             };
             return View(itemDetail);
