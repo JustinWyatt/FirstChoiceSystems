@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using FirstChoiceSystems.Models.DBModels;
@@ -20,7 +21,7 @@ namespace FirstChoiceSystems.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
-        }   
+        }
 
         public string PersonOfContact { get; set; }
         public string CompanyName { get; set; }
@@ -33,8 +34,8 @@ namespace FirstChoiceSystems.Models
         public virtual BusinessCategory BusinessCategory { get; set; }
         public int AccountNumber { get; set; }
         public DateTime? DateRegistered { get; set; }
-        public virtual List<PurchaseItem> Purchases { get; set; }
-        public virtual ICollection<Item> ItemsUpForSale { get; set; }
+        public virtual ICollection<PurchaseItem> Purchases { get; set; } = new Collection<PurchaseItem>();
+        public virtual ICollection<Item> ItemsUpForSale { get; set; } = new Collection<Item>();
     }
 
     public class ApplicationDbContext : IdentityDbContext<BusinessUser>
@@ -78,7 +79,5 @@ namespace FirstChoiceSystems.Models
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
         public DbSet<ItemImage> Images { get; set; }
         public DbSet<Item> Items { get; set; }
-
-        public System.Data.Entity.DbSet<FirstChoiceSystems.Models.DBModels.DashboardViewModel> DashboardViewModels { get; set; }
     }
 }

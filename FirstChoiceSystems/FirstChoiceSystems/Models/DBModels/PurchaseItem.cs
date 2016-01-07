@@ -14,5 +14,6 @@ namespace FirstChoiceSystems.Models.DBModels
         public virtual double PricePerUnitBoughtAt { get; set; }
         public virtual TransactionStatus Status { get; set; }
         public DateTime? ApprovalDate { get; set; }
+        public DateTime DatePurchased { get; set; }
     }
 }

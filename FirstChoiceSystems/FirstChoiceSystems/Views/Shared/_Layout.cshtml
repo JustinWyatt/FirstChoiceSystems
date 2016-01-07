@@ -25,6 +25,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("All Items Up For Sale", "AllItemsUpForSale", "Inventory")</li>
+                    <li>@Html.ActionLink("User's Purchase Request History", "PurchaseRequestHistory", "Purchase")</li>
                     <li>@Html.ActionLink("Current User's Order", "Order", "Order")</li>
                     <li>@Html.ActionLink("Current User's Purchase Order History", "PurchaseRequestHistory", "Purchase")</li>
                     <li>Amount Of Items In Current User's Order: @currentOrder.Items.Count()</li>
