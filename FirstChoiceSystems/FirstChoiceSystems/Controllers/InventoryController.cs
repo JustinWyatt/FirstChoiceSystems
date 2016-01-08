@@ -23,7 +23,8 @@ namespace FirstChoiceSystems.Controllers
                 ItemName = x.ItemName,
                 Seller = x.Seller.CompanyName,
                 Quantity = x.UnitsAvailable,
-                Price = x.PricePerUnit
+                Price = x.PricePerUnit,
+                Images = x.Images
             }));
         }
 
@@ -52,6 +53,23 @@ namespace FirstChoiceSystems.Controllers
             db.Items.Add(newItem);
             db.SaveChanges();
             return RedirectToAction("ItemDetails", "Order", new { itemId = newItem.Id });
+        }
+
+        [HttpGet]
+        public ActionResult ItemDetails(int itemId)
+        {
+            var item = db.Items.First(x => x.Id == itemId);
+
+            var itemDetail = new ItemViewModel()
+            {
+                ItemDescription = item.ItemDescription,
+                ItemName = item.ItemName,
+                Seller = item.Seller.CompanyName,
+                Price = item.PricePerUnit,
+                ItemId = item.Id,
+                Quantity = item.UnitsAvailable
+            };
+            return View(itemDetail);
         }
     }
 }

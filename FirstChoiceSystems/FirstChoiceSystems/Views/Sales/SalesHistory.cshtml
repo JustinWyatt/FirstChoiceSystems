@@ -1,11 +1,10 @@
-﻿@using Microsoft.AspNet.Identity
-@model IEnumerable<FirstChoiceSystems.Models.ViewModels.PurchaseItemViewModel>
+﻿@model IEnumerable<FirstChoiceSystems.Models.ViewModels.PurchaseItemViewModel>
 
 @{
     ViewBag.Title = "SalesHistory";
 }
 
-<h2> Sales History</h2>
+<h2> Current User's Sales History</h2>
 
 <table class="table">
     <tr>
@@ -35,7 +34,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>@Html.ActionLink("View Item", "ItemDetails", "Order", new { itemId = item.ItemId})</td>
+        <td>@Html.ActionLink("View Item", "ItemDetails", "Inventory", new { itemId = item.ItemId}, null)</td>
         <td>
             @Html.DisplayFor(modelItem => item.Buyer)
         </td>

@@ -1,10 +1,10 @@
 ﻿@model FirstChoiceSystems.Models.ViewModels.OrderViewModel
 
 @{
-    ViewBag.Title = "Order";
+    ViewBag.Title = "Order"; 
 }
 
-<h2>Current User's Order</h2>
+<h2>Current User's Order</h2> 
 
 <div>
     <p>Note: "Remove Item" Removes 1 Item On Click</p>
@@ -19,27 +19,22 @@
                 <td>Seller</td>
             </tr>
         </thead>
-
         @foreach (var item in Model.Items)
         {
             <tbody>
                 <tr>
-                    <td>
-                        @Html.ActionLink("View Item", "ItemDetails", "Order", new { itemId = item.ItemId })
-                    </td>
+                    <td>@Html.ActionLink("View", "ItemDetails", "Inventory", new { itemId = item.ItemId }, null)</td>
                     <td>@item.ItemName</td>
                     <td>@item.ItemDescription</td>
                     <td>@item.Price</td>
                     <td>@item.Quantity</td>
                     <td>@item.Seller</td>
-                    <td>
-                        @Html.ActionLink("Remove Item From Current Order", "RemoveItem", "Order", new { itemId = item.ItemId })
-                </td>
-
-            </tr>
-        </tbody>
+                    <td>@Html.ActionLink("Remove", "RemoveItem", "Order", new { itemId = item.ItemId }, null)</td>
+                </tr>
+            </tbody>
         }
     </table>
-    <h3> @Html.ActionLink("Purchase", "PurchaseRequest", "Purchase") (Takes Current Order And Makes Purchase, Redirects To Current User's Purchase History) </h3>
+    <h3>@Html.ActionLink("Purchase", "PurchaseRequest", "Purchase", null, null)</h3>
+    <h5>Takes Current Order And Makes Purchase, Redirects To Current User's Purchase History</h5>
     <h5>When click "Purchase", Session Storage Clears All Items</h5>
 </div>

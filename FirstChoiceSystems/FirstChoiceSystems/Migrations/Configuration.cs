@@ -183,13 +183,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 33.65,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 89,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
@@ -198,13 +192,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 100.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Whole Hog Signage",
@@ -212,13 +200,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 89.25,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Whole Hog Knives",
@@ -226,13 +208,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 25.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 200,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Whole Hog Shirts",
@@ -240,13 +216,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 26.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 340,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Whole Hog Screen Time",
@@ -254,13 +224,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 2622.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 50,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                       
                     }
                 }
                 };
@@ -292,84 +256,48 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Beverages"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
-                        ItemName = "Oranges",
+                        ItemName = "Cajun's Oranges",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Produce"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "Cajun's Signage",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "License",
+                        ItemName = "Cajun's License",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Parking Lot Space",
+                        ItemName = "Cajun's Parking Lot Space",
                         ItemDescription = "",
                         PricePerUnit = 50.65,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Real Estate"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "Cajun's Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     }
                 }
                 };
@@ -396,89 +324,53 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "License",
+                        ItemName = "Bossa Nova License",
                         ItemDescription = "",
                         PricePerUnit = 230.25,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
-                        ItemName = "Wheat",
+                        ItemName = "Bossa Nova Wheat",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Dry Goods"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Rice",
+                        ItemName = "Bossa Nova Rice",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Dry Goods"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "Bossa Nova Knives",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "Bossa Nova Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Ice Cream Scoop",
+                        ItemName = "Bossa Nova Ice Cream Scoop",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     }
                 }
                 };
@@ -505,89 +397,53 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Spatula",
+                        ItemName = "One Eleven Spatula",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
-                        ItemName = "Stationery",
+                        ItemName = "One Eleven Stationery",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "One Eleven Signage",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "One Eleven Knives",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "One Eleven Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "One Eleven Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     }
                 }
                 };
@@ -619,84 +475,48 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
-                        ItemName = "Stationery",
+                        ItemName = "EJ's Stationery",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
-                        UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        UnitsAvailable = 42
+                        
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "EJ's Signage",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Knives",
+                        ItemName = "EJ's Knives",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Shirts",
+                        ItemName = "EJ's Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Hats",
+                        ItemName = "EJ's Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     }
                 }
                 };
@@ -723,90 +543,52 @@ namespace FirstChoiceSystems.Migrations
                 {
                     new Item()
                     {
-                        ItemName = "Dough Rollers",
+                        ItemName = "EJ's Dough Rollers",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
-                        ItemName = "Pizza Paper - Irania's Pizza",
+                        ItemName = "EJ's Pizza Paper - Irania's Pizza",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Signage",
+                        ItemName = "EJ's Signage",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Knives By Irania's Pizza Restaurant",
+                        ItemName = "EJ's Knives By Irania's Pizza Restaurant",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
 
                     },new Item()
                     {
-                        ItemName = "Irania's Shirts",
+                        ItemName = "EJ's Irania's Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
-                        ItemName = "Pizza Hats",
+                        ItemName = "EJ's Pizza Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
                     }
                 }
                 };
@@ -838,13 +620,6 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
                     },
                     new Item()
                     {
@@ -853,13 +628,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Signage - Sushi Cafe Material",
@@ -867,13 +636,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Spoons And Delicates - Sushi Cafe",
@@ -881,13 +644,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Sushi Shirts For Advertisement",
@@ -895,13 +652,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Sushi Hats",
@@ -909,13 +660,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     }
                 }
                 };
@@ -947,13 +692,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
@@ -962,13 +701,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Signs By Flying Fish",
@@ -976,13 +709,6 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
                     },new Item()
                     {
                         ItemName = "Flying Fish Pots",
@@ -990,13 +716,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Flying Fish Shirts",
@@ -1004,13 +724,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Flyig Fish Hat Stock",
@@ -1018,13 +732,6 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
                     }
                 }
                 };
@@ -1056,12 +763,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-                            }
-                        }
+                        
                     },
                     new Item()
                     {
@@ -1070,13 +772,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Signs By Red Door",
@@ -1084,13 +780,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Red Door Knives",
@@ -1098,13 +788,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },new Item()
                     {
                         ItemName = "Red Door Wine Bottles",
@@ -1112,13 +796,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Beverages"),
                         UnitsAvailable = 34,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     },
                         new Item()
                     {
@@ -1127,13 +805,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
-                        Images = new List<ItemImage>()
-                        {
-                            new ItemImage()
-                            {
-
-                            }
-                        }
+                        
                     }
                 }
                 };

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FirstChoiceSystems.Models.ViewModels.PurchaseItemViewModel>
+
+@{
+    ViewBag.Title = "PendingSales";
+}
+
+<h2>@Model.Select(x=>x.Seller).ToString() Pending Sales</h2>
+
+<table class="table">
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Buyer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuanityBought)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePurchased)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink("View Item", "ItemDetails", "Inventory", new {itemId = item.ItemId})</td>
+
+            <td>@Html.Action("ApproveSale", new { purchaseItemVmId = item.ItemId})</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buyer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuanityBought)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePurchased)
+            </td>
+        </tr>
+    }
+</table>

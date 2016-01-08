@@ -4,10 +4,12 @@
     ViewBag.Title = "PurchaseRequestHistory";
 }
 
-<h2>PurchaseRequestHistory</h2>
+<h2>Current User's Purchase Request History</h2>
 
 <table class="table">
     <tr>
+        <th>Count</th>
+
         <th>
             @Html.DisplayNameFor(model => model.ItemName)
         </th>
@@ -32,32 +34,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.ActionLink("View Item", "ItemDetails", "Inventory", routeValues: new { itemId = item.ItemId })</td>
+    @foreach (var item in Model)
+    {
+        for (var i = 1; i < Model.Count(); i++)
+        {
+            <tr>
+                <td>@i</td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Seller)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuanityBought)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApprovalDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatePurchased)
-        </td>
-    </tr>
-}
+                <td>@Html.ActionLink("View Item", "ItemDetails", "Inventory", new {purchaseItemId = item.ItemId}, null)</td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seller)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuanityBought)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePurchased)
+                </td>
+            </tr>
+        }
+
+    }
 
 </table>

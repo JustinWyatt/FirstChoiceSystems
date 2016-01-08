@@ -1,0 +1,59 @@
+﻿@using FirstChoiceSystems.Models.ViewModels
+@model FirstChoiceSystems.Models.ViewModels.ItemViewModel
+
+@{
+    ViewBag.Title = "ItemDetails";
+}
+
+<h2>@Model.ItemName</h2>
+
+<div>
+    <h4>@Html.ActionLink("Add Item", "AddItem", "Order", new {itemid = Model.ItemId}, null)</h4>
+    <h4>Adds Item To Cart, Redirects To Current User's Order</h4>
+    <h4>If Item Exists In Cart, Adds Quantity += 1</h4>
+    @(OrderViewModel.Retrieve().Items.Contains(Model)) : <h5>@(OrderViewModel.Retrieve().Items.Count(x => x.ItemId == Model.ItemId))</h5> : <h5></h5>
+
+    @foreach (var image in Model.Images)
+    {
+        <div>
+            <img src="@image.ImagePath" />
+        </div>
+    }
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Seller)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Seller)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+    </dl>
+</div>
+

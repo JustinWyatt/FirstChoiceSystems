@@ -13,5 +13,6 @@ namespace FirstChoiceSystems.Models.ViewModels
         public int Quantity { get; set; }
         public string ItemName { get; set; }
         public string Seller { get; set; }
+        public virtual ICollection<ItemImage> Images { get; set; }
     }
 }

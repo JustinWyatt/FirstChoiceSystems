@@ -73,5 +73,54 @@ namespace FirstChoiceSystems.Controllers
             db.SaveChanges();
             return RedirectToAction("PendingSales", "Sales");
         }
+
+        [HttpGet]
+        public ActionResult ItemDetails(int itemId)
+        {
+            var item = db.Items.First(x => x.Id == itemId);
+
+            var itemDetail = new ItemViewModel()
+            {
+                ItemDescription = item.ItemDescription,
+                ItemName = item.ItemName,
+                Seller = item.Seller.CompanyName,
+                Price = item.PricePerUnit,
+                ItemId = item.Id,
+                Quantity = item.UnitsAvailable
+            };
+            return View(itemDetail);
+        }
+
+        [HttpPost]
+        public ActionResult AddItem(int itemId)
+        {
+            var currentOrder = OrderViewModel.Retrieve();
+            var dbItem = db.Items.Find(itemId);
+
+            var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
+            if (i == null)
+            {
+                i = new ItemViewModel()
+                {
+                    ItemId = dbItem.Id,
+                    ItemDescription = dbItem.ItemDescription,
+                    Price = dbItem.PricePerUnit,
+                    Quantity = 1,
+                    Seller = dbItem.Seller.CompanyName
+                };
+
+                currentOrder.Items.Add(i);
+            }
+            else
+            {
+                i.Quantity += 1;
+            }
+
+            //if they are asking for more than what is available, cap it to just whats avaiable.
+            i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
+
+            currentOrder.Save();
+            return RedirectToAction("Order", "Order");
+        }
     }
 }

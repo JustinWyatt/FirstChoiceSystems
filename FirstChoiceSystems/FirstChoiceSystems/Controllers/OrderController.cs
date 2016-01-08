@@ -18,7 +18,7 @@ namespace FirstChoiceSystems.Controllers
 
         // POST: /Order/AddItem
         [HttpPost]
-        public ActionResult AddItem(int itemId, int requestedQuantity)
+        public ActionResult AddItem(int itemId)
         {
             var currentOrder = OrderViewModel.Retrieve();
             var dbItem = db.Items.Find(itemId);
@@ -31,20 +31,18 @@ namespace FirstChoiceSystems.Controllers
                     ItemId = dbItem.Id,
                     ItemDescription = dbItem.ItemDescription,
                     Price = dbItem.PricePerUnit,
-                    Quantity = requestedQuantity,
+                    Quantity = 1,
                     Seller = dbItem.Seller.CompanyName
                 };
-
                 currentOrder.Items.Add(i);
             }
             else
             {
-                i.Quantity += requestedQuantity;
+                i.Quantity += 1;
             }
 
             //if they are asking for more than what is available, cap it to just whats avaiable.
-            i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
-
+            //i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
             currentOrder.Save();
             return RedirectToAction("Order", "Order");
         }
@@ -57,7 +55,7 @@ namespace FirstChoiceSystems.Controllers
             var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
             if (i != null)
             {
-                i.Quantity--;
+                i.Quantity-= 1;
                 if (i.Quantity <= 0)
                 {
                     currentOrder.Items.Remove(i);
@@ -67,24 +65,5 @@ namespace FirstChoiceSystems.Controllers
 
             return RedirectToAction("Order", "Order");
         }
-
-
-        [HttpGet]
-        public ActionResult ItemDetails(int itemId)
-        {
-            var item = db.Items.First(x => x.Id == itemId);
-
-            var itemDetail = new ItemViewModel()
-            {
-                ItemDescription = item.ItemDescription,
-                ItemName = item.ItemName,
-                Seller = item.Seller.CompanyName,
-                Price = item.PricePerUnit,
-                ItemId = item.Id,
-                Quantity = item.UnitsAvailable
-            };
-            return View(itemDetail);
-        }
-
     }
 }
