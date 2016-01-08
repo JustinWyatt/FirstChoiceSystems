@@ -26,7 +26,7 @@ namespace FirstChoiceSystems.Controllers
 
             //if (currentOrder.Items.Single(x => x.ItemId == dbItem.Id) == null)
             //{
-                var i = new ItemViewModel()
+                var i = new MarketPlaceItem()
                 {
                     ItemId = dbItem.Id,
                     ItemDescription = dbItem.ItemDescription,

@@ -17,7 +17,7 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult MarketPlace()
         {
-            return View(db.Items.Where(x => x.AvailableForMarket).Select(x=> new ItemViewModel()
+            return View(db.Items.Where(x => x.AvailableForMarket).Select(x=> new MarketPlaceItem()
             {
                 ItemName = x.ItemName,
                 ItemDescription = x.ItemDescription,
@@ -29,19 +29,12 @@ namespace FirstChoiceSystems.Controllers
             }).ToList());
         }
 
-        // GET: MarketPlace/MarketPlaceItem
-        [HttpGet]
-        public ActionResult MarketPlaceItem(int itemId)
-        {
-            return View();
-        }
-
         // GET: MarketPlace/YourMarketPlaceItems
         [HttpGet]
         public ActionResult YourMarketPlaceItems()
         {
             var userId = User.Identity.GetUserId();
-            return View(db.Items.Where(x => x.Seller.Id == userId).Select(x => new ItemViewModel()
+            return View(db.Items.Where(x => x.Seller.Id == userId && x.AvailableForMarket).Select(x => new MarketPlaceItem()
             {
                 ItemName = x.ItemName,
                 ItemDescription = x.ItemDescription,

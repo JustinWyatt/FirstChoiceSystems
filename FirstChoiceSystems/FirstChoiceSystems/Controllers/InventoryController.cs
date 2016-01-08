@@ -17,7 +17,7 @@ namespace FirstChoiceSystems.Controllers
         {
             //user can only view his own inventory
             var userId = User.Identity.GetUserId();
-            return View(db.Items.Where(x => x.Seller.Id == userId).Select(x=> new ItemViewModel()
+            return View(db.Items.Where(x => x.Seller.Id == userId).Select(x=> new MarketPlaceItem()
             {
                 ItemId = x.Id,
                 ItemName = x.ItemName,
@@ -38,7 +38,7 @@ namespace FirstChoiceSystems.Controllers
         public ActionResult AllItemsUpForSale()
         {
             //For testing purposes, user can view all items, including himself
-            return View(db.Items.Select(x => new ItemViewModel()
+            return View(db.Items.Select(x => new MarketPlaceItem()
             {
                 ItemId = x.Id,
                 ItemDescription = x.ItemDescription,
@@ -83,7 +83,7 @@ namespace FirstChoiceSystems.Controllers
         {
             var item = db.Items.First(x => x.Id == itemId);
 
-            var itemDetail = new ItemViewModel()
+            var itemDetail = new MarketPlaceItem()
             {
                 ItemDescription = item.ItemDescription,
                 ItemName = item.ItemName,

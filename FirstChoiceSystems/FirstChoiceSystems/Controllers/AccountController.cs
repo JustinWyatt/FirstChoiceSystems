@@ -76,7 +76,7 @@ namespace FirstChoiceSystems.Controllers
                 State = user.State,
                 Postal = user.Postal,
                 ItemsUpForSale = user.ItemsUpForSale.Where(x=>x.Seller.Id == userId).Select(saleitem =>
-                new ItemViewModel
+                new MarketPlaceItem()
                 {
                     ItemId = saleitem.Id,
                     ItemName =  saleitem.ItemName,

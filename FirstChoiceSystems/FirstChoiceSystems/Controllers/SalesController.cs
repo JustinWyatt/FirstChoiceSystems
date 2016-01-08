@@ -79,7 +79,7 @@ namespace FirstChoiceSystems.Controllers
         {
             var item = db.Items.First(x => x.Id == itemId);
 
-            var itemDetail = new ItemViewModel()
+            var itemDetail = new MarketPlaceItem()
             {
                 ItemDescription = item.ItemDescription,
                 ItemName = item.ItemName,
@@ -100,7 +100,7 @@ namespace FirstChoiceSystems.Controllers
             var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
             if (i == null)
             {
-                i = new ItemViewModel()
+                i = new MarketPlaceItem()
                 {
                     ItemId = dbItem.Id,
                     ItemDescription = dbItem.ItemDescription,

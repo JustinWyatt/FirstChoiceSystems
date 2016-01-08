@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201601080345140_ResolvingPendingChanges.Designer.cs">
       <DependentUpon>201601080345140_ResolvingPendingChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601082009462_AvailableForMarket.cs" />
+    <Compile Include="Migrations\201601082009462_AvailableForMarket.Designer.cs">
+      <DependentUpon>201601082009462_AvailableForMarket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\DashboardViewModel.cs" />
     <Compile Include="Models\DBModels\PurchaseItem.cs" />
@@ -229,7 +233,7 @@
     <Compile Include="Models\DBModels\Item.cs" />
     <Compile Include="Models\DBModels\ItemCategory.cs" />
     <Compile Include="Models\DBModels\ItemImage.cs" />
-    <Compile Include="Models\ViewModels\ItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\MarketPlaceItem.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\MarketViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderViewModel.cs" />
@@ -342,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601080345140_ResolvingPendingChanges.resx">
       <DependentUpon>201601080345140_ResolvingPendingChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601082009462_AvailableForMarket.resx">
+      <DependentUpon>201601082009462_AvailableForMarket.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -5,8 +5,7 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models.ViewModels
 {
-    //Todo change name to "Market Place Item"
-    public class ItemViewModel
+    public class MarketPlaceItem
     {
         public int ItemId { get; set; }
         public string ItemDescription { get; set; }

@@ -19,7 +19,7 @@ namespace FirstChoiceSystems.Models.DBModels
         public double Balance { get; set; }
         public string BusinessCategory { get; set; }
         public string DateRegistered { get; set; }
-        public IEnumerable<ItemViewModel> ItemsUpForSale { get; set; }
+        public IEnumerable<MarketPlaceItem> ItemsUpForSale { get; set; }
         public IEnumerable<PurchaseItemViewModel> Purchases { get; set; }
     }
 }
