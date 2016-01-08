@@ -8,17 +8,22 @@
 <h2>@Model.ItemName</h2>
 
 <div>
-    <h4>@Html.ActionLink("Add Item", "AddItem", "Order", new {itemid = Model.ItemId}, null)</h4>
-    <h4>Adds Item To Cart, Redirects To Current User's Order</h4>
-    <h4>If Item Exists In Cart, Adds Quantity += 1</h4>
-    @(OrderViewModel.Retrieve().Items.Contains(Model)) : <h5>@(OrderViewModel.Retrieve().Items.Count(x => x.ItemId == Model.ItemId))</h5> : <h5></h5>
-
-    @foreach (var image in Model.Images)
+    @using (Html.BeginForm("AddItem", "Order", new { Model.ItemId }))
     {
-        <div>
-            <img src="@image.ImagePath" />
-        </div>
+        <input type="submit" value="Add Item" class="btn btn-primary"/>
     }
+
+    @if (OrderViewModel.Retrieve().Items != null)
+    {
+        <p>You have @OrderViewModel.Retrieve().Items.Count(x => x.ItemId == Model.ItemId) of these items in your cart</p>
+    }
+
+    @*@foreach (var image in Model.Images)
+        {
+            <div>
+                <img src="@image.ImagePath" />
+            </div>
+        }*@
     <dl class="dl-horizontal">
 
         <dt>
@@ -56,4 +61,3 @@
         </dd>
     </dl>
 </div>
-

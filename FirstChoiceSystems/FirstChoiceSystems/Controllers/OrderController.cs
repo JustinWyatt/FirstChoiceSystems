@@ -1,4 +1,5 @@
-﻿using FirstChoiceSystems.Models;
+﻿using System;
+using FirstChoiceSystems.Models;
 using FirstChoiceSystems.Models.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
@@ -20,13 +21,12 @@ namespace FirstChoiceSystems.Controllers
         [HttpPost]
         public ActionResult AddItem(int itemId)
         {
-            var currentOrder = OrderViewModel.Retrieve();
+            var currentOrder =  OrderViewModel.Retrieve();
             var dbItem = db.Items.Find(itemId);
 
-            var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
-            if (i == null)
-            {
-                i = new ItemViewModel()
+            //if (currentOrder.Items.Single(x => x.ItemId == dbItem.Id) == null)
+            //{
+                var i = new ItemViewModel()
                 {
                     ItemId = dbItem.Id,
                     ItemDescription = dbItem.ItemDescription,
@@ -35,11 +35,11 @@ namespace FirstChoiceSystems.Controllers
                     Seller = dbItem.Seller.CompanyName
                 };
                 currentOrder.Items.Add(i);
-            }
-            else
-            {
-                i.Quantity += 1;
-            }
+            //}
+            //else
+            //{
+            //    currentOrder.Items.FirstOrDefault(x => x.ItemId == dbItem.Id).Quantity += 1;
+            //}
 
             //if they are asking for more than what is available, cap it to just whats avaiable.
             //i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;

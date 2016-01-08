@@ -8,8 +8,7 @@
 
 <table class="table">
     <tr>
-        <th>Count</th>
-
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.ItemName)
         </th>
@@ -36,10 +35,8 @@
 
     @foreach (var item in Model)
     {
-        for (var i = 1; i < Model.Count(); i++)
-        {
+        
             <tr>
-                <td>@i</td>
 
                 <td>@Html.ActionLink("View Item", "ItemDetails", "Inventory", new {purchaseItemId = item.ItemId}, null)</td>
 
@@ -65,7 +62,6 @@
                     @Html.DisplayFor(modelItem => item.DatePurchased)
                 </td>
             </tr>
-        }
 
     }
 

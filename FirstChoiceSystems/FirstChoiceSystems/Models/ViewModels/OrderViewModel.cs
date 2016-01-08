@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace FirstChoiceSystems.Models.ViewModels
 {
@@ -14,6 +15,7 @@ namespace FirstChoiceSystems.Models.ViewModels
             {
                 order = new OrderViewModel();
                 HttpContext.Current.Session["currentOrder"] = order;
+                order.Items = new List<ItemViewModel>();
             }
 
             return order;

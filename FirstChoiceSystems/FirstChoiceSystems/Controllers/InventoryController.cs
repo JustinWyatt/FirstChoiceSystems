@@ -11,6 +11,28 @@ namespace FirstChoiceSystems.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+        [HttpGet]
+        // GET: /Inventory/Inventory
+        public ActionResult Inventory()
+        {
+            //user can only view his own inventory
+            var userId = User.Identity.GetUserId();
+            return View(db.Items.Where(x => x.Seller.Id == userId).Select(x=> new ItemViewModel()
+            {
+                ItemId = x.Id,
+                ItemName = x.ItemName,
+                
+            }).ToList());
+        }
+
+        [HttpGet]
+        // GET: /Inventory/InventoryItem
+        public ActionResult InventoryItem(int itemId)
+        {
+            //user is able to dynamically edit any field in item
+            return View(db.Items.Where(x => x.Id == itemId).ToList());
+        }
+        
         // GET: /Inventory/AllItemsUpForSale
         [HttpGet]
         public ActionResult AllItemsUpForSale()
@@ -34,9 +56,10 @@ namespace FirstChoiceSystems.Controllers
         {
             return View();
         }
-        // POST: /Inventory/PostItem
+
+        // POST: /Inventory/AddItem
         [HttpPost]
-        public ActionResult PostItem(Item item)
+        public ActionResult AddItem(Item item)
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
@@ -52,7 +75,7 @@ namespace FirstChoiceSystems.Controllers
             };
             db.Items.Add(newItem);
             db.SaveChanges();
-            return RedirectToAction("ItemDetails", "Order", new { itemId = newItem.Id });
+            return RedirectToAction("Inventory", "Inventory", new { itemId = newItem.Id });
         }
 
         [HttpGet]

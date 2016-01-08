@@ -5,6 +5,7 @@ using System.Web;
 
 namespace FirstChoiceSystems.Models.ViewModels
 {
+    //Todo change name to "Market Place Item"
     public class ItemViewModel
     {
         public int ItemId { get; set; }
@@ -14,5 +15,6 @@ namespace FirstChoiceSystems.Models.ViewModels
         public string ItemName { get; set; }
         public string Seller { get; set; }
         public virtual ICollection<ItemImage> Images { get; set; }
+        public string Category { get; set; }
     }
 }

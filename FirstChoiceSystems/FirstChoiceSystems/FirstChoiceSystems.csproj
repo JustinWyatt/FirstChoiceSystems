@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201601062127275_MadeNullableDates.Designer.cs">
       <DependentUpon>201601062127275_MadeNullableDates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601080345140_ResolvingPendingChanges.cs" />
+    <Compile Include="Migrations\201601080345140_ResolvingPendingChanges.Designer.cs">
+      <DependentUpon>201601080345140_ResolvingPendingChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewModels\DashboardViewModel.cs" />
     <Compile Include="Models\DBModels\PurchaseItem.cs" />
@@ -297,13 +301,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Dashboard.cshtml" />
-    <Content Include="Views\Order\Order.cshtml" />
     <Content Include="Views\Inventory\AllItemsUpForSale.cshtml" />
     <Content Include="Views\Purchase\PurchaseRequestHistory.cshtml" />
     <Content Include="Views\Inventory\AddItem.cshtml" />
     <Content Include="Views\Sales\SalesHistory.cshtml" />
     <Content Include="Views\Inventory\ItemDetails.cshtml" />
     <Content Include="Views\Sales\PendingSales.cshtml" />
+    <Content Include="Views\Order\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601062127275_MadeNullableDates.resx">
       <DependentUpon>201601062127275_MadeNullableDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601080345140_ResolvingPendingChanges.resx">
+      <DependentUpon>201601080345140_ResolvingPendingChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

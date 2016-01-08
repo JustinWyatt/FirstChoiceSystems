@@ -12,6 +12,7 @@ namespace FirstChoiceSystems.Models.DBModels
         public virtual ItemCategory ItemCategory { get; set; }
         public int UnitsAvailable { get; set; }
         public virtual BusinessUser Seller { get; set; }
+        public bool AvailableForMarket { get; set; }
 
         public virtual ICollection<PurchaseItem> PurchaseItems { get; set; } = new Collection<PurchaseItem>();
     }
