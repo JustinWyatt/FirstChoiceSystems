@@ -17,6 +17,8 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public ActionResult MarketPlace()
         {
+            ViewBag.Categories = db.ItemCategories.ToList();
+
             return View(db.Items.Where(x => x.AvailableForMarket).Select(x=> new MarketPlaceItem()
             {
                 ItemName = x.ItemName,
