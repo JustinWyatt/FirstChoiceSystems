@@ -75,27 +75,6 @@ namespace FirstChoiceSystems.Controllers
                 City = user.City,
                 State = user.State,
                 Postal = user.Postal,
-                ItemsUpForSale = user.ItemsUpForSale.Where(x=>x.Seller.Id == userId).Select(saleitem =>
-                new MarketPlaceItem()
-                {
-                    ItemId = saleitem.Id,
-                    ItemName =  saleitem.ItemName,
-                    ItemDescription = saleitem.ItemDescription,
-                    Price = saleitem.PricePerUnit,
-                    Quantity = saleitem.UnitsAvailable
-                }),
-                Purchases = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Select(purchaseitem=> 
-                new PurchaseItemViewModel()
-                {
-                    ItemId = purchaseitem.Item.Id,
-                    ItemName = purchaseitem.Item.ItemName,
-                    Seller = purchaseitem.Item.Seller.CompanyName,
-                    Price = purchaseitem.PricePerUnitBoughtAt * purchaseitem.QuanityBought,
-                    QuanityBought = purchaseitem.QuanityBought,
-                    Status = purchaseitem.Status.ToString(),
-                    ApprovalDate = purchaseitem.ApprovalDate,
-                    Buyer = purchaseitem.Buyer.CompanyName,
-                })
             };
             return View(dashboard);
         }

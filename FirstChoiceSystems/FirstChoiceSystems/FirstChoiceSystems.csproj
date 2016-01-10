@@ -245,6 +245,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Font.css" />
     <Content Include="Content\Images\ChipotleFoilWrap.jpg" />
     <Content Include="Content\Images\ChipotleFoilWrap2.jpg" />
     <Content Include="Content\Images\ChipotleHat.jpg" />
@@ -304,18 +305,19 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Account\Dashboard.cshtml" />
-    <Content Include="Views\Inventory\AllItemsUpForSale.cshtml" />
     <Content Include="Views\Purchase\PurchaseRequestHistory.cshtml" />
     <Content Include="Views\Inventory\AddItem.cshtml" />
     <Content Include="Views\Sales\SalesHistory.cshtml" />
-    <Content Include="Views\Inventory\ItemDetails.cshtml" />
     <Content Include="Views\Sales\PendingSales.cshtml" />
     <Content Include="Views\Order\Order.cshtml" />
+    <Content Include="Views\Account\Dashboard.cshtml" />
+    <Content Include="Views\Marketplace\MarketPlaceItem.cshtml" />
+    <Content Include="Views\Marketplace\YourMarketPlaceItems.cshtml" />
+    <Content Include="Views\Marketplace\MarketPlace.cshtml" />
+    <Content Include="Views\Inventory\Inventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Marketplace\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

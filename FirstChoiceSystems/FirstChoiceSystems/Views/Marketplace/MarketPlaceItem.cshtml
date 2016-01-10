@@ -1,19 +1,22 @@
 ﻿@using FirstChoiceSystems.Models.ViewModels
-@model FirstChoiceSystems.Models.ViewModels.ItemViewModel
+@model FirstChoiceSystems.Models.ViewModels.MarketPlaceItem
 
 @{
-    ViewBag.Title = "ItemDetails";
+    ViewBag.Title = "MarketPlaceItem";
 }
 
 <h2>@Model.ItemName</h2>
 
 <div>
-    @using (Html.BeginForm("AddItem", "Order", new { Model.ItemId }))
+    @if (Model.Seller != User.Identity.Name)
     {
-        <input type="submit" value="Add Item" class="btn btn-primary"/>
+        using (Html.BeginForm("AddItem", "Order", new { itemId = Model.ItemId }))
+        {
+            <input type="submit" value="Add Item" class="btn btn-primary" />
+        }
     }
 
-    @if (OrderViewModel.Retrieve().Items != null)
+    @if (OrderViewModel.Retrieve().Items != null && OrderViewModel.Retrieve().Items.Contains(Model))
     {
         <p>You have @OrderViewModel.Retrieve().Items.Count(x => x.ItemId == Model.ItemId) of these items in your cart</p>
     }
@@ -23,8 +26,7 @@
             <div>
                 <img src="@image.ImagePath" />
             </div>
-        }*@
-    <dl class="dl-horizontal">
+        }*@<dl class="dl-horizontal">
 
         <dt>
             @Html.DisplayNameFor(model => model.ItemName)
@@ -61,3 +63,4 @@
         </dd>
     </dl>
 </div>
+

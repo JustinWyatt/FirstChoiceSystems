@@ -7,7 +7,7 @@
 <h2>AddItem</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddItem" ,"Inventory", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -40,12 +40,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UnitsAvailable, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.UnitsAvailable, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UnitsAvailable, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UnitsAvailable, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.UnitsAvailable, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.UnitsAvailable, "", new {@class = "text-danger"})
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Images)
+            <div class="col-md-10" id="image-group">
+                <input type="text" value="Image Path"/>
+            </div>
+        </div>
+        <button id="button" type="button">Add Image</button> 
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -55,7 +63,7 @@
     </div>
 }
 
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    
 }

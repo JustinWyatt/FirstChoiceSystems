@@ -17,12 +17,7 @@ namespace FirstChoiceSystems.Controllers
         {
             //user can only view his own inventory
             var userId = User.Identity.GetUserId();
-            return View(db.Items.Where(x => x.Seller.Id == userId).Select(x=> new MarketPlaceItem()
-            {
-                ItemId = x.Id,
-                ItemName = x.ItemName,
-                
-            }).ToList());
+            return View(db.Items.Where(x => x.Seller.Id == userId).ToList());
         }
 
         [HttpGet]
@@ -31,23 +26,6 @@ namespace FirstChoiceSystems.Controllers
         {
             //user is able to dynamically edit any field in item
             return View(db.Items.Where(x => x.Id == itemId).ToList());
-        }
-        
-        // GET: /Inventory/AllItemsUpForSale
-        [HttpGet]
-        public ActionResult AllItemsUpForSale()
-        {
-            //For testing purposes, user can view all items, including himself
-            return View(db.Items.Select(x => new MarketPlaceItem()
-            {
-                ItemId = x.Id,
-                ItemDescription = x.ItemDescription,
-                ItemName = x.ItemName,
-                Seller = x.Seller.CompanyName,
-                Quantity = x.UnitsAvailable,
-                Price = x.PricePerUnit,
-                Images = x.Images
-            }));
         }
 
         // GET: /Inventory/AddItem
@@ -71,28 +49,33 @@ namespace FirstChoiceSystems.Controllers
                 ItemCategory = item.ItemCategory,
                 Seller = user,
                 UnitsAvailable = item.UnitsAvailable,
-                Images = item.Images
+                Images = item.Images,
+                AvailableForMarket = item.AvailableForMarket
+
             };
             db.Items.Add(newItem);
             db.SaveChanges();
             return RedirectToAction("Inventory", "Inventory", new { itemId = newItem.Id });
         }
 
-        [HttpGet]
-        public ActionResult ItemDetails(int itemId)
+        // POST: Inventory/AddMarketPlaceItem
+        [HttpPost]
+        public ActionResult AddMarketPlaceItem(int itemId)
         {
-            var item = db.Items.First(x => x.Id == itemId);
+            var addToMarket = db.Items.Find(itemId);
+            addToMarket.AvailableForMarket = true;
+            db.SaveChanges();
+            return RedirectToAction("Inventory", "Inventory");
+        }
 
-            var itemDetail = new MarketPlaceItem()
-            {
-                ItemDescription = item.ItemDescription,
-                ItemName = item.ItemName,
-                Seller = item.Seller.CompanyName,
-                Price = item.PricePerUnit,
-                ItemId = item.Id,
-                Quantity = item.UnitsAvailable
-            };
-            return View(itemDetail);
+        // POST: Inventory/RemoveMarketPlaceItem
+        [HttpPost]
+        public ActionResult RemoveMarketPlaceItem(int itemId)
+        {
+            var removeMarket = db.Items.Find(itemId);
+            removeMarket.AvailableForMarket = false;
+            db.SaveChanges();
+            return RedirectToAction("Inventory", "Inventory");
         }
     }
 }

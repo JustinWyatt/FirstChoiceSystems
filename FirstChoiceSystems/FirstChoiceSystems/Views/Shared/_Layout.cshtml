@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Pro Trade</title>
+    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -22,37 +23,24 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("All Items Up For Sale", "AllItemsUpForSale", "Inventory")</li>
-                    <li>@Html.ActionLink("User's Purchase Request History", "PurchaseRequestHistory", "Purchase")</li>
-                    <li>@Html.ActionLink("Current User's Order", "Order", "Order")</li>
-                    <li>@Html.ActionLink("User's Pending Sales", "PendingSales", "Sales")</li>
-                    <li>@Html.ActionLink("User's Sales History", "SalesHistory", "Sales")</li>
+                    <li>@Html.ActionLink("Dashboard", "Dashboard", "Account")</li>
+                    <li>@Html.ActionLink("MarketPlace", "MarketPlace", "MarketPlace")</li>
+                    @if (User.Identity.IsAuthenticated && OrderViewModel.Retrieve().Items != null)
+                    {
+                        <li>You Have @OrderViewModel.Retrieve().Items.Count() Items</li>
+                        <li>Your Sub Total: @OrderViewModel.Retrieve().SubTotal</li>
+                    }
+                    <li>@Html.ActionLink("Orders", "Order", "Order")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-
-    <div>
-        @if (User.Identity.IsAuthenticated && OrderViewModel.Retrieve().Items != null)
-        {
-            <h3>Amount Of Items In Current User's Order: @OrderViewModel.Retrieve().Items.Count()</h3>
-            <h3>Current Order Sub Total: @OrderViewModel.Retrieve().SubTotal</h3>
-        }
-        else
-        {
-            <h3>Amount Of Items In Current User's Order:</h3>
-            <h3>Current Order Sub Total: </h3>
-        }
-    </div>
-
-    <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
-    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

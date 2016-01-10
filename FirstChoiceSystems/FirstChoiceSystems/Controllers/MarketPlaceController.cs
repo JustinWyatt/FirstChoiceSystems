@@ -25,8 +25,28 @@ namespace FirstChoiceSystems.Controllers
                 Seller = x.Seller.CompanyName,
                 Quantity = x.UnitsAvailable,
                 Price = x.PricePerUnit,
-                Category = x.ItemCategory.CategoryName
+                Category = x.ItemCategory.CategoryName,
+                Images = x.Images
             }).ToList());
+        }
+
+        //GET : MarketPlace/MarketPlaceItem
+        [HttpGet]
+        public ActionResult MarketPlaceItem(int itemId)
+        {
+            var dbItem = db.Items.First(x => x.Id == itemId);
+            var marketPlaceItem = new MarketPlaceItem()
+            {
+                ItemName = dbItem.ItemName,
+                ItemDescription = dbItem.ItemDescription,
+                ItemId = dbItem.Id,
+                Seller = dbItem.Seller.CompanyName,
+                Quantity = dbItem.UnitsAvailable,
+                Price = dbItem.PricePerUnit,
+                Category = dbItem.ItemCategory.CategoryName,
+                Images = dbItem.Images
+            };
+            return View(marketPlaceItem);
         }
 
         // GET: MarketPlace/YourMarketPlaceItems
@@ -42,27 +62,9 @@ namespace FirstChoiceSystems.Controllers
                 Seller = x.Seller.CompanyName,
                 Quantity = x.UnitsAvailable,
                 Price = x.PricePerUnit,
+                Category = x.ItemCategory.CategoryName,
+                Images = x.Images
             }).ToList());
         }
-
-        // POST: MarketPlace/AddMarketPlaceItem
-        [HttpPost]
-        public ActionResult AddMarketPlaceItem(int itemId)
-        {
-            var addToMarket = db.Items.Find(itemId);
-            addToMarket.AvailableForMarket = true;
-            db.SaveChanges();
-            return RedirectToAction("YourMarketPlaceItems", "MarketPlace");
-        }
-        
-        // POST: MarketPlace/RemvoeMarketPlaceItem
-        [HttpPost]
-        public ActionResult RemoveMarketPlaceItem(int itemId)
-        {
-            var removeMarket = db.Items.Find(itemId);
-            removeMarket.AvailableForMarket = false;
-            db.SaveChanges();
-            return RedirectToAction("YourMarketPlaceItems", "MarketPlace");
-        }
-    }
+    }   
 }

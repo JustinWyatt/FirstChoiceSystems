@@ -4,37 +4,43 @@
     ViewBag.Title = "Order";
 }
 
-
 <h2>Order</h2>
-<p>SubTotal: @Model.SubTotal</p>
+<h4>SubTotal: @Model.SubTotal</h4>
 <div>
     <table>
         <thead>
-        <tr>
-            <td></td>
-            <td>Item Name</td>
-            <td>Price</td>
-            <td>Quantity</td>
-            <td>Seller</td>
-            <td></td>
-        </tr>
+            <tr>
+                <td></td>
+                <td>Item Name</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Seller</td>
+                <td></td>
+            </tr>
         </thead>
         @foreach (var item in Model.Items)
         {
             <tbody>
-            <tr>
-                <td>@Html.ActionLink("View Item", "ItemDetails", "Inventory", new {itemId = item.ItemId}, null)</td>
-                <td>@item.ItemName</td>
-                <td>@item.Price</td>
-                <td>@item.Quantity</td>
-                <td>@item.Seller</td>
-                <td>@Html.ActionLink("Remove Item", "RemoveItem", "Order", new {itemid = item.ItemId}, null)</td>
-            </tr>
+                <tr>
+                    <td>@Html.ActionLink("View Item", "MarketPlaceItem", "MarketPlace", new { itemId = item.ItemId }, null)</td>
+                    <td>@item.ItemName</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Seller</td>
+                    @using (Html.BeginForm("RemoveItem", "Order", new { itemId = item.ItemId },  FormMethod.Post))
+                    {
+                    <td><input type="submit" value="Remove Item" class="btn btn-primary" /></td>
+                    }
+                </tr>
             </tbody>
         }
     </table>
-    @using (Html.BeginForm("PurchaseRequest", "Purchase", FormMethod.Post))
+    @if (Model.Items.Any())
     {
-        <input type="submit" value="Make Purchase" class="btn btn-primary" />
+        using (Html.BeginForm("PurchaseRequest", "Purchase", FormMethod.Post))
+        {
+            <input type="submit" value="Make Purchase" class="btn btn-primary" />
+        }
     }
 </div>
