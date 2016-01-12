@@ -2,6 +2,213 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    
+        /********************************************************/
+    /*                 Page background                      */
+    /********************************************************/
+     body, .content {
+         background: #fff;
+         color:#333;
+     }
+    /********************************************************/
+    /*                     Typography                       */
+    /********************************************************/
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Open sans", Helvetica, Arial;
+        font-weight: 300;
+    }
+
+    p, .jumbotron p {
+        font-size: 15px;
+        line-height: 1.6em;
+    }
+
+    a{ color: #CD503A; }
+    a:hover, a:focus { color: #953726; }
+    a:visited { color: #D87563; }
+
+    /********************************************************/
+    /*                        Header                        */
+    /********************************************************/
+    .header {
+        background: #A43222;
+        background: -moz-linear-gradient(top,  #A43222 0%, #CD503A 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#A43222), color-stop(100%,#CD503A));
+        background: -webkit-linear-gradient(top,  #A43222 0%,#CD503A 100%);
+        background: -o-linear-gradient(top,  #A43222 0%,#CD503A 100%);
+        background: -ms-linear-gradient(top,  #A43222 0%,#CD503A 100%);
+        background: linear-gradient(to bottom,  #A43222 0%,#CD503A 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#A43222', endColorstr='#CD503A',GradientType=0 );
+        color: white;
+        margin-bottom: 0;
+        padding-bottom: 0px;
+    }
+    .header h1 {
+        font-family: "Open sans", Arial;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 35px 0 10px 0;
+        text-align: center;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+        color:#F6EFDD;
+    }
+    .header h2 {
+        color: rgba(255,255,255,.9);
+        font-family: Georgia;
+        font-size: 17px;
+        font-weight: normal;
+        margin: 0 0 25px 0;
+        text-align: center;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+    }
+    .header p { font-size: 15px; line-height: 1.2em;}
+    .header .lead {
+        font-family: "Open sans", Arial;
+        color: rgba(255,255,255,.9);
+        line-height: 1.2em;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+    }
+    .header .small {
+        font-size: 0.9em;
+        line-height: 1.2em;
+        text-align: center;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+    }
+    .header .text-muted { color:white; opacity: 0.5; }
+
+    .header form { margin-bottom: 18px; }
+    .header .form-control { background: rgba(5,5,5,0.4); border: 0; color: white; font-size:15px;}
+    .header .form-control::-webkit-input-placeholder { color: rgba(255,255,255,0.3); }
+    .header .form-control:-moz-placeholder { color: rgba(255,255,255,0.3); }
+    .header .form-control::-moz-placeholder { color: rgba(255,255,255,0.3); }
+    .header .form-control:-ms-input-placeholder { color: rgba(255,255,255,0.3); }
+    .header .btn-default {
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.8);
+        color: rgba(255,255,255,.8);
+        font-size:15px;
+        padding: 12px 36px;
+    }
+
+
+    /********************************************************/
+    /*          Illustration and its animation              */
+    /********************************************************/
+    #illustration { z-index: 1; text-align: center; width:100%; margin-bottom:-130px;}
+    #illustration img {
+        max-width:100%;
+        -webkit-transition: all 0.8s;
+        -o-transition: all 0.8s;
+        -moz-transition: all 0.8s;
+        transition: all 0.8s;
+    }
+    .expand img{ margin-bottom:120px; margin-top:-100px; }
+
+
+
+    /********************************************************/
+    /*                       Content                        */
+    /********************************************************/
+
+    .content {
+        position: relative;
+        z-index: 999;
+        margin-bottom:40px;
+    }
+
+    .jumbotron {
+        background:#f5f5f5;
+    }
+
+    .content .lead { font-family: Georgia; font-style: italic; color:#999; }
+
+    .space-before { padding-top:20px; }
+    .space-after { padding-bottom:20px; }
+
+    .img-feature {
+        border:15px solid #f5f5f5;
+        margin:0 auto;
+        -webkit-border-radius: 50% ;
+        -moz-border-radius: 50% ;
+        border-radius: 50%;
+        padding:1px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+
+    /********************************************************/
+    /*                   Responsiveness                     */
+    /********************************************************/
+
+    @@media (max-width: 767px) {
+        h1, h2, h3, h4 { text-align: center;}
+    }
+
+    @@media (min-width: 482px) {
+        .header h1 { font-size: 55px; }
+        .header h2 { font-size: 30px; }
+        .header p { font-size: 15px; }
+
+        #illustration { margin-bottom:-215px;}
+        .expand img{ margin-bottom:200px; margin-top:-180px; }
+    }
+    @@media (min-width: 768px) {
+        .header h1 { font-size: 55px; }
+        .header h2 { font-size: 20px; }
+        .header p { font-size: 15px; }
+        .header .lead { font-size:22px; }
+
+        #illustration { margin-bottom:-310px;}
+        .expand img{ margin-bottom:300px; margin-top:-190px; }
+
+    }
+    @@media (min-width: 992px) {
+
+        .header h1 { font-size: 55px; margin-top: 50px; }
+        .header h2 { margin-bottom: 40px;}
+        .header p { font-size: 15px; }
+
+        #illustration { margin-bottom:-380px;}
+        .expand img{ margin-bottom:370px; margin-top:-260px; }
+
+        .space-before { padding-top:40px; }
+        .space-after { padding-bottom:40px; }
+
+    }
+
+/********************************************************/
+    /*                     Color themes                     */
+    /********************************************************/
+
+    /********************/
+    /*      Violet      */
+    /********************/
+
+    /*.header {
+        background: #313A5B;
+        background: -moz-linear-gradient(top,  #313A5B 0%, #5D577B 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#313A5B), color-stop(100%,#5D577B));
+        background: -webkit-linear-gradient(top,  #313A5B 0%,#5D577B 100%);
+        background: -o-linear-gradient(top,  #313A5B 0%,#5D577B 100%);
+        background: -ms-linear-gradient(top,  #313A5B 0%,#5D577B 100%);
+        background: linear-gradient(to bottom,  #313A5B 0%,#5D577B 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#313A5B', endColorstr='#5D577B',GradientType=0 );
+    }
+    .header h1 { color:white; }
+
+    h1, h2, h3, h4, h5, h6 { color: #5E7690; }
+    a{ color: #00b0b0; }
+    a:hover, a:focus { color: #007777; }
+    a:visited { color: #5A8B86; }*/
+</style>
+
 <!-- Header -->
 <header class="header">
     <div class="container">
@@ -10,29 +217,62 @@
                 <h1>Pro Trade</h1>
                 <h2>Barter Currency Trading</h2>
                 <p class="lead">
-                    Pikachu diablo 3 asians angry birds final week varius le girlfriend in.
-                    Feel Like a Sir panda blizzard hac mom nerd monday in on nyan cat.
+                    This is a mock up web app that allows businesses to trade and render services in trade currency.
                 </p>
 
                 <p>
-                    Pro Trade thing is currently in active development and will be released soon.<br>
-                    In the meantime, check out our demo.
+                    Pro Trade is currently in active development and will be released soon.
+                    <br>
+                    In the meantime, check out our demo. You may register without charge.
                 </p>
                 <br>
-
-                <form class="form-inline" role="form">
-                    <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Username"></div>
-                    <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputPassword2" placeholder="Password"></div>
-                    <button type="submit" class="btn btn-lg btn-default">Login</button>
-                </form>
-                <p class="small text-muted">Don't have an account? <a>Sign Up.</a></p>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-inline", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<form class="form-inline" role="form">*@
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="exampleInputPassword2" placeholder="Password">
+                    </div>
+                        <button type="submit" class="btn btn-lg btn-default">Login</button>
+                        @*</form>*@
+                }
+                <p class="small text-muted">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <p>Don't have an account? <a data-target="#myModal">Sign Up.</a></p>
+                    }
+                    else
+                    {
+                        <p>@Html.ActionLink("Portal", "Portal", "Account")</p>
+                    }
+    
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-toggle="modal" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Sign Up</h4>
+                            </div>
+                            <div class="modal-body">
+                                @Html.Partial("_RegisterPartial")
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div id="illustration">
-                    <img src="assets/images/ap-screenshot.png" alt="">
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="illustration">
+                <img src="http://s11.postimg.org/cmpnhokqb/ap_screenshot.png" alt="">
             </div>
         </div>
     </div>
@@ -47,7 +287,7 @@
             <div class="col-sm-10 col-sm-push-1">
                 <h1 class="text-center">Why Barter?</h1>
                 <p class="lead text-center">
-                    It's an easy to use platform. You'll get marketing benefits and inventory control.
+                    It's an easy to use platform. You'll get marketing benefits and you can manage your inventory.
                     Connect with other traders and gain more business.
                 </p>
             </div>
@@ -92,8 +332,7 @@
             <div class="col-md-5 col-md-push-1 col-sm-6">
                 <h2 class="space-before">After you're done, start trading!</h2>
                 <p>Every time you make a transaction, whether buying or selling, your cash account will be charged 7.5% of the cash value of that transaction.</p>
-
-                <p>Every month you will receive IRS Form 1099-B, stating your purchases and sales. We'll keep up with your transactions annually and mail it to you.</p>
+                <p>Every month you will receive IRS Form 1099-B, stating your purchases and sales. We'll keep up with your transactions annually and email it to you.</p>
             </div>
         </div>
     </section>
@@ -106,11 +345,37 @@
     <section class="container">
         <div class="row">
             <div class="col-md-5 col-md-push-1">
-                <h2>Login</h2>
+                <h2>Got your interest?</h2>
+                <p>Please tell your friends about Pro Trade!</p>
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                    <a class="addthis_button_facebook"></a>
+                    <a class="addthis_button_twitter"></a>
+                    <a class="addthis_button_linkedin"></a>
+                    <a class="addthis_button_google_plusone_share"></a>
+                    <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                </div>
+                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-536ba34f3dab1f93"></script>
+                <!-- AddThis Button END -->
+
             </div>
             <div class="col-md-5 col-md-push-1">
-                <h2>Register</h2>
+                <h2>Explore.</h2>
+                <p>If you'd like to collaborate on our trading platform, please email me at justinjwyatt@hotmail.com. </p>
+                <p>If you'd like to see other work of mine, check out my <a href="https://github.com/JustinWyatt/">GitHub</a> </p>
             </div>
         </div>
     </section>
 </footer>
+
+
+@section scripts{
+    <script>
+        $('#illustration').hover(function () {
+            $(this).addClass('expand');
+        }, function () {
+            $(this).removeClass('expand');
+        });
+    </script>
+}
