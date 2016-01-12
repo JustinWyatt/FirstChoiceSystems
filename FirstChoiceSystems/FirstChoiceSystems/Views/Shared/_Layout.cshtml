@@ -5,19 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Pro Trade</title>
-    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
-
     <script src="https://code.angularjs.org/1.5.0-rc.0/angular.js"></script>
     <script src="https://code.angularjs.org/1.5.0-rc.0/angular-route.js"></script>
-    <script src="https://code.angularjs.org/1.5.0-rc.0/angular-animate.js"></script>
-
-    @* App *@
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
     @Scripts.Render("~/bundles/myApp")
-    @*<script src="~/AngularJS/App/app.js"></script>*@
-
-    @* Controllers *@
-    <script src="~/AngularJS/Controllers/DashboardController.js"></script>
-
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -34,23 +25,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Dashboard", "Dashboard", "Account")</li>
-                    <li>@Html.ActionLink("MarketPlace", "MarketPlace", "MarketPlace")</li>
-                    @if (User.Identity.IsAuthenticated && OrderViewModel.Retrieve().Items != null)
-                    {
-                        <li>You Have @OrderViewModel.Retrieve().Items.Count() Items</li>
-                        <li>Your Sub Total: @OrderViewModel.Retrieve().SubTotal</li>
-                    }
-                    <li>@Html.ActionLink("Orders", "Order", "Order")</li>
+                    <li>@Html.ActionLink("Pro Trade", "Dashboard", "Account")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
 
     @Scripts.Render("~/bundles/jquery")
