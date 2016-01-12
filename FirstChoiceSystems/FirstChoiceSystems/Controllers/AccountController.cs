@@ -55,7 +55,15 @@ namespace FirstChoiceSystems.Controllers
             }
         }
 
-        // GET: /Acount/Dashboard
+
+        // GET: /Account/Portal
+        [HttpGet]
+        public ActionResult Portal()
+        {
+            return View();
+        }
+
+        // GET: /Account/Dashboard
         [HttpGet]
         public ActionResult Dashboard()
         {

@@ -243,7 +243,22 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AngularViews\portal.html" />
+    <Content Include="AngularJS\App\app.js" />
+    <Content Include="AngularJS\Controllers\DashboardController.js" />
+    <Content Include="AngularJS\Controllers\InventoryController.js" />
+    <Content Include="AngularJS\Controllers\itemController.js" />
+    <Content Include="AngularJS\Controllers\MarketPlaceController.js" />
+    <Content Include="AngularJS\Factories\InventoryFactory.js" />
+    <Content Include="AngularViews\businessdirectory.html" />
+    <Content Include="AngularViews\dashboard.html" />
+    <Content Include="AngularViews\inventory.html" />
+    <Content Include="AngularViews\itemdetails.html" />
+    <Content Include="AngularViews\marketplace.html" />
+    <Content Include="AngularViews\profile.html" />
+    <Content Include="AngularViews\purchases.html" />
+    <Content Include="AngularViews\sales.html" />
+    <Content Include="AngularViews\servicedirectory.html" />
+    <Content Include="AngularViews\test.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Font.css" />
@@ -316,8 +331,10 @@
     <Content Include="Views\Marketplace\YourMarketPlaceItems.cshtml" />
     <Content Include="Views\Marketplace\MarketPlace.cshtml" />
     <Content Include="Views\Inventory\Inventory.cshtml" />
+    <Content Include="Views\Account\Portal.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AngularJS\Services\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

@@ -15,11 +15,11 @@ namespace FirstChoiceSystems.Controllers
 
         // GET: MarketPlace/MarketPlace
         [HttpGet]
-        public ActionResult MarketPlace()
+        public JsonResult MarketPlace()
         {
             ViewBag.Categories = db.ItemCategories.ToList();
 
-            return View(db.Items.Where(x => x.AvailableForMarket).Select(x=> new MarketPlaceItem()
+            return Json(db.Items.Where(x => x.AvailableForMarket).Select(x=> new MarketPlaceItem()
             {
                 ItemName = x.ItemName,
                 ItemDescription = x.ItemDescription,
@@ -29,12 +29,12 @@ namespace FirstChoiceSystems.Controllers
                 Price = x.PricePerUnit,
                 Category = x.ItemCategory.CategoryName,
                 Images = x.Images
-            }).ToList());
+            }).ToList(), JsonRequestBehavior.AllowGet);
         }
 
         //GET : MarketPlace/MarketPlaceItem
         [HttpGet]
-        public ActionResult MarketPlaceItem(int itemId)
+        public JsonResult MarketPlaceItem(int itemId)
         {
             var dbItem = db.Items.First(x => x.Id == itemId);
             var marketPlaceItem = new MarketPlaceItem()
@@ -48,7 +48,7 @@ namespace FirstChoiceSystems.Controllers
                 Category = dbItem.ItemCategory.CategoryName,
                 Images = dbItem.Images
             };
-            return View(marketPlaceItem);
+            return Json(marketPlaceItem, JsonRequestBehavior.AllowGet);
         }
 
         // GET: MarketPlace/YourMarketPlaceItems

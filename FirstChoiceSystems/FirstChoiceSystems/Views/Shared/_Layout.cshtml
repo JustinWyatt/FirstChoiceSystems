@@ -1,11 +1,23 @@
 ﻿@using FirstChoiceSystems.Models.ViewModels
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Pro Trade</title>
-    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
+
+    <script src="https://code.angularjs.org/1.5.0-rc.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.5.0-rc.0/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.5.0-rc.0/angular-animate.js"></script>
+
+    @* App *@
+    @Scripts.Render("~/bundles/myApp")
+    @*<script src="~/AngularJS/App/app.js"></script>*@
+
+    @* Controllers *@
+    <script src="~/AngularJS/Controllers/DashboardController.js"></script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 

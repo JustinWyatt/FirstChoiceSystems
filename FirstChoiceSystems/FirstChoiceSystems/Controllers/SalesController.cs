@@ -34,27 +34,30 @@ namespace FirstChoiceSystems.Controllers
 
         // GET: /Sales/PendingSales
         [HttpGet]
-        public ActionResult PendingSales()
+        public JsonResult PendingSales()
         {
             var userId = User.Identity.GetUserId();
-            return View(db.PurchaseItems.Where(x => x.Item.Seller.Id == userId && x.Status == TransactionStatus.Pending).Select(saleitem => new PurchaseItemViewModel()
-            {
-                ItemId = saleitem.Item.Id,
-                ItemName = saleitem.Item.ItemName,
-                Seller = saleitem.Item.Seller.CompanyName,
-                Price = saleitem.PricePerUnitBoughtAt * saleitem.QuanityBought,
-                QuanityBought = saleitem.QuanityBought,
-                Status = saleitem.Status.ToString(),
-                ApprovalDate = saleitem.ApprovalDate,
-                Buyer = saleitem.Buyer.CompanyName
-            }).ToList());
+            var model = db.PurchaseItems
+                .Where(x => x.Item.Seller.Id == userId && x.Status == TransactionStatus.Pending)
+                .Select(pi => new PurchaseItemViewModel()
+                {
+                    ItemId = pi.Item.Id,
+                    ItemName = pi.Item.ItemName,
+                    Seller = pi.Item.Seller.CompanyName,
+                    Price = pi.PricePerUnitBoughtAt * pi.QuanityBought,
+                    QuanityBought = pi.QuanityBought,
+                    Status = pi.Status.ToString(),
+                    ApprovalDate = pi.ApprovalDate,
+                    Buyer = pi.Buyer.CompanyName
+                }).ToList();
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         // POST: /Sales/ApproveSale
         [HttpPost]
         public ActionResult ApproveSale(int purchaseItemVmId)
         {
-            var purchaseItems = db.PurchaseItems.First(x=>x.Item.Id == purchaseItemVmId);
+            var purchaseItems = db.PurchaseItems.First(x => x.Item.Id == purchaseItemVmId);
             purchaseItems.ApprovalDate = DateTime.Now;
             purchaseItems.Item.Seller.Balance += purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
             purchaseItems.Buyer.Balance -= purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
@@ -75,7 +78,7 @@ namespace FirstChoiceSystems.Controllers
         }
 
         [HttpGet]
-        public ActionResult ItemDetails(int itemId)
+        public JsonResult ItemDetails(int itemId)
         {
             var item = db.Items.First(x => x.Id == itemId);
 
@@ -88,7 +91,7 @@ namespace FirstChoiceSystems.Controllers
                 ItemId = item.Id,
                 Quantity = item.UnitsAvailable
             };
-            return View(itemDetail);
+            return Json(itemDetail, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
