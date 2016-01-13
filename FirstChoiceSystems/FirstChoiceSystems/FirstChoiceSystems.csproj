@@ -245,22 +245,17 @@
   <ItemGroup>
     <Content Include="AngularJS\App\app.js" />
     <Content Include="AngularJS\Controllers\DashboardController.js" />
-    <Content Include="AngularJS\Controllers\InventoryController.js" />
     <Content Include="AngularJS\Controllers\itemController.js" />
-    <Content Include="AngularJS\Controllers\MarketPlaceController.js" />
-    <Content Include="AngularJS\Factories\InventoryFactory.js" />
-    <Content Include="AngularViews\businessdirectory.html" />
+    <Content Include="AngularViews\account.html" />
     <Content Include="AngularViews\dashboard.html" />
-    <Content Include="AngularViews\inventory.html" />
     <Content Include="AngularViews\itemdetails.html" />
-    <Content Include="AngularViews\marketplace.html" />
-    <Content Include="AngularViews\profile.html" />
-    <Content Include="AngularViews\purchases.html" />
-    <Content Include="AngularViews\sales.html" />
-    <Content Include="AngularViews\servicedirectory.html" />
+    <Content Include="AngularViews\reports.html" />
+    <Content Include="AngularViews\screentest.html" />
     <Content Include="AngularViews\test.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapresponsive.css" />
+    <Content Include="Content\fontawesome.css" />
     <Content Include="Content\Images\ChipotleFoilWrap.jpg" />
     <Content Include="Content\Images\ChipotleFoilWrap2.jpg" />
     <Content Include="Content\Images\ChipotleHat.jpg" />
@@ -272,6 +267,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\base.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -333,7 +329,6 @@
     <Content Include="Views\Account\Portal.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AngularJS\Services\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
