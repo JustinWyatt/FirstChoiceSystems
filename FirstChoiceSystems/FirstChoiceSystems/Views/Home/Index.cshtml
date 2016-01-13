@@ -26,22 +26,22 @@
             line-height: 1.6em;
         }
 
-        a{ color: #CD503A; }
-        a:hover, a:focus { color: #953726; }
-        a:visited { color: #D87563; }
+        a{ color: #fff8dc; }
+        a:hover, a:focus { color: #fff8dc; }
+        a:visited { color: #fff8dc; }
 
         /********************************************************/
         /*                        Header                        */
         /********************************************************/
         .header {
-            background: #A43222;
-            background: -moz-linear-gradient(top,  #A43222 0%, #CD503A 100%);
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#A43222), color-stop(100%,#CD503A));
-            background: -webkit-linear-gradient(top,  #A43222 0%,#CD503A 100%);
-            background: -o-linear-gradient(top,  #A43222 0%,#CD503A 100%);
-            background: -ms-linear-gradient(top,  #A43222 0%,#CD503A 100%);
-            background: linear-gradient(to bottom,  #A43222 0%,#CD503A 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#A43222', endColorstr='#CD503A',GradientType=0 );
+            background: #01579B;
+            background: -moz-linear-gradient(top,  #01579B 0%, #0277BD 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#01579B), color-stop(100%,#0277BD));
+            background: -webkit-linear-gradient(top,  #01579B 0%,#0277BD 100%);
+            background: -o-linear-gradient(top,  #01579B 0%,#0277BD 100%);
+            background: -ms-linear-gradient(top,  #01579B 0%,#0277BD 100%);
+            background: linear-gradient(to bottom,  #01579B 0%,#0277BD 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01579B', endColorstr='#0277BD',GradientType=0 );
             color: white;
             margin-bottom: 0;
             padding-bottom: 0px;
@@ -216,9 +216,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-push-2 text-center">
                 <h1>Pro Trade</h1>
-                <h2>Barter Currency Trading</h2>
+                <h2>Barter Currency Exchange</h2>
                 <p class="lead">
-                    This is a mock up web app that allows businesses to trade and render services in trade currency.
+                    This is a mock up trading platform that allows businesses to sell and render services in trade currency.
                 </p>
 
                 <p>
@@ -232,7 +232,7 @@
                     @Html.AntiForgeryToken()
                     @*<form class="form-inline" role="form">*@
                     <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Username"></div>
-                    <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputPassword2" placeholder="Password"></div>
+                    <div class="form-group"><input type="password" class="form-control input-lg" id="exampleInputPassword2" placeholder="Password"></div>
                     <button type="submit" class="btn btn-lg btn-default">Login</button>
                         @*</form>*@
                 }
@@ -252,7 +252,6 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-toggle="modal" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Sign Up</h4>
                                 </div>
                                 <div class="modal-body">
                                     <h1>Register</h1>
@@ -299,8 +298,9 @@
                     <img class="img-feature img-responsive" src="http://s18.postimg.org/m49n8jxex/Register.png" alt="Sample image">
                 </div>
                 <div class="col-md-5 col-md-push-1 col-sm-6">
-                    <h2 class="space-before">First, register for our site, <span class="text-muted">it's actually quite simple</span></h2>
-                    <p>We'll connect you with other users in the area. We like to promote local trade and small business support.</p>
+                    <h2 class="space-before">Register for our site, <span class="text-muted">it's actually quite simple</span></h2>
+                    <p>We'll connect you with other users in your local area. We like to promote local trade and small business support.</p>
+                    <p>We're an inter-regional network dedicated to working for you. Registration is free.</p>
                 </div>
             </div>
 
@@ -360,7 +360,7 @@
                 <div class="col-md-5 col-md-push-1">
                     <h2>Explore.</h2>
                     <p>If you'd like to collaborate on our trading platform, please email me at justinjwyatt@hotmail.com. </p>
-                    <p>If you'd like to see other work of mine, check out my <a href="https://github.com/JustinWyatt/">GitHub</a> </p>
+                    <p>If you'd like to see other work of mine, check out my <a href="https://github.com/JustinWyatt/">GitHub</a>.</p>
                 </div>
             </div>
         </section>
@@ -370,6 +370,7 @@
     @section scripts{
         <script>
             $('#illustration').hover(function () {
+
                 $(this).addClass('expand');
             }, function () {
                 $(this).removeClass('expand');

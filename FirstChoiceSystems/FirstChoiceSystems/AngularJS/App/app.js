@@ -5,7 +5,7 @@ app.config(function ($routeProvider) {
         .when("/account/portal",
         {
             controller: 'DashboardController',
-            templateUrl: '/AngularViews/screentest.html'
+            templateUrl: '/AngularViews/dashboard.html'
         })
 
         .when("/item/:id",
@@ -14,34 +14,44 @@ app.config(function ($routeProvider) {
             templateUrl: '/AngularViews/itemdetails.html'
         })
 
-        .when("/reports",
+        .when("/profile/:id",
         {
             templateUrl: '/AngularViews/screentest.html'
+        })
+
+        .when("/servicead/:id",
+        {
+            templateUrl: '/AngularViews/servicescreentest.html'
+        })
+
+        .when("/reports",
+        {
+            templateUrl: '/AngularViews/reportsscreentest.html'
         })
 
         .when("/marketplace",
         {
-            templateUrl: '/AngularViews/screentest.html'
+            templateUrl: '/AngularViews/marketplacescreentest.html'
         })
 
         .when("/businessdirectory",
         {
-            templateUrl: '/AngularViews/screentest.html'
+            templateUrl: '/AngularViews/businessscreentest.html'
         })
 
         .when("/servicedirectory",
         {
-            templateUrl: '/AngularViews/screentest.html'
+            templateUrl: '/AngularViews/servicescreentest.html'
         })
 
         .when("/shoppingcart",
         {
-            templateUrl: '/AngularViews/screentest.html'
+            templateUrl: '/AngularViews/shoppingscreentest.html'
         })
 
         .when("/account",
         {
-            templateUrl: '/AngularViews/screentest.html'
+            templateUrl: '/AngularViews/accountscreentest.html'
         })
 
         .otherwise({ redirectTo: '/account/portal' });

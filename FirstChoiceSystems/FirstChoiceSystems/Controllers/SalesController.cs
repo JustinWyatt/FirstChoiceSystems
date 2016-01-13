@@ -55,26 +55,26 @@ namespace FirstChoiceSystems.Controllers
 
         // POST: /Sales/ApproveSale
         [HttpPost]
-        public ActionResult ApproveSale(int purchaseItemVmId)
+        public JsonResult ApproveSale(int id)
         {
-            var purchaseItems = db.PurchaseItems.First(x => x.Item.Id == purchaseItemVmId);
+            var purchaseItems = db.PurchaseItems.First(x => x.Item.Id == id);
             purchaseItems.ApprovalDate = DateTime.Now;
             purchaseItems.Item.Seller.Balance += purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
             purchaseItems.Buyer.Balance -= purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
             purchaseItems.Item.UnitsAvailable -= purchaseItems.QuanityBought;
             purchaseItems.Status = TransactionStatus.Approved;
             db.SaveChanges();
-            return RedirectToAction("PendingSales", "Sales");
+            return Json("Sale Approved", JsonRequestBehavior.AllowGet);
         }
 
         // POST: /Sales/RejectSale
         [HttpPost]
-        public ActionResult RejectSale(int purchaseItemId)
+        public JsonResult RejectSale(int purchaseItemId)
         {
             var purchaseItems = db.PurchaseItems.Find(purchaseItemId);
             purchaseItems.Status = TransactionStatus.Voided;
             db.SaveChanges();
-            return RedirectToAction("PendingSales", "Sales");
+            return Json ("Sale Rejected", JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

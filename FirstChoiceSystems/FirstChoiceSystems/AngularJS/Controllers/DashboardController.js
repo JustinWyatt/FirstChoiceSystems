@@ -24,6 +24,19 @@
 
     marketplace();
 
+    $scope.approveSale = function(id) {
+        $http.post('/sales/approvesale?id=' + id).then(function(result) {
+            $scope.saleItem = result.data;
+            console.log(result.data);
+        });
+    }
+
+    $scope.rejectSale = function (id) {
+        $http.post('/sales/rejectsale?id=' + id).then(function (result) {
+            $scope.saleItem = result.data;
+            console.log(result.data);
+        });
+    }
 
 
 })
