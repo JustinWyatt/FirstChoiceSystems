@@ -5,70 +5,102 @@
 }
 
 <h2>Dashboard</h2>
-
+<ul>
+    <li>@Html.ActionLink("User's Pending Sales", "PendingSales", "Sales")</li>
+    <li>@Html.ActionLink("User's Sales History", "SalesHistory", "Sales")</li>
+    <li>@Html.ActionLink("User's MarketPlace Items", "YourMarketPlaceItems", "MarketPlace")</li>
+    <li>@Html.ActionLink("User's Purchase Request History", "PurchaseRequestHistory", "Purchase")</li>
+    <li>@Html.ActionLink("User's Inventory", "Inventory", "Inventory")</li>
+</ul>
 <div>
-    <h3></h3>
-    <table>
-        <thead>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        </thead>
-        <tbody>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        </tbody>
-    </table>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonOfContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonOfContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyWebsite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyWebsite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusinessCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRegistered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRegistered)
+        </dd>
+
+    </dl>
 </div>
-<div>
-    <h3>Items Up For Sale</h3>
-    @foreach (var itemViewModel in Model.ItemsUpForSale)
-    {
-        <table>
-            <thead>
-                <tr>Item Description</tr>
-                <tr>Price</tr>
-                <tr>Quantity</tr>
-            </thead>
-            <tbody>
-                <tr>@itemViewModel.ItemDescription</tr>
-                <tr>@itemViewModel.Price</tr>
-                <tr>@itemViewModel.Quantity</tr>
-            </tbody>
-        </table>
-    }
-</div>
-
-<div>
-    <h3>Purchases Made</h3>
-    @foreach (var purchaseItem in Model.Purchases)
-    {
-
-        <table>
-            <thead>
-                <tr>Total Price</tr>
-                <tr>Quantity</tr>
-                <tr>Status</tr>
-                <tr>Approval Date</tr>
-                <tr>Buyer</tr>
-                <tr>Item</tr>
-            </thead>
-            <tbody>
-                <tr>$@purchaseItem.PricePerUnitBoughtAt * @purchaseItem.QuanityBought</tr>
-                <tr>@purchaseItem.QuanityBought</tr>
-                <tr>@purchaseItem.Status</tr>
-                <tr>@purchaseItem.ApprovalDate.ToString()</tr>
-                <tr>@purchaseItem.Buyer.PersonOfContact</tr>
-                <tr>@purchaseItem.Item.ItemName - @purchaseItem.Item.Seller</tr>
-            </tbody>
-        </table>
-    }
-
-</div>
-

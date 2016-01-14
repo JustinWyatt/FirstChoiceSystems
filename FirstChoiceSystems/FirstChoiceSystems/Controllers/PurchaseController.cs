@@ -4,8 +4,8 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using FirstChoiceSystems.Models.ViewModels;
 
 namespace FirstChoiceSystems.Controllers
 {
@@ -16,11 +16,21 @@ namespace FirstChoiceSystems.Controllers
 
         // GET: /Purchase/PurchaseRequestHistory
         [HttpGet]
-        public ActionResult PurchaseRequestHistory()
+        public JsonResult PurchaseRequestHistory()
         {
             //user can only view his own purchases
             var userId = User.Identity.GetUserId();
-            return View(db.Users.Find(userId).Purchases);
+            return Json(db.PurchaseItems.Where(x => x.Buyer.Id == userId).Select(purchaseItem => new PurchaseItemViewModel()
+            {
+                DatePurchased = purchaseItem.DatePurchased,
+                ApprovalDate = purchaseItem.ApprovalDate,
+                ItemName = purchaseItem.Item.ItemName,
+                ItemId = purchaseItem.Item.Id,
+                Status = purchaseItem.Status.ToString(),
+                Seller = purchaseItem.Item.Seller.CompanyName,
+                QuanityBought = purchaseItem.QuanityBought,
+                Price = purchaseItem.QuanityBought * purchaseItem.PricePerUnitBoughtAt
+            }).ToList(), JsonRequestBehavior.AllowGet);
         }
 
         // POST: /Purchase/PurchaseRequest
@@ -33,22 +43,28 @@ namespace FirstChoiceSystems.Controllers
             var user = db.Users.Find(userId);
 
             var newPurchaseRequest = new List<PurchaseItem>();
-            foreach (var itemVM in currentOrder.Items)
+            var date = DateTime.Now;
+            foreach (var itemVm in currentOrder.Items)
             {
-                var itemFromDB = db.Items.Find(itemVM.Id);
+                var itemFromDb = db.Items.Find(itemVm.ItemId);
                 var newPurchaseItem = new PurchaseItem()
                 {
                     Buyer = user,
-                    Item = itemFromDB,
-                    PricePerUnitBoughtAt = itemFromDB.PricePerUnit,
-                    QuanityBought = itemVM.Quantity,
-                    Status = TransactionStatus.Pending
+                    Item = itemFromDb,
+                    PricePerUnitBoughtAt = itemFromDb.PricePerUnit,
+                    QuanityBought = itemVm.Quantity,
+                    Status = TransactionStatus.Pending,
+                    DatePurchased = date
                 };
-
                 newPurchaseRequest.Add(newPurchaseItem);
             }
             db.PurchaseItems.AddRange(newPurchaseRequest);
             db.SaveChanges();
+            //foreach (var itemVm in currentOrder.Items)
+            //{
+            //    currentOrder.Items.Remove(itemVm);
+            //}
+            currentOrder.Save();
             return RedirectToAction("PurchaseRequestHistory", "Purchase");
         }
 
