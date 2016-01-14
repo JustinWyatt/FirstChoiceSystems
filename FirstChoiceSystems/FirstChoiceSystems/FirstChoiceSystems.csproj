@@ -251,6 +251,7 @@
     <Content Include="AngularViews\businessscreentest.html" />
     <Content Include="AngularViews\dashboard.html" />
     <Content Include="AngularViews\itemdetails.html" />
+    <Content Include="AngularViews\marketplace.html" />
     <Content Include="AngularViews\marketplacescreentest.html" />
     <Content Include="AngularViews\reports.html" />
     <Content Include="AngularViews\reportsscreentest.html" />

@@ -4,8 +4,7 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/account/portal",
         {
-            controller: 'DashboardController',
-            templateUrl: '/AngularViews/dashboard.html'
+            templateUrl: '/AngularViews/screentest.html'
         })
 
         .when("/item/:id",
@@ -50,6 +49,16 @@ app.config(function ($routeProvider) {
         })
 
         .when("/account",
+        {
+            templateUrl: '/AngularViews/accountscreentest.html'
+        })
+
+        .when("/checkoutresult/:id",
+        {
+            templateUrl: '/AngularViews/accountscreentest.html'
+        })
+
+        .when("/inventory",
         {
             templateUrl: '/AngularViews/accountscreentest.html'
         })

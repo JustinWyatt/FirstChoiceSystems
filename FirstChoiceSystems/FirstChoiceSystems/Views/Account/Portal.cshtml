@@ -177,7 +177,7 @@
                 <li><a href="#/businessdirectory"><i class="icon-group"></i><span>Business Directory</span> </a></li>
 
                 <li><a href="#/servicedirectory"><i class="icon-list"></i><span>Service Directory</span> </a> </li>
-                <li><a href="#/shoppingcart"><i class="icon-shopping-cart"></i><span>Shopping Cart</span> </a> </li>
+                <li><a href="#/shoppingcart"><i class="icon-shopping-cart"></i><span>Order</span> </a> </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i><span>Account</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -198,16 +198,5 @@
 <div ng-view></div>
 
 @section scripts{
-    <script>
-        $(function () {
-            $('.subnavbar').find('li').each(function (i) {
-
-                var mod = i % 3;
-
-                if (mod === 2) {
-                    $(this).addClass('subnavbar-open-right');
-                }
-            });
-        });
-    </script>
+   
 }
