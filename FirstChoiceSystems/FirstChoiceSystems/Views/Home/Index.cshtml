@@ -227,41 +227,27 @@
                     In the meantime, check out our demo. You may register without charge.
                 </p>
                 <br>
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-inline", role = "form" }))
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-inline", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    @*<form class="form-inline" role="form">*@
-                    <div class="form-group"><input type="text" class="form-control input-lg" id="exampleInputEmail2" placeholder="Username"></div>
-                    <div class="form-group"><input type="password" class="form-control input-lg" id="exampleInputPassword2" placeholder="Password"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg" id="exampleInputEmail2" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-lg" id="exampleInputPassword2" name="password" placeholder="Password">
+                    </div>
                     <button type="submit" class="btn btn-lg btn-default">Login</button>
-                        @*</form>*@
                 }
                 <p class="small text-muted">
-                    @if (!User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated)
                     {
-                        <p>Don't have an account? <a data-target="#myModal">Sign Up.</a></p>
+                    <p>@Html.ActionLink("Portal", "Portal", "Account")</p>
+
                     }
                     else
                     {
-                        <p>@Html.ActionLink("Portal", "Portal", "Account")</p>
+                        <p>Don't have an account? @Html.ActionLink("Sign Up", "Register", "Account")</p>
                     }
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-toggle="modal" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <h1>Register</h1>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

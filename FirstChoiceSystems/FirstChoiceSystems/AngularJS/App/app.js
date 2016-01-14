@@ -4,7 +4,8 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/account/portal",
         {
-            templateUrl: '/AngularViews/screentest.html'
+            controller:  'DashboardController',
+            templateUrl: '/AngularViews/dashboard.html'
         })
 
         .when("/item/:id",
@@ -13,54 +14,74 @@ app.config(function ($routeProvider) {
             templateUrl: '/AngularViews/itemdetails.html'
         })
 
-        .when("/profile/:id",
+        .when("/purchases",
         {
-            templateUrl: '/AngularViews/screentest.html'
+            template: '<h1>Purchases</h1>'
         })
 
-        .when("/servicead/:id",
+        .when("/sales",
         {
-            templateUrl: '/AngularViews/servicescreentest.html'
+            template: '<h1>Sales</h1>'
+        })
+
+        .when("/myserviceads",
+        {
+            template: '<h1>My Service Ads</h1>'
         })
 
         .when("/reports",
         {
-            templateUrl: '/AngularViews/reportsscreentest.html'
+            templateUrl: '/AngularViews/reports.html'
         })
 
         .when("/marketplace",
         {
-            templateUrl: '/AngularViews/marketplacescreentest.html'
+            template: '<h1>Marketplace</h1>'
+        })
+
+        .when("/marketplaceitems/:id",
+        {
+            template: '<h1>MarketPlaceItem</h1>'
         })
 
         .when("/businessdirectory",
         {
-            templateUrl: '/AngularViews/businessscreentest.html'
+            template: '<h1>BusinessDirectory</h1>'
+        })
+
+        .when("/profile/:id",
+        {
+            template: '<h1>Profile</h1>'
         })
 
         .when("/servicedirectory",
         {
-            templateUrl: '/AngularViews/servicescreentest.html'
+            template: '<h1>ServiceDirectory</h1>'
+        })
+
+        .when("/servicead/:id",
+        {
+            template: '<h1>ServiceAd</h1>'
         })
 
         .when("/shoppingcart",
         {
-            templateUrl: '/AngularViews/shoppingscreentest.html'
+            template: '<h1>ShoppingCart</h1>'
         })
 
         .when("/account",
         {
-            templateUrl: '/AngularViews/accountscreentest.html'
+            template: '<h1>Account</h1>'
         })
 
         .when("/checkoutresult/:id",
         {
-            templateUrl: '/AngularViews/accountscreentest.html'
+            template: '<h1>CheckoutResult</h1>'
         })
 
         .when("/inventory",
         {
-            templateUrl: '/AngularViews/accountscreentest.html'
+            template: '<h1>Inventory</h1>'
         })
 
         .otherwise({ redirectTo: '/account/portal' });
