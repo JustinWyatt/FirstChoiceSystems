@@ -253,6 +253,7 @@
     <Content Include="AngularViews\itemdetails.html" />
     <Content Include="AngularViews\marketplace.html" />
     <Content Include="AngularViews\marketplacescreentest.html" />
+    <Content Include="AngularViews\profile.html" />
     <Content Include="AngularViews\reports.html" />
     <Content Include="AngularViews\reportsscreentest.html" />
     <Content Include="AngularViews\screentest.html" />
