@@ -4,7 +4,8 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/account/portal",
         {
-            template: '<h1>Dashboard</h1>'
+            controller: 'DashboardController',
+            templateUrl: '/AngularViews/dashboard.html'
         })
 
         .when("/item/:id",

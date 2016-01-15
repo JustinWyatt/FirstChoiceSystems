@@ -9,18 +9,28 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
     <script src="https://code.angularjs.org/1.5.0-rc.0/angular.js"></script>
     <script src="https://code.angularjs.org/1.5.0-rc.0/angular-route.js"></script>
-
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="~/Content/bootsrapresponsive.css" rel="stylesheet" />
     <link href="~/Content/fontawesome.css" rel="stylesheet" />
+    <link href="~/Content/skin-blue.css" rel="stylesheet" />
+    <link href="~/Content/vectormap.css" rel="stylesheet" />
+    <link href="~/Content/admin.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/myApp")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/admin.js"></script>
+    <script src="~/Scripts/chartjs.js"></script>
+    <script src="~/Scripts/fastclick.js"></script>
+    <script src="~/Scripts/jvectormap.js"></script>
+    <script src="~/Scripts/jvectormapworld.js"></script>
+    <script src="~/Scripts/slimscroll.js"></script>
+    <script src="~/Scripts/sparkline.js"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

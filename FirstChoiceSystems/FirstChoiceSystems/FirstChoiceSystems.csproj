@@ -243,14 +243,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AngularJS\Admin\admin.js" />
-    <Content Include="AngularJS\Admin\fastclick.js" />
-    <Content Include="AngularJS\Admin\jvectormap.js" />
-    <Content Include="AngularJS\Admin\jvectormapworld.js" />
-    <Content Include="AngularJS\Admin\sparkline.js" />
+    <Content Include="Scripts\admin.js" />
+    <Content Include="Scripts\chartjs.js" />
+    <Content Include="Scripts\fastclick.js" />
+    <Content Include="Scripts\jvectormap.js" />
+    <Content Include="Scripts\jvectormapworld.js" />
+    <Content Include="Scripts\slimscroll.js" />
+    <Content Include="Scripts\sparkline.js" />
     <Content Include="AngularJS\App\app.js" />
     <Content Include="AngularJS\Controllers\DashboardController.js" />
     <Content Include="AngularJS\Controllers\itemController.js" />
+    <Content Include="AngularViews\dashboard.html" />
     <Content Include="Content\admin.css" />
     <Content Include="Content\bootsrapresponsive.css" />
     <Content Include="Content\bootstrap.css" />
@@ -263,6 +266,8 @@
     <Content Include="Content\Images\ChipotleShirt.jpg" />
     <Content Include="Content\Images\ChipotleSignage.jpg" />
     <Content Include="Content\Images\ChipotleTortilla.jpg" />
+    <Content Include="Content\skin-blue.css" />
+    <Content Include="Content\vectormap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -328,7 +333,6 @@
     <Content Include="Views\Account\Portal.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AngularViews\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
