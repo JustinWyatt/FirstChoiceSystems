@@ -1,42 +1,83 @@
 ﻿app.controller('DashboardController', function ($http, $scope) {
 
-    var purchases = function() {
+    var latestPurchases = function () {
         $http.get('/purchase/purchaserequesthistory').then(function (result) {
-            $scope.purchases = result.data;
-        }); 
+            $scope.latestPurchases = result.data;
+        });
     }
 
-    purchases();
+    latestPurchases();
 
-    var sales = function() {
+    var salesCount = function () {
         $http.get('/sales/pendingsales').then(function (result) {
-            $scope.sales = result.data;
+            $scope.salesCount = result.data;
         });
     }
 
-    sales();
+    salesCount();
 
-    var marketplace = function() {
+    var newestMarketplaceItems = function () {
         $http.get('/marketplace/marketplace').then(function (result) {
-            $scope.marketplace = result.data;
+            $scope.newestMarketplaceItems = result.data;
         });
     }
 
-    marketplace();
+    newestMarketplaceItems();
 
-    $scope.approveSale = function(id) {
-        $http.post('/sales/approvesale?id=' + id).then(function(result) {
-            $scope.saleItem = result.data;
-            console.log(result.data);
+    var inventoryCount = function () {
+        $http.get('/inventory/inventory').then(function (result) {
+            $scope.inventoryCount = result.data;
         });
     }
 
-    $scope.rejectSale = function (id) {
-        $http.post('/sales/rejectsale?id=' + id).then(function (result) {
-            $scope.saleItem = result.data;
-            console.log(result.data);
+    inventoryCount();
+
+    var businessCount = function () {
+        $http.get('/business/businesscount').then(function (result) {
+            $scope.businessCount = result.data;
         });
     }
 
+    businessCount();
 
+    var newServicesCount = function () {
+        $http.get('/services/servicescount').then(function (resutl) {
+            $scope.newServicesCount = result.data;
+        });
+    }
+
+    newServicesCount();
+
+    var totalProfit = function () {
+        $http.get('/account/totalprofit').then(function (result) {
+            $scope.totalProfit = result.data;
+        });
+    }
+
+    totalProfit();
+
+    var shoppingCart = function() {
+        $http.get('order/order').then(function(result) {
+            $scope.shoppingCart = result.data;
+        });
+    }
+
+    shoppingCart();
+
+
+    var totalRevenue = function() {
+        $http.get('account/revenue').then(function(result) {
+            $scope.totalRevenue = result.data;
+        });
+    }
+
+    totalRevenue();
+
+    var totalMoneySpent = function() {
+        $http.get('account/totalmoneyspent').then(function(result) {
+            $scope.totalCost = result.data;
+        });
+    }
+
+    totalMoneySpent();
 })

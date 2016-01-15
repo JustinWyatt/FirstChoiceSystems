@@ -245,6 +245,7 @@
   <ItemGroup>
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\chartjs.js" />
+    <Content Include="Scripts\dashboardinfo.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\jvectormap.js" />
     <Content Include="Scripts\jvectormapworld.js" />
