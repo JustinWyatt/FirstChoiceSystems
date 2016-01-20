@@ -1,0 +1,69 @@
+﻿
+<h2>All Sales History</h2>
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Item Name</th>
+                        <th>Seller</th>
+                        <th>Price Paid</th>
+                        <th>Quantity Bought</th>
+                        <th>Date Purchased</th>
+                        <th>Approval Date</th>
+                        <th>Status</th>
+
+                    </tr>
+                </thead>
+                <tbody ng-repeat="s in sales">
+                    <tr>
+                        <td><a>View Item</a>></td>
+                        <td>{{s.ItemName}}</td>
+                        <td>{{s.Buyer}}</td>
+                        <td>{{s.Price}}</td>
+                        <td>{{s.QuantityBought}}</td>
+                        <td>{{s.DatePurchased}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+
+<h2>Pending Sales History</h2>
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Item Name</th>
+                        <th>Seller</th>
+                        <th>Price Paid</th>
+                        <th>Quantity Bought</th>
+                        <th>Date Purchased</th>
+                        <th>Approval Date</th>
+                        <th>Status</th>
+
+                    </tr>
+                </thead>
+                <tbody ng-repeat="s in pendingSales">
+                    <tr>
+                        <td><a>View Item</a>></td>
+                        <td>{{s.ItemName}}</td>
+                        <td>{{s.Buyer}}</td>
+                        <td>{{p.Price}}</td>
+                        <td>{{p.QuantityBought}}</td>
+                        <td>{{p.DatePurchased}}</td>
+                        <td>{{p.ApprovalDate}}</td>
+                        <td>{{p.Status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

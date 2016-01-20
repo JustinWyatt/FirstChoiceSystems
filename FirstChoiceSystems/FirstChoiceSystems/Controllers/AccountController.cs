@@ -11,13 +11,17 @@ using Microsoft.Owin.Security;
 using FirstChoiceSystems.Models;
 using FirstChoiceSystems.Models.DBModels;
 using System.Collections.Generic;
+using FirstChoiceSystems;
 using FirstChoiceSystems.Models.ViewModels;
 
 namespace FirstChoiceSystems.Controllers
 {
+
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -55,19 +59,30 @@ namespace FirstChoiceSystems.Controllers
             }
         }
 
+        [HttpGet]
+        public JsonResult BusinessDirectory()
+        {
+            var businesses = db.Users.Select(x => new ProfileViewModel()
+            {
+                PersonOfContact = x.PersonOfContact,
+                CompanyName = x.CompanyName,
+                CompanyWebsite = x.CompanyWebsite,
+                Photo = x.CompanyPhoto,
+                ItemsUpForSale = x.ItemsUpForSale.Select(item => new MarketPlaceItemViewModel()
+                {
+                    ItemId = item.Id,
+                    ItemName = item.ItemName,
+                    ItemDescription = item.ItemDescription
+                }).ToList()
+            }).ToList();
+            return Json(businesses, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: /Account/Portal
         [HttpGet]
+        [Authorize]
         public ActionResult Portal()
         {
-            return View();
-        }
-
-        // GET: /Account/Dashboard
-        [HttpGet]
-        public ActionResult Dashboard()
-        {
-            ApplicationDbContext db = new ApplicationDbContext();
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
             var dashboard = new DashboardViewModel()
@@ -83,8 +98,123 @@ namespace FirstChoiceSystems.Controllers
                 City = user.City,
                 State = user.State,
                 Postal = user.Postal,
+                CompanyPhoto = user.CompanyPhoto,
+                RepresentativePhoto = user.RepresentativePhoto,
+                SalesFigure = 0,
+                MembersInArea = db.Users.Count(x => x.State == user.State),
+                InventoryValue = 0,
+                InventoryNumber = 0
             };
             return View(dashboard);
+        }
+
+        // GET: /Account/Dashboard
+        [HttpGet]
+        public JsonResult Dashboard()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            var dashboard = new DashboardViewModel()
+            {
+                AccountNumber = user.AccountNumber,
+                Balance = user.Balance,
+                DateRegistered = user.DateRegistered.ToString(),
+                CompanyAddress = user.CompanyAddress,
+                CompanyName = user.CompanyName,
+                CompanyWebsite = user.CompanyName,
+                PersonOfContact = user.PersonOfContact,
+                BusinessCategory = user.BusinessCategory.CategoryName,
+                City = user.City,
+                State = user.State,
+                Postal = user.Postal,
+                CompanyPhoto = user.CompanyPhoto,
+                RepresentativePhoto = user.RepresentativePhoto,
+                SalesFigure = 0,
+                MembersInArea = db.Users.Count(x=>x.State == user.State),
+                InventoryValue = 0,
+                InventoryNumber =  0
+            };
+            return Json(dashboard, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SavingsCalculation()
+        {
+            // get the cost of the inventory
+            var userId = User.Identity.GetUserId();
+            var inventoryCashCost = db.Items.Where(x=>x.Seller.Id == userId).Sum(x => x.CashCost * x.UnitsAvailable);
+
+            // get the trade revenue of the inventory
+            var inventorySalesInTradeDollars = db.PurchaseItems.Where(x => x.Item.Seller.Id == userId).Sum(x => x.Item.RevenueInTradeDollars);
+
+            // get all trade expenses
+            var purchasesInTradeDollars = db.PurchaseItems.Where(x => x.Buyer.Id == userId);
+            var purchaseExpenses = purchasesInTradeDollars.Sum(x => x.PricePerUnitBoughtAt * x.QuanityBought);
+
+            // convert the value of trade expenses into cash and subtract from trade expenses
+            var purchaseValuePoints = purchasesInTradeDollars.Sum(x => x.Item.CashEquivalentValue * x.QuanityBought) - purchaseExpenses;
+
+            // how much it cost me to produce inventory minus the inventory sales plus the total purchase value
+            var purchasingPower = (inventoryCashCost - inventorySalesInTradeDollars) + purchaseValuePoints;
+
+            return Json(purchasingPower, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult MyProfile()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            var profile = new ProfileViewModel()
+            {
+                DateRegistered = user.DateRegistered.ToString(),
+                CompanyName = user.CompanyName,
+                PersonOfContact = user.PersonOfContact,
+                CompanyAddress = user.CompanyAddress,
+                State = user.State,
+                City = user.City,
+                CompanyWebsite = user.CompanyWebsite,
+            };
+            return Json(profile, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult UserProfile(string id)
+        {
+            var user = db.Users.Where(x => x.Id == id).Select(x => new ProfileViewModel()
+            {
+                PersonOfContact = x.PersonOfContact,
+                CompanyName = x.CompanyName,
+                CompanyAddress = x.CompanyAddress,
+                CompanyWebsite = x.CompanyWebsite,
+                State = x.State,
+                City = x.City,
+                Postal = x.Postal,
+                DateRegistered = x.DateRegistered.ToString(),
+                AccountNumber = x.AccountNumber,
+                BusinessCategory = x.BusinessCategory.ToString(),
+                ItemsUpForSale = x.ItemsUpForSale.Select(item => new MarketPlaceItemViewModel()
+                {
+                    ItemName = item.ItemName,
+                    ItemDescription = item.ItemDescription,
+                    ItemId = item.Id,
+                    Seller = item.Seller.CompanyName,
+                    Quantity = item.UnitsAvailable,
+                    Price = item.PricePerUnit,
+                    Category = item.ItemCategory.CategoryName,
+                    Images = item.Images
+
+                }).Take(10).ToList()
+            });
+            return Json(user, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult NumberOfNewMembersInYourArea()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            var numberOfNewMembers = db.Users.Where(x => x.State == user.State).OrderByDescending(x => x.DateRegistered).ToList().Count();
+            return Json(numberOfNewMembers, JsonRequestBehavior.AllowGet);
         }
 
         // GET: /Account/Login
@@ -114,7 +244,7 @@ namespace FirstChoiceSystems.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToAction("Portal", "Account");
-                    //return RedirectToLocal(returnUrl);
+                //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -222,7 +352,7 @@ namespace FirstChoiceSystems.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Portal", "Account");
                 }
                 AddErrors(result);
             }

@@ -13,7 +13,7 @@ namespace FirstChoiceSystems.Models.ViewModels
         public string ItemName { get; set; }
         public string Seller { get; set; }
         public  int QuanityBought { get; set; }
-        public  double Price { get; set; }
+        public  double? Price { get; set; }
         public virtual string Status { get; set; }
         public DateTime? ApprovalDate { get; set; }
         public DateTime DatePurchased { get; set; }

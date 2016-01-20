@@ -15,7 +15,7 @@ namespace FirstChoiceSystems.Models.ViewModels
             {
                 order = new OrderViewModel();
                 HttpContext.Current.Session["currentOrder"] = order;
-                order.Items = new List<MarketPlaceItem>();
+                order.Items = new List<MarketPlaceItemViewModel>();
             }
 
             return order;
@@ -26,9 +26,9 @@ namespace FirstChoiceSystems.Models.ViewModels
             HttpContext.Current.Session["currentOrder"] = this;
         }
 
-        public ICollection<MarketPlaceItem> Items { get; set; }
+        public ICollection<MarketPlaceItemViewModel> Items { get; set; }
 
-        public double SubTotal
+        public double? SubTotal
         {
             get
             {

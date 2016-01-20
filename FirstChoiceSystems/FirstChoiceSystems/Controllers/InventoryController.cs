@@ -2,8 +2,10 @@
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using FirstChoiceSystems.Models.DBModels;
 using FirstChoiceSystems.Models.ViewModels;
+using Newtonsoft.Json.Linq;
 
 namespace FirstChoiceSystems.Controllers
 {
@@ -13,31 +15,28 @@ namespace FirstChoiceSystems.Controllers
 
         [HttpGet]
         // GET: /Inventory/Inventory
-        public ActionResult Inventory()
+        public JsonResult Inventory()
         {
             //user can only view his own inventory
             var userId = User.Identity.GetUserId();
-            return View(db.Items.Where(x => x.Seller.Id == userId).ToList());
-        }
+            var inventory = db.Items.Where(x => x.Seller.Id == userId).Select(x => new InventoryItemViewModel()
+            {
+                CashCost = x.CashCost,
+                CashEquivalentValue = x.CashEquivalentValue,
+                RevenueInCash = x.RevenueInCash,
+                RevenueInTradeDollars = x.RevenueInTradeDollars,
+                ItemDescription = x.ItemDescription,
+                ItemName = x.ItemName,
+                UnitsAvailable = x.UnitsAvailable,
+                PricePerUnit = x.PricePerUnit,
 
-        [HttpGet]
-        // GET: /Inventory/InventoryItem
-        public ActionResult InventoryItem(int itemId)
-        {
-            //user is able to dynamically edit any field in item
-            return View(db.Items.Where(x => x.Id == itemId).ToList());
-        }
+            }).ToList();
 
-        // GET: /Inventory/AddItem
-        [HttpGet]
-        public ActionResult AddItem()
-        {
-            return View();
+            return Json(inventory, JsonRequestBehavior.AllowGet);
         }
-
         // POST: /Inventory/AddItem
         [HttpPost]
-        public ActionResult AddItem(Item item)
+        public JsonResult AddItem(Item item)
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
@@ -55,27 +54,33 @@ namespace FirstChoiceSystems.Controllers
             };
             db.Items.Add(newItem);
             db.SaveChanges();
-            return RedirectToAction("Inventory", "Inventory", new { itemId = newItem.Id });
+            return Json(newItem, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public void RemoveItem(int id)
+        {
+            var item = db.Items.Find(id);
+            db.Items.Remove(item);
+            db.SaveChanges();
         }
 
         // POST: Inventory/AddMarketPlaceItem
         [HttpPost]
-        public ActionResult AddMarketPlaceItem(int itemId)
+        public void AddMarketPlaceItem(int itemId)
         {
-            var addToMarket = db.Items.Find(itemId);
-            addToMarket.AvailableForMarket = true;
+            var item = db.Items.Find(itemId);
+            item.AvailableForMarket = true;
             db.SaveChanges();
-            return RedirectToAction("Inventory", "Inventory");
         }
 
         // POST: Inventory/RemoveMarketPlaceItem
         [HttpPost]
-        public ActionResult RemoveMarketPlaceItem(int itemId)
+        public void RemoveMarketPlaceItem(int itemId)
         {
-            var removeMarket = db.Items.Find(itemId);
-            removeMarket.AvailableForMarket = false;
+            var item = db.Items.Find(itemId);
+            item.AvailableForMarket = false;
             db.SaveChanges();
-            return RedirectToAction("Inventory", "Inventory");
         }
     }
 }

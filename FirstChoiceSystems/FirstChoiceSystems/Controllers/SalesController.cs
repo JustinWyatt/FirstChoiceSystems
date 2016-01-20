@@ -16,10 +16,10 @@ namespace FirstChoiceSystems.Controllers
 
         // GET: /Sales/SalesHistory
         [HttpGet]
-        public ActionResult SalesHistory()
+        public JsonResult SalesHistory()
         {
             var userId = User.Identity.GetUserId();
-            return View(db.PurchaseItems.Where(x => x.Item.Seller.Id == userId).Select(saleitem => new PurchaseItemViewModel()
+            return Json(db.PurchaseItems.Where(x => x.Item.Seller.Id == userId).Select(saleitem => new PurchaseItemViewModel()
             {
                 ItemId = saleitem.Item.Id,
                 ItemName = saleitem.Item.ItemName,
@@ -29,7 +29,7 @@ namespace FirstChoiceSystems.Controllers
                 Status = saleitem.Status.ToString(),
                 ApprovalDate = saleitem.ApprovalDate,
                 Buyer = saleitem.Buyer.CompanyName
-            }).ToList());
+            }).ToList(), JsonRequestBehavior.AllowGet);
         }
 
         // GET: /Sales/PendingSales
@@ -62,6 +62,7 @@ namespace FirstChoiceSystems.Controllers
             purchaseItems.Item.Seller.Balance += purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
             purchaseItems.Buyer.Balance -= purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
             purchaseItems.Item.UnitsAvailable -= purchaseItems.QuanityBought;
+            purchaseItems.Item.RevenueInTradeDollars += purchaseItems.PricePerUnitBoughtAt*purchaseItems.QuanityBought;
             purchaseItems.Status = TransactionStatus.Approved;
             db.SaveChanges();
             return Json("Sale Approved", JsonRequestBehavior.AllowGet);
@@ -82,7 +83,7 @@ namespace FirstChoiceSystems.Controllers
         {
             var item = db.Items.First(x => x.Id == itemId);
 
-            var itemDetail = new MarketPlaceItem()
+            var itemDetail = new MarketPlaceItemViewModel()
             {
                 ItemDescription = item.ItemDescription,
                 ItemName = item.ItemName,
@@ -103,7 +104,7 @@ namespace FirstChoiceSystems.Controllers
             var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
             if (i == null)
             {
-                i = new MarketPlaceItem()
+                i = new MarketPlaceItemViewModel()
                 {
                     ItemId = dbItem.Id,
                     ItemDescription = dbItem.ItemDescription,

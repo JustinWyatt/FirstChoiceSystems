@@ -30,9 +30,11 @@ namespace FirstChoiceSystems.Models
         public string State { get; set; }
         public int Postal { get; set; }
         public string CompanyWebsite { get; set; }
-        public double Balance { get; set; }
+        public double? Balance { get; set; }
         public virtual BusinessCategory BusinessCategory { get; set; }
         public int AccountNumber { get; set; }
+        public string CompanyPhoto { get; set; }
+        public string RepresentativePhoto { get; set; }
         public DateTime? DateRegistered { get; set; }
         public virtual ICollection<PurchaseItem> Purchases { get; set; } = new Collection<PurchaseItem>();
         public virtual ICollection<Item> ItemsUpForSale { get; set; } = new Collection<Item>();

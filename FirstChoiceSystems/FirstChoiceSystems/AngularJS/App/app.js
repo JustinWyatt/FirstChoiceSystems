@@ -4,85 +4,66 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/account/portal",
         {
-            controller: 'DashboardController',
+            controller: 'dashboardController',
             templateUrl: '/AngularViews/dashboard.html'
         })
-
         .when("/item/:id",
         {
             controller: 'itemController',
             templateUrl: '/AngularViews/itemdetails.html'
         })
-
         .when("/purchases",
         {
-            template: '<h1>Purchases</h1>'
+            controller: 'purchaseController',
+            templateUrl: '/AngularViews/purchases.html'
         })
-
         .when("/sales",
         {
-            template: '<h1>Sales</h1>'
+            controller: 'salesController',
+            templateUrl: '/AngularViews/sales.html'
         })
-
-        .when("/myserviceads",
-        {
-            template: '<h1>My Service Ads</h1>'
-        })
-
-        .when("/reports",
-        {
-            template: '<h1>Reports</h1>'
-        })
-
         .when("/marketplace",
         {
-            template: '<h1>Marketplace</h1>'
+            controller: 'marketplaceController',
+            templateUrl: '/AngularViews/marketplace.html'
         })
-
-        .when("/marketplaceitems/:id",
+        .when("/yourmarketplaceitems",
+        {
+            controller: "yourMarketplaceController",
+            templateUrl: "yourmarketplaceitems"
+        })
+        .when("/marketplaceitem/:id",
         {
             template: '<h1>MarketPlaceItem</h1>'
         })
-
         .when("/businessdirectory",
         {
-            template: '<h1>BusinessDirectory</h1>'
+            controller: 'businessController',
+            templateUrl: '/AngularViews/businessdirectory.html'
         })
-
         .when("/profile/:id",
         {
-            template: '<h1>Profile</h1>'
+            controller: 'profileController',
+            templateUrl: '/AngularViews/profile.html'
         })
-
-        .when("/servicedirectory",
+        .when("/order",
         {
-            template: '<h1>ServiceDirectory</h1>'
+            controller: 'orderController',
+            templateUrl: '/AngularViews/order.html'
+
         })
 
-        .when("/servicead/:id",
-        {
-            template: '<h1>ServiceAd</h1>'
-        })
+.when("/account",
+{
+    controller: 'profileController',
+    templateUrl: '/AngularViews/profile.html'
+})
 
-        .when("/shoppingcart",
-        {
-            template: '<h1>ShoppingCart</h1>'
-        })
+.when("/inventory",
+{
+    controller: 'inventoryController',
+    templateUrl: '/AngularViews/inventory.html'
+})
 
-        .when("/account",
-        {
-            template: '<h1>Account</h1>'
-        })
-
-        .when("/checkoutresult/:id",
-        {
-            template: '<h1>CheckoutResult</h1>'
-        })
-
-        .when("/inventory",
-        {
-            template: '<h1>Inventory</h1>'
-        })
-
-        .otherwise({ redirectTo: '/account/portal' });
+.otherwise({ redirectTo: '/account/portal' });
 });

@@ -12,29 +12,31 @@ namespace FirstChoiceSystems.Controllers
 
         // GET: /Order/Order
         [HttpGet]
-        public ActionResult Order()
+        public JsonResult Order()
         {
-            return View(OrderViewModel.Retrieve());
+            var order = OrderViewModel.Retrieve();
+            
+            return Json(order, JsonRequestBehavior.AllowGet);
         }
 
         // POST: /Order/AddItem
         [HttpPost]
         public ActionResult AddItem(int itemId)
         {
-            var currentOrder =  OrderViewModel.Retrieve();
+            var currentOrder = OrderViewModel.Retrieve();
             var dbItem = db.Items.Find(itemId);
 
             //if (currentOrder.Items.Single(x => x.ItemId == dbItem.Id) == null)
             //{
-                var i = new MarketPlaceItem()
-                {
-                    ItemId = dbItem.Id,
-                    ItemDescription = dbItem.ItemDescription,
-                    Price = dbItem.PricePerUnit,
-                    Quantity = 1,
-                    Seller = dbItem.Seller.CompanyName
-                };
-                currentOrder.Items.Add(i);
+            var i = new MarketPlaceItemViewModel()
+            {
+                ItemId = dbItem.Id,
+                ItemDescription = dbItem.ItemDescription,
+                Price = dbItem.PricePerUnit,
+                Quantity = 1,
+                Seller = dbItem.Seller.CompanyName
+            };
+            currentOrder.Items.Add(i);
             //}
             //else
             //{
@@ -55,7 +57,7 @@ namespace FirstChoiceSystems.Controllers
             var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
             if (i != null)
             {
-                i.Quantity-= 1;
+                i.Quantity -= 1;
                 if (i.Quantity <= 0)
                 {
                     currentOrder.Items.Remove(i);

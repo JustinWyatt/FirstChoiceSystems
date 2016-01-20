@@ -1,0 +1,35 @@
+﻿
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Item Name</th>
+                    <th>Seller</th>
+                    <th>Price Paid</th>
+                    <th>Quantity Bought</th>
+                    <th>Date Purchased</th>
+                    <th>Approval Date</th>
+                    <th>Status</th>
+
+                </tr>
+                </thead>
+                <tbody ng-repeat="p in purchases">
+                <tr>
+                    <td><a>View Item</a>></td>
+                    <td>{{p.ItemName}}</td>
+                    <td>{{p.Seller}}</td>
+                    <td>{{p.Price}}</td>
+                    <td>{{p.QuantityBought}}</td>
+                    <td>{{p.DatePurchased}}</td>
+                    <td>{{p.ApprovalDate}}</td>
+                    <td>{{p.Status}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

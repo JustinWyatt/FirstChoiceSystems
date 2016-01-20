@@ -1,0 +1,31 @@
+﻿
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row"  >
+            <div class="col-md-4" ng-repeat="b in business">
+                <!-- Widget: user widget style 1 -->
+                <div class="box box-widget widget-user">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-aqua-active">
+                        <h3 class="widget-user-username">{{b.PersonOfContact}}</h3>
+                        <a ng-href="{{b.CompanyWebsite}}"><h5 class="widget-user-desc">{{b.CompanyName}}</h5></a>
+                    </div>
+                    <div class="widget-user-image">
+                        <img class="img-circle" ng-src="{{b.Photo}}" alt="User Avatar">
+                    </div>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-sm-4 border-right">
+                                <div class="description-block">
+                                    <h5 class="description-header">{{b.ItemsUpForSale.length}}</h5>
+                                    <span class="description-text">ITEMS</span>
+                                </div><!-- /.description-block -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div>
+                </div><!-- /.widget-user -->
+            </div><!-- /.col -->
+        </div>
+    </section>
+</div>

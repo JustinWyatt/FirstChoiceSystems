@@ -239,14 +239,14 @@
                     <button type="submit" class="btn btn-lg btn-default">Login</button>
                 }
                 <p class="small text-muted">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (!Request.IsAuthenticated)
                     {
-                    <p>@Html.ActionLink("Portal", "Portal", "Account")</p>
-
+                        @Html.ActionLink("Portal", "Portal", "Account")
                     }
                     else
                     {
                         <p>Don't have an account? @Html.ActionLink("Sign Up", "Register", "Account")</p>
+
                     }
                 </div>
             </div>

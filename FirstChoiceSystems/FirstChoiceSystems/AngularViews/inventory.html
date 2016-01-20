@@ -1,0 +1,36 @@
+﻿
+
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row" >
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th ng-click="addItem">Add Item</th>
+                    <th>Item Name</th>
+                    <th>Price Per Unit</th>
+                    <th>Item Category</th>
+                    <th>Units Available</th>
+                    <th>Available For Market</th>
+                    <th>Revenue In Trade Dollars</th>
+                    <th>Cash Equivalent Value</th>
+                    
+                </tr>
+                </thead>
+                <tbody ng-repeat="i in inventory">
+                <tr>
+                    <td ng-click="editItemName(itemId)">{{i.ItemName}}</td>
+                    <td ng-click="editItemName(itemId)">{{i.PricePerUnit}}</td>
+                    <td ng-click="editItemName(itemId)">{{i.ItemCategory}}</td>
+                    <td ng-click="editItemName(itemId)">{{i.UnitsAvailable}}</td>
+                    <td ng-click="editItemName(itemId)">{{i.AvailableForMarket}}</td>
+                    <td ng-click="editItemName(itemId)">{{i.RevenueInTradeDollars}}</td>
+                    <td ng-click="editItemName(itemId)">{{i.CashEquivalentValue}}</td>
+                    <th>Remove Item</th>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
