@@ -1,4 +1,4 @@
-﻿app.controller('salesController', function ($http, $scope) {
+﻿app.controller('salesController', ['$http', '$scope', function ($http, $scope) {
 
     var sales = function () {
         $http.get('/sales/saleshistory').then(function (result) {
@@ -15,4 +15,4 @@
     }
 
     pendingSales();
-});
+}]);

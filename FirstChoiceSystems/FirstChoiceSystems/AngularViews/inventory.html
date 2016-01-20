@@ -2,35 +2,53 @@
 
 <div class="content-wrapper">
     <section class="content">
-        <div class="row" >
+        <div class="row">
             <table class="table table-striped">
                 <thead>
-                <tr>
-                    <th ng-click="addItem">Add Item</th>
-                    <th>Item Name</th>
-                    <th>Price Per Unit</th>
-                    <th>Item Category</th>
-                    <th>Units Available</th>
-                    <th>Available For Market</th>
-                    <th>Revenue In Trade Dollars</th>
-                    <th>Cash Equivalent Value</th>
-                    
-                </tr>
+                    <tr>
+                        <th ng-click="addItem">Add Item</th>
+                        <th>Item Name</th>
+                        <th>Price Per Unit</th>
+                        <th>Item Category</th>
+                        <th>Units Available</th>
+                        <th>Available For Market</th>
+                        <th>Revenue In Trade Dollars</th>
+                        <th>Cash Equivalent Value</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody ng-repeat="i in inventory">
-                <tr>
-                    <td ng-click="editItemName(itemId)">{{i.ItemName}}</td>
-                    <td ng-click="editItemName(itemId)">{{i.PricePerUnit}}</td>
-                    <td ng-click="editItemName(itemId)">{{i.ItemCategory}}</td>
-                    <td ng-click="editItemName(itemId)">{{i.UnitsAvailable}}</td>
-                    <td ng-click="editItemName(itemId)">{{i.AvailableForMarket}}</td>
-                    <td ng-click="editItemName(itemId)">{{i.RevenueInTradeDollars}}</td>
-                    <td ng-click="editItemName(itemId)">{{i.CashEquivalentValue}}</td>
-                    <th>Remove Item</th>
-
-                </tr>
+                    <tr>
+                        <td></td>
+                        <td>{{i.ItemName}}</td>
+                        <td>{{i.PricePerUnit}}</td>
+                        <td>{{i.ItemCategory}}</td>
+                        <td>{{i.UnitsAvailable}}</td>
+                        <td>{{i.AvailableForMarket}}</td>
+                        <td>{{i.RevenueInTradeDollars}}</td>
+                        <td>{{i.CashEquivalentValue}}</td>
+                        <th>
+                            <form>
+                                <input type="submit" ng-click="removeItem(i.ItemId)" value="Remove Item"/>
+                            </form>
+                        </th>
+                    </tr>
                 </tbody>
             </table>
+
+            <h2>Add Item</h2>
+
+            <form>
+                <select name="Categories">
+                    <option>Choose Category</option>
+                    <option ng-repeat="c in categories" value="{{c.CategoryName}}" ng-model="item.ItemCategory">{{c.CategoryName}}</option>
+                </select>
+                <input ng-model="item.ItemDescription" type="text" placeholder="Item Description" />
+                <input ng-model="item.PricePerUnit" type="number" placeholder="Price Per Unit" />
+                <input ng-model="item.UnitsAvailable" type="number" placeholder="Units Available" />
+                <input ng-model="item.InventoryName" type="text" placeholder="Inventory Name"/>
+                <input type="submit" ng-click="addItem(item)" />
+            </form>
         </div>
     </section>
 </div>

@@ -246,6 +246,7 @@
     <Compile Include="Models\DBModels\ItemCategory.cs" />
     <Compile Include="Models\DBModels\ItemImage.cs" />
     <Compile Include="Models\ViewModels\InventoryItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\ItemInputModel.cs" />
     <Compile Include="Models\ViewModels\MarketPlaceItemViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\MarketViewModel.cs" />
@@ -259,6 +260,7 @@
   <ItemGroup>
     <Content Include="AngularJS\Controllers\businessController.js" />
     <Content Include="AngularJS\Controllers\inventoryController.js" />
+    <Content Include="AngularJS\Controllers\orderController.js" />
     <Content Include="AngularJS\Controllers\marketplaceController.js" />
     <Content Include="AngularJS\Controllers\profileController.js" />
     <Content Include="AngularJS\Controllers\purchaseController.js" />

@@ -29,6 +29,7 @@ namespace FirstChoiceSystems.Controllers
                 ItemName = x.ItemName,
                 UnitsAvailable = x.UnitsAvailable,
                 PricePerUnit = x.PricePerUnit,
+                ItemId = x.Id
 
             }).ToList();
 
@@ -36,7 +37,7 @@ namespace FirstChoiceSystems.Controllers
         }
         // POST: /Inventory/AddItem
         [HttpPost]
-        public JsonResult AddItem(Item item)
+        public JsonResult AddItem(ItemInputModel item)
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
@@ -45,16 +46,28 @@ namespace FirstChoiceSystems.Controllers
             {
                 ItemDescription = item.ItemDescription,
                 PricePerUnit = item.PricePerUnit,
-                ItemCategory = item.ItemCategory,
+                ItemCategory = db.ItemCategories.Find(item.ItemCategory),
                 Seller = user,
                 UnitsAvailable = item.UnitsAvailable,
-                Images = item.Images,
                 AvailableForMarket = item.AvailableForMarket
-
             };
             db.Items.Add(newItem);
             db.SaveChanges();
-            return Json(newItem, JsonRequestBehavior.AllowGet);
+            var returnItem = new InventoryItemViewModel()
+            {
+                ItemDescription = newItem.ItemDescription,
+                PricePerUnit = newItem.PricePerUnit,
+                Seller = user.PersonOfContact,
+                UnitsAvailable = newItem.UnitsAvailable,
+                AvailableForMarket = newItem.AvailableForMarket
+            };
+            return Json(returnItem, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult Categories()
+        {
+            return Json(db.BusinessCategories.ToList(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

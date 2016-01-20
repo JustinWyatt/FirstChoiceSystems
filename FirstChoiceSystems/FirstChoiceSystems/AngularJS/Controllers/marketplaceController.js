@@ -1,4 +1,4 @@
-﻿app.controller('marketplaceController', function ($http, $scope) {
+﻿app.controller('marketplaceController', ['$http', '$scope', function ($http, $scope) {
 
     var marketplace = function() {
         $http.get('/marketplace/marketplace').then(function(result) {
@@ -7,4 +7,10 @@
     }
 
     marketplace();
-});
+
+    $scope.addItem = function(id) {
+        $http.post('/order/additem?id=' + id).success(function() {
+            console.log('success');
+        });
+    }
+}]);

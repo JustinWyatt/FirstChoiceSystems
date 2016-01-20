@@ -1,4 +1,4 @@
-﻿app.controller('itemController', function ($http, $scope, $routeParams) {
+﻿app.controller('itemController', ['$http', '$scope', '$routeParams', function ($http, $scope, $routeParams) {
 
     var itemDetails = function () {
 
@@ -8,4 +8,4 @@
     }
 
     itemDetails();
-})
+}])

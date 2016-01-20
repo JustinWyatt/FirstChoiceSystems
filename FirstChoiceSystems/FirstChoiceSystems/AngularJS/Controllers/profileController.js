@@ -1,4 +1,4 @@
-﻿app.controller('profileController', function ($http, $scope, $routeParams) {
+﻿app.controller('profileController', ['$http', '$scope', function ($http, $scope, $routeParams) {
     var profile = function () {
 
         $http.get('/account/userprofile?id=' + $routeParams.id).then(function (result) {
@@ -17,4 +17,4 @@
 
     myProfile();
 
-})
+}])
