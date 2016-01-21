@@ -1,25 +1,31 @@
-﻿using FirstChoiceSystems.Models;
-using Microsoft.AspNet.Identity;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using System.Xml.Linq;
+using FirstChoiceSystems.Models;
 using FirstChoiceSystems.Models.DBModels;
 using FirstChoiceSystems.Models.ViewModels;
-using Newtonsoft.Json.Linq;
+using Microsoft.AspNet.Identity;
 
 namespace FirstChoiceSystems.Controllers
 {
+    [Authorize]
     public class InventoryController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        private BusinessUser _currentUser;
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        [HttpGet]
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            var userId = User.Identity.GetUserId();
+            _currentUser = db.Users.Find(userId);
+            base.OnActionExecuting(filterContext);
+        }
+
         // GET: /Inventory/Inventory
+        [HttpGet]
         public JsonResult Inventory()
         {
             //user can only view his own inventory
-            var userId = User.Identity.GetUserId();
-            var inventory = db.Items.Where(x => x.Seller.Id == userId).Select(x => new InventoryItemViewModel()
+            var inventory = _currentUser.ItemsUpForSale.Select(x => new InventoryItemViewModel
             {
                 CashCost = x.CashCost,
                 CashEquivalentValue = x.CashEquivalentValue,
@@ -30,40 +36,35 @@ namespace FirstChoiceSystems.Controllers
                 UnitsAvailable = x.UnitsAvailable,
                 PricePerUnit = x.PricePerUnit,
                 ItemId = x.Id
-
             }).ToList();
 
             return Json(inventory, JsonRequestBehavior.AllowGet);
         }
+
         // POST: /Inventory/AddItem
         [HttpPost]
-        public JsonResult AddItem(ItemInputModel item)
+        public JsonResult AddItem(InventoryItemViewModel item)
         {
-            var userId = User.Identity.GetUserId();
-            var user = db.Users.Find(userId);
-
-            var newItem = new Item()
+            var newItem = new Item
             {
                 ItemDescription = item.ItemDescription,
                 PricePerUnit = item.PricePerUnit,
                 ItemCategory = db.ItemCategories.Find(item.ItemCategory),
-                Seller = user,
+                Seller = _currentUser,
                 UnitsAvailable = item.UnitsAvailable,
                 AvailableForMarket = item.AvailableForMarket,
-                ItemName =  item.ItemName
+                ItemName = item.ItemName
             };
+
             db.Items.Add(newItem);
             db.SaveChanges();
-            var returnItem = new InventoryItemViewModel()
-            {
-                ItemDescription = newItem.ItemDescription,
-                PricePerUnit = newItem.PricePerUnit,
-                Seller = user.PersonOfContact,
-                UnitsAvailable = newItem.UnitsAvailable,
-                AvailableForMarket = newItem.AvailableForMarket,
-                ItemName = newItem.ItemName
-            };
-            return Json(returnItem, JsonRequestBehavior.AllowGet);
+
+
+            item.ItemId = newItem.Id;
+            item.Seller = newItem.Seller.PersonOfContact;
+
+
+            return Json(item, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -86,20 +87,24 @@ namespace FirstChoiceSystems.Controllers
 
         // POST: Inventory/AddMarketPlaceItem
         [HttpPost]
-        public void AddMarketPlaceItem(int itemId)
+        public JsonResult AddMarketPlaceItem(int itemId)
         {
             var item = db.Items.Find(itemId);
             item.AvailableForMarket = true;
             db.SaveChanges();
+
+            return Json("Ok");
         }
 
         // POST: Inventory/RemoveMarketPlaceItem
         [HttpPost]
-        public void RemoveMarketPlaceItem(int itemId)
+        public JsonResult RemoveMarketPlaceItem(int itemId)
         {
             var item = db.Items.Find(itemId);
             item.AvailableForMarket = false;
             db.SaveChanges();
+
+            return Json("Ok");
         }
     }
 }

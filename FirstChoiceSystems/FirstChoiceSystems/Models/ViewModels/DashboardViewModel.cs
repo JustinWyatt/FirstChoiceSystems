@@ -26,6 +26,7 @@ namespace FirstChoiceSystems.Models.DBModels
         public double? InventoryValue { get; set; }
         public double? SalesFigure { get; set; }
         public int? MembersInArea { get; set; }
+        public double? TotalRevenue { get; set; }
         public IEnumerable<PurchaseItemViewModel> PendingSales { get; set; }
         public IEnumerable<MarketPlaceItemViewModel> ItemsUpForSale { get; set; }
         public IEnumerable<PurchaseItemViewModel> Purchases { get; set; }

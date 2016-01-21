@@ -1,22 +1,21 @@
-﻿using System;
+﻿using System.Linq;
+using System.Web.Mvc;
 using FirstChoiceSystems.Models;
 using FirstChoiceSystems.Models.ViewModels;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace FirstChoiceSystems.Controllers
 {
     public class OrderController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Order/Order
         [HttpGet]
         public JsonResult Order()
         {
-            var order = OrderViewModel.Retrieve();
-            
-            return Json(order, JsonRequestBehavior.AllowGet);
+            var model = OrderViewModel.Retrieve();
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         // POST: /Order/AddItem
@@ -26,25 +25,9 @@ namespace FirstChoiceSystems.Controllers
             var currentOrder = OrderViewModel.Retrieve();
             var dbItem = db.Items.Find(itemId);
 
-            //if (currentOrder.Items.Single(x => x.ItemId == dbItem.Id) == null)
-            //{
-            var i = new MarketPlaceItemViewModel()
-            {
-                ItemId = dbItem.Id,
-                ItemDescription = dbItem.ItemDescription,
-                Price = dbItem.PricePerUnit,
-                Quantity = 1,
-                Seller = dbItem.Seller.CompanyName
-            };
+            var i = new MarketPlaceItemViewModel(dbItem);
             currentOrder.Items.Add(i);
-            //}
-            //else
-            //{
-            //    currentOrder.Items.FirstOrDefault(x => x.ItemId == dbItem.Id).Quantity += 1;
-            //}
 
-            //if they are asking for more than what is available, cap it to just whats avaiable.
-            //i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
             currentOrder.Save();
             return RedirectToAction("Order", "Order");
         }
@@ -55,15 +38,15 @@ namespace FirstChoiceSystems.Controllers
         {
             var currentOrder = OrderViewModel.Retrieve();
             var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
-            if (i != null)
+            if (i == null)
+                return RedirectToAction("Order", "Order");
+
+            i.Quantity -= 1;
+            if (i.Quantity <= 0)
             {
-                i.Quantity -= 1;
-                if (i.Quantity <= 0)
-                {
-                    currentOrder.Items.Remove(i);
-                }
-                currentOrder.Save();
+                currentOrder.Items.Remove(i);
             }
+            currentOrder.Save();
 
             return RedirectToAction("Order", "Order");
         }

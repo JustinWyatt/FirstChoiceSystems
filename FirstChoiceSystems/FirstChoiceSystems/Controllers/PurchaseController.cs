@@ -1,18 +1,18 @@
-﻿using FirstChoiceSystems.Models;
-using FirstChoiceSystems.Models.DBModels;
-using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using FirstChoiceSystems.Models;
+using FirstChoiceSystems.Models.DBModels;
 using FirstChoiceSystems.Models.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace FirstChoiceSystems.Controllers
 {
     [Authorize]
     public class PurchaseController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Purchase/PurchaseRequestHistory
         [HttpGet]
@@ -20,17 +20,18 @@ namespace FirstChoiceSystems.Controllers
         {
             //user can only view his own purchases
             var userId = User.Identity.GetUserId();
-            return Json(db.PurchaseItems.Where(x => x.Buyer.Id == userId).Select(purchaseItem => new PurchaseItemViewModel()
-            {
-                DatePurchased = purchaseItem.DatePurchased,
-                ApprovalDate = purchaseItem.ApprovalDate,
-                ItemName = purchaseItem.Item.ItemName,
-                ItemId = purchaseItem.Item.Id,
-                Status = purchaseItem.Status.ToString(),
-                Seller = purchaseItem.Item.Seller.CompanyName,
-                QuanityBought = purchaseItem.QuanityBought,
-                Price = purchaseItem.QuanityBought * purchaseItem.PricePerUnitBoughtAt
-            }).ToList(), JsonRequestBehavior.AllowGet);
+            return
+                Json(db.PurchaseItems.Where(x => x.Buyer.Id == userId).Select(purchaseItem => new PurchaseItemViewModel
+                {
+                    DatePurchased = purchaseItem.DatePurchased,
+                    ApprovalDate = purchaseItem.ApprovalDate,
+                    ItemName = purchaseItem.Item.ItemName,
+                    ItemId = purchaseItem.Item.Id,
+                    Status = purchaseItem.Status.ToString(),
+                    Seller = purchaseItem.Item.Seller.CompanyName,
+                    QuanityBought = purchaseItem.QuanityBought,
+                    Price = purchaseItem.QuanityBought*purchaseItem.PricePerUnitBoughtAt
+                }).ToList(), JsonRequestBehavior.AllowGet);
         }
 
         // POST: /Purchase/PurchaseRequest
@@ -47,7 +48,7 @@ namespace FirstChoiceSystems.Controllers
             foreach (var itemVm in currentOrder.Items)
             {
                 var itemFromDb = db.Items.Find(itemVm.ItemId);
-                var newPurchaseItem = new PurchaseItem()
+                var newPurchaseItem = new PurchaseItem
                 {
                     Buyer = user,
                     Item = itemFromDb,
@@ -60,13 +61,9 @@ namespace FirstChoiceSystems.Controllers
             }
             db.PurchaseItems.AddRange(newPurchaseRequest);
             db.SaveChanges();
-            //foreach (var itemVm in currentOrder.Items)
-            //{
-            //    currentOrder.Items.Remove(itemVm);
-            //}
+
             currentOrder.Save();
             return RedirectToAction("PurchaseRequestHistory", "Purchase");
         }
-
     }
 }

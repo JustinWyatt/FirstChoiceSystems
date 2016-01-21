@@ -19,6 +19,5 @@ namespace FirstChoiceSystems.Models.ViewModels
         public double? RevenueInCash { get; set; }
         public double? RevenueInTradeDollars { get; set; }
         public double? CashEquivalentValue { get; set; }
-        public string ItemImage { get; set; }
     }
 }

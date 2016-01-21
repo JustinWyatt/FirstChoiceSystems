@@ -135,7 +135,7 @@ namespace FirstChoiceSystems.Controllers
                                         {
                                             ItemId = x.Id,
                                             ItemName = x.ItemName,
-                                            ItemImage = x.Images.Take(1).ToString(),
+                                            //ItemImage = x.Images.Take(1).ToString(),
                                             ItemDescription = x.ItemDescription
                                         });
             return Json(recentlyAdded, JsonRequestBehavior.AllowGet);
@@ -165,7 +165,7 @@ namespace FirstChoiceSystems.Controllers
                 MembersInArea = db.Users.Count(x => x.State == user.State),
                 InventoryValue = db.Items.Where(x => x.Seller.Id == userId).Sum(x => x.CashCost * x.UnitsAvailable),
                 InventoryCount = db.Items.Count(x => x.Seller.Id == userId),
-                SalesFigure = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Sum(x=>x.QuanityBought * x.PricePerUnitBoughtAt)
+                SalesFigure = db.PurchaseItems.Where(x=>x.Item.Seller.Id == userId).Sum(x=>x.QuanityBought * x.PricePerUnitBoughtAt),
             };
             return Json(dashboard, JsonRequestBehavior.AllowGet);
         }
