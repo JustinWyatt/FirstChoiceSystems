@@ -68,12 +68,7 @@ namespace FirstChoiceSystems.Controllers
                 CompanyName = x.CompanyName,
                 CompanyWebsite = x.CompanyWebsite,
                 Photo = x.CompanyPhoto,
-                ItemsUpForSale = x.ItemsUpForSale.Select(item => new MarketPlaceItemViewModel()
-                {
-                    ItemId = item.Id,
-                    ItemName = item.ItemName,
-                    ItemDescription = item.ItemDescription
-                }).ToList()
+                ItemsUpForSale = x.ItemsUpForSale.Select(item => new MarketPlaceItemViewModel(item)).ToList()
             }).ToList();
             return Json(businesses, JsonRequestBehavior.AllowGet);
         }
@@ -165,7 +160,7 @@ namespace FirstChoiceSystems.Controllers
                 MembersInArea = db.Users.Count(x => x.State == user.State),
                 InventoryValue = db.Items.Where(x => x.Seller.Id == userId).Sum(x => x.CashCost * x.UnitsAvailable),
                 InventoryCount = db.Items.Count(x => x.Seller.Id == userId),
-                SalesFigure = db.PurchaseItems.Where(x=>x.Item.Seller.Id == userId).Sum(x=>x.QuanityBought * x.PricePerUnitBoughtAt),
+                SalesFigure = db.PurchaseItems.Where(x => x.Item.Seller.Id == userId).Sum(x => x.QuanityBought * x.PricePerUnitBoughtAt),
             };
             return Json(dashboard, JsonRequestBehavior.AllowGet);
         }
@@ -225,18 +220,7 @@ namespace FirstChoiceSystems.Controllers
                 DateRegistered = x.DateRegistered.ToString(),
                 AccountNumber = x.AccountNumber,
                 BusinessCategory = x.BusinessCategory.ToString(),
-                ItemsUpForSale = x.ItemsUpForSale.Select(item => new MarketPlaceItemViewModel()
-                {
-                    ItemName = item.ItemName,
-                    ItemDescription = item.ItemDescription,
-                    ItemId = item.Id,
-                    Seller = item.Seller.CompanyName,
-                    Quantity = item.UnitsAvailable,
-                    Price = item.PricePerUnit,
-                    Category = item.ItemCategory.CategoryName,
-                    Images = item.Images
-
-                }).Take(10).ToList()
+                ItemsUpForSale = x.ItemsUpForSale.Select(item => new MarketPlaceItemViewModel(item)).Take(10).ToList()
             });
             return Json(user, JsonRequestBehavior.AllowGet);
         }
