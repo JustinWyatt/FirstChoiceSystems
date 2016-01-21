@@ -22,7 +22,7 @@ namespace FirstChoiceSystems.Models.DBModels
         public string CompanyPhoto { get; set; }
         public string RepresentativePhoto { get; set; }
         public string    DateRegistered { get; set; }
-        public int? InventoryNumber { get; set; }
+        public int? InventoryCount { get; set; }
         public double? InventoryValue { get; set; }
         public double? SalesFigure { get; set; }
         public int? MembersInArea { get; set; }

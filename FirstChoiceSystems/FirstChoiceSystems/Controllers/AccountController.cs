@@ -103,9 +103,42 @@ namespace FirstChoiceSystems.Controllers
                 SalesFigure = 0,
                 MembersInArea = db.Users.Count(x => x.State == user.State),
                 InventoryValue = 0,
-                InventoryNumber = 0
+                InventoryCount = 0
             };
             return View(dashboard);
+        }
+
+        [HttpGet]
+        public JsonResult LatestOrders()
+        {
+            var userId = User.Identity.GetUserId();
+            var latestOrders = db.PurchaseItems.Where(x => x.Buyer.Id == userId)
+                                               .OrderByDescending(x => x.DatePurchased)
+                                               .Take(7)
+                                               .Select(x => new PurchaseItemViewModel()
+                                               {
+                                                   ItemId = x.Id,
+                                                   ItemName = x.Item.ItemName,
+                                                   Status = x.Status.ToString()
+                                               });
+            return Json(latestOrders, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult RecentlyAddedProducts()
+        {
+            var userId = User.Identity.GetUserId();
+            var recentlyAdded = db.Items.Where(x => x.Seller.Id == userId)
+                                        .OrderByDescending(x => x.CreatedOn)
+                                        .Take(7)
+                                        .Select(x => new InventoryItemViewModel()
+                                        {
+                                            ItemId = x.Id,
+                                            ItemName = x.ItemName,
+                                            ItemImage = x.Images.Take(1).ToString(),
+                                            ItemDescription = x.ItemDescription
+                                        });
+            return Json(recentlyAdded, JsonRequestBehavior.AllowGet);
         }
 
         // GET: /Account/Dashboard
@@ -129,10 +162,10 @@ namespace FirstChoiceSystems.Controllers
                 Postal = user.Postal,
                 CompanyPhoto = user.CompanyPhoto,
                 RepresentativePhoto = user.RepresentativePhoto,
-                SalesFigure = 0,
-                MembersInArea = db.Users.Count(x=>x.State == user.State),
-                InventoryValue = 0,
-                InventoryNumber =  0
+                MembersInArea = db.Users.Count(x => x.State == user.State),
+                InventoryValue = db.Items.Where(x => x.Seller.Id == userId).Sum(x => x.CashCost * x.UnitsAvailable),
+                InventoryCount = db.Items.Count(x => x.Seller.Id == userId),
+                SalesFigure = db.PurchaseItems.Where(x=>x.Buyer.Id == userId).Sum(x=>x.QuanityBought * x.PricePerUnitBoughtAt)
             };
             return Json(dashboard, JsonRequestBehavior.AllowGet);
         }
@@ -141,7 +174,7 @@ namespace FirstChoiceSystems.Controllers
         {
             // get the cost of the inventory
             var userId = User.Identity.GetUserId();
-            var inventoryCashCost = db.Items.Where(x=>x.Seller.Id == userId).Sum(x => x.CashCost * x.UnitsAvailable);
+            var inventoryCashCost = db.Items.Where(x => x.Seller.Id == userId).Sum(x => x.CashCost * x.UnitsAvailable);
 
             // get the trade revenue of the inventory
             var inventorySalesInTradeDollars = db.PurchaseItems.Where(x => x.Item.Seller.Id == userId).Sum(x => x.Item.RevenueInTradeDollars);

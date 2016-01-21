@@ -1,6 +1,14 @@
 ﻿app.controller('dashboardController', ['$http', '$scope', function ($http, $scope) {
 
 
+    var savings = function() {
+        $http.get('/account/savingscalculation').then(function(result) {
+            $scope.savings = result.data;
+        });
+    }
+
+    savings();
+
     var dashboard = function() {
         $http.get('/account/dashboard').then(function(result) {
             console.log(result.data);
@@ -32,4 +40,19 @@
         });
     }
 
+    var latestOrders = function() {
+        $http.get('/account/latestorders').then(function(result) {
+            $scope.latestOrders = result.data;
+        });
+    }
+
+    latestOrders();
+
+    var recentlyAddedProducts = function() {
+        $http.get('/account/recentlyaddedproducts').then(function(result) {
+            $scope.recentlyAdded = result.data;
+        });
+    }
+
+    recentlyAddedProducts();
 }])

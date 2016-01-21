@@ -3,6 +3,9 @@
     var order = function () {
         $http.get('/order/order').then(function (result) {
             $scope.order = result.data;
+            console.log('order');
+            console.log(result.data);
+
         });
     }
 

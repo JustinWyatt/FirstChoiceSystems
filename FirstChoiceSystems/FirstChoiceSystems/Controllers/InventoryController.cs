@@ -49,7 +49,8 @@ namespace FirstChoiceSystems.Controllers
                 ItemCategory = db.ItemCategories.Find(item.ItemCategory),
                 Seller = user,
                 UnitsAvailable = item.UnitsAvailable,
-                AvailableForMarket = item.AvailableForMarket
+                AvailableForMarket = item.AvailableForMarket,
+                ItemName =  item.ItemName
             };
             db.Items.Add(newItem);
             db.SaveChanges();
@@ -59,7 +60,8 @@ namespace FirstChoiceSystems.Controllers
                 PricePerUnit = newItem.PricePerUnit,
                 Seller = user.PersonOfContact,
                 UnitsAvailable = newItem.UnitsAvailable,
-                AvailableForMarket = newItem.AvailableForMarket
+                AvailableForMarket = newItem.AvailableForMarket,
+                ItemName = newItem.ItemName
             };
             return Json(returnItem, JsonRequestBehavior.AllowGet);
         }
@@ -71,11 +73,15 @@ namespace FirstChoiceSystems.Controllers
         }
 
         [HttpPost]
-        public void RemoveItem(int id)
+        public JsonResult RemoveItem(int id)
         {
             var item = db.Items.Find(id);
-            db.Items.Remove(item);
-            db.SaveChanges();
+            if (item != null)
+            {
+                db.Items.Remove(item);
+                db.SaveChanges();
+            }
+            return Json(item, JsonRequestBehavior.AllowGet);
         }
 
         // POST: Inventory/AddMarketPlaceItem

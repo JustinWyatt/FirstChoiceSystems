@@ -9,7 +9,7 @@
     marketplace();
 
     $scope.addItem = function(id) {
-        $http.post('/order/additem?id=' + id).success(function() {
+        $http.post('/order/additem?itemid=' + id).success(function() {
             console.log('success');
         });
     }
