@@ -20,35 +20,47 @@ namespace FirstChoiceSystems.Controllers
 
         // POST: /Order/AddItem
         [HttpPost]
-        public ActionResult AddItem(int itemId)
+        public void AddItem(int itemId)
         {
             var currentOrder = OrderViewModel.Retrieve();
             var dbItem = db.Items.Find(itemId);
+            var i = new MarketPlaceItemViewModel(dbItem)
+            {
+                Quantity = 1
+            };
 
-            var i = new MarketPlaceItemViewModel(dbItem);
-            currentOrder.Items.Add(i);
+            var itemInOrder = currentOrder.Items.FirstOrDefault(x => x.ItemId == i.ItemId);
 
+            if (currentOrder.Items.Contains(i) && itemInOrder != null && itemInOrder.Quantity < i.Quantity)
+            {
+                itemInOrder.Quantity += 1;
+            }
+            else if (currentOrder.Items.Contains(i) && itemInOrder != null && itemInOrder.Quantity == i.Quantity)
+            {
+                itemInOrder.Quantity = itemInOrder.Quantity;
+            }
+            else
+            {
+                currentOrder.Items.Add(i);
+            }
             currentOrder.Save();
-            return RedirectToAction("Order", "Order");
         }
 
         // POST: /Order/RemoveItem
         [HttpPost]
-        public ActionResult RemoveItem(int itemId)
+        public void RemoveItem(int itemId)
         {
             var currentOrder = OrderViewModel.Retrieve();
             var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
-            if (i == null)
-                return RedirectToAction("Order", "Order");
-
-            i.Quantity -= 1;
-            if (i.Quantity <= 0)
+            if (i != null && i.Quantity <= 0)
             {
                 currentOrder.Items.Remove(i);
             }
+            else if (i != null && i.Quantity > 0)
+            {
+                i.Quantity -= 1;
+            }
             currentOrder.Save();
-
-            return RedirectToAction("Order", "Order");
         }
     }
 }

@@ -37,7 +37,7 @@
                                         {
                                             <li>
                                                 <!-- start message -->
-                                                <a href="#">
+                                                <a href="#/item/@order.ItemId">
                                                     <div class="pull-left">
                                                         <img src="@order.Images.Take(1)" class="img-circle" alt="User Image">
                                                     </div>
@@ -126,13 +126,12 @@
                             <!-- Menu Body -->
                             <li class="user-body">
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
+                                    <a href="#/profile">Profile</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
+                                    <form action="/account/logoff" method="post">
+                                        <input type="submit" placeholder="LogOff"/>
+                                    </form>
                                 </div>
                             </li>
                             <!-- Menu Footer-->

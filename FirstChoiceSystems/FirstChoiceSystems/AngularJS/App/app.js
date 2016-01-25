@@ -53,17 +53,17 @@ app.config(function ($routeProvider) {
 
         })
 
-.when("/account",
-{
-    controller: 'profileController',
-    templateUrl: '/AngularViews/profile.html'
-})
+        .when("/account",
+        {
+            controller: 'profileController',
+            templateUrl: '/AngularViews/profile.html'
+        })
 
-.when("/inventory",
-{
-    controller: 'inventoryController',
-    templateUrl: '/AngularViews/inventory.html'
-})
+        .when("/inventory",
+        {
+            controller: 'inventoryController',
+            templateUrl: '/AngularViews/inventory.html'
+        })
 
 .otherwise({ redirectTo: '/account/portal' });
 });

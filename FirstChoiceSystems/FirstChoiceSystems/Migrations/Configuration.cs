@@ -24,7 +24,7 @@ namespace FirstChoiceSystems.Migrations
         {
             var db = new ApplicationDbContext();
 
-            context.BusinessCategories.AddOrUpdate(b => b.CategoryName, new BusinessCategory { CategoryName = "Restaraunt" });
+            /*  context.BusinessCategories.AddOrUpdate(b => b.CategoryName, new BusinessCategory { CategoryName = "Restaraunt" });
             context.ItemCategories.AddOrUpdate(i => i.CategoryName,
                 new ItemCategory { CategoryName = "Silverware" },
                 new ItemCategory { CategoryName = "Stationery" },
@@ -38,7 +38,7 @@ namespace FirstChoiceSystems.Migrations
             var userStore = new UserStore<BusinessUser>(context);
             var manager = new ApplicationUserManager(userStore);
 
-            if (!(context.Users.Any(x => x.UserName == "test@chipotle.com")))
+          if (!(context.Users.Any(x => x.UserName == "test@chipotle.com")))
             {
 
                 var user = new BusinessUser //Todo Business User 1
@@ -69,7 +69,7 @@ namespace FirstChoiceSystems.Migrations
                             {
                                 new ItemImage()
                                 {
-                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleTortilla.jpg"
+                                    ImagePath = @"~\Content\Images\ChipotleTortilla.jpg"
                                 }
                             }
                         },
@@ -84,12 +84,12 @@ namespace FirstChoiceSystems.Migrations
                             {
                                 new ItemImage()
                                 {
-                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleFoilWrap.jpg"
+                                    ImagePath = @"~\Content\Images\ChipotleFoilWrap.jpg"
                                 },
 
                                 new ItemImage()
                                 {
-                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleFoilWrap2.jpg"
+                                    ImagePath = @"~\Content\Images\ChipotleFoilWrap2.jpg"
                                 }
                             }
                         },
@@ -104,7 +104,7 @@ namespace FirstChoiceSystems.Migrations
                             {
                                 new ItemImage()
                                 {
-                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleSignage.jpg"
+                                    ImagePath = @"~\Content\Images\ChipotleSignage.jpg"
                                 }
                             }
                         },
@@ -119,7 +119,7 @@ namespace FirstChoiceSystems.Migrations
                             {
                                 new ItemImage()
                                 {
-                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleKnives.jpg"
+                                    ImagePath = @"~\Content\Images\ChipotleKnives.jpg"
                                 }
                             }
                         },
@@ -134,7 +134,7 @@ namespace FirstChoiceSystems.Migrations
                             {
                                 new ItemImage()
                                 {
-                                    ImagePath =  @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleShirt.jpg"
+                                    ImagePath =  @"~\Content\Images\ChipotleShirt.jpg"
                                 }
                             }
                         },
@@ -149,7 +149,7 @@ namespace FirstChoiceSystems.Migrations
                             {
                                 new ItemImage()
                                 {
-                                    ImagePath = @"C:\Users\Asus\Documents\GitHubVisualStudio\FirstChoiceSystems\FirstChoiceSystems\FirstChoiceSystems\Content\Images\ChipotleHat.jpg"
+                                    ImagePath = @"~\Content\Images\ChipotleHat.jpg"
                                 }
                             }
                         }
@@ -811,7 +811,7 @@ namespace FirstChoiceSystems.Migrations
                 };
                 manager.Create(userToInsert, "Password@123");
             }
-
+            */
         }
     }
 }

@@ -62,13 +62,13 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public JsonResult BusinessDirectory()
         {
-            var businesses = db.Users.Select(x => new ProfileViewModel()
+            var businesses = db.Users.ToList().Select(x => new ProfileViewModel()
             {
                 PersonOfContact = x.PersonOfContact,
                 CompanyName = x.CompanyName,
                 CompanyWebsite = x.CompanyWebsite,
                 Photo = x.CompanyPhoto,
-                ItemsUpForSale = x.ItemsUpForSale.Select(item => new MarketPlaceItemViewModel(item)).ToList()
+                ItemsUpForSale = x.ItemsUpForSale.ToList().Select(item => new MarketPlaceItemViewModel(item)).ToList()
             }).ToList();
             return Json(businesses, JsonRequestBehavior.AllowGet);
         }

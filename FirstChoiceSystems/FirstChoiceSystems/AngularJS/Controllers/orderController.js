@@ -5,15 +5,21 @@
             $scope.order = result.data;
             console.log('order');
             console.log(result.data);
-
         });
     }
-
     order();
 
     var user = function() {
-        $http.get('/user/user').then(function(result) {
+        $http.get('/account/dashboard').then(function(result) {
             $scope.user = result.data;
+        });
+    }
+
+    user();
+
+    $scope.makePurchase = function() {
+        $http.post('/purchase/purchaserequest').success(function() {
+            console.log('success');
         });
     }
 }]);

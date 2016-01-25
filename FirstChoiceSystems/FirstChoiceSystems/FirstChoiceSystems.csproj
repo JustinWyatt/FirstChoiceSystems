@@ -266,6 +266,7 @@
     <Content Include="AngularJS\Controllers\salesController.js" />
     <Content Include="AngularViews\businessdirectory.html" />
     <Content Include="AngularViews\inventory.html" />
+    <Content Include="AngularViews\itemdetails.html" />
     <Content Include="AngularViews\marketplace.html" />
     <Content Include="AngularViews\order.html" />
     <Content Include="AngularViews\profile.html" />
@@ -303,7 +304,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\protrade - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

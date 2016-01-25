@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -35,5 +36,15 @@ namespace FirstChoiceSystems.Models.ViewModels
                 return Items.Sum(x => x.Price * x.Quantity);
             }
         }
+
+        public double? Tax => (SubTotal / 9.3).HasValue
+            ? (double?)Math.Round((SubTotal / 9.3).Value)
+            : null;
+
+        public double? BrokerFee => (SubTotal / 7.5).HasValue
+            ? (double?)Math.Round((SubTotal / 7.5).Value)
+            : null;
+
+        public double? Total => SubTotal + Tax + BrokerFee;
     }
 }

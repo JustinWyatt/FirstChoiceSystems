@@ -36,7 +36,7 @@ namespace FirstChoiceSystems.Controllers
 
         // POST: /Purchase/PurchaseRequest
         [HttpPost]
-        public ActionResult PurchaseRequest()
+        public void PurchaseRequest()
         {
             var currentOrder = OrderViewModel.Retrieve();
 
@@ -58,12 +58,11 @@ namespace FirstChoiceSystems.Controllers
                     DatePurchased = date
                 };
                 newPurchaseRequest.Add(newPurchaseItem);
+                currentOrder.Items.Remove(itemVm);
             }
             db.PurchaseItems.AddRange(newPurchaseRequest);
             db.SaveChanges();
-
             currentOrder.Save();
-            return RedirectToAction("PurchaseRequestHistory", "Purchase");
         }
     }
 }

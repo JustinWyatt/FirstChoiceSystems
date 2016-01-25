@@ -10,11 +10,18 @@ namespace FirstChoiceSystems.Controllers
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
+        public JsonResult RelatedItems(int id)
+        {
+            var item = db.Items.Find(id);
+            var relatedItems = db.Items.Where(x => x.ItemCategory == item.ItemCategory).Take(4).ToList();
+            return Json(relatedItems, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: MarketPlace/MarketPlace
         [HttpGet]
         public JsonResult MarketPlace()
         {
-            var model = db.Items.Where(x => x.AvailableForMarket).Select(x => new MarketPlaceItemViewModel(x)).ToList();
+            var model = db.Items.Where(x => x.AvailableForMarket).ToList().Select(x => new MarketPlaceItemViewModel(x)).ToList();
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
