@@ -19,11 +19,11 @@
                 </thead>
                 <tbody ng-repeat="p in purchases">
                 <tr>
-                    <td><a>View Item</a>></td>
+                    <td><a href="#/item/{{p.ItemId}}">View Item</a></td>
                     <td>{{p.ItemName}}</td>
                     <td>{{p.Seller}}</td>
                     <td>{{p.Price}}</td>
-                    <td>{{p.QuantityBought}}</td>
+                    <td>{{p.QuanityBought}} Unit</td>
                     <td>{{p.DatePurchased}}</td>
                     <td>{{p.ApprovalDate}}</td>
                     <td>{{p.Status}}</td>

@@ -16,6 +16,6 @@ namespace FirstChoiceSystems.Models.ViewModels
         public  double? Price { get; set; }
         public virtual string Status { get; set; }
         public DateTime? ApprovalDate { get; set; }
-        public DateTime DatePurchased { get; set; }
+        public string DatePurchased { get; set; }
     }
 }

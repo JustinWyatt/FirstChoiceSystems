@@ -22,4 +22,6 @@
             console.log('success');
         });
     }
+
+    $scope.orderTotal = $scope.order.Tax + $scope.order.BrokerFee;
 }]);

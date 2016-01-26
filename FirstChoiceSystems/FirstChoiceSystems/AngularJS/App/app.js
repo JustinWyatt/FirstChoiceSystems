@@ -30,12 +30,9 @@ app.config(function ($routeProvider) {
         .when("/yourmarketplaceitems",
         {
             controller: "yourMarketplaceController",
-            templateUrl: "yourmarketplaceitems"
+            templateUrl: "/AngularViews/yourmarketplaceitems.html"
         })
-        .when("/marketplaceitem/:id",
-        {
-            template: '<h1>MarketPlaceItem</h1>'
-        })
+        
         .when("/businessdirectory",
         {
             controller: 'businessController',
@@ -50,9 +47,7 @@ app.config(function ($routeProvider) {
         {
             controller: 'orderController',
             templateUrl: '/AngularViews/order.html'
-
         })
-
         .when("/account",
         {
             controller: 'profileController',

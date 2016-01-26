@@ -20,18 +20,19 @@ namespace FirstChoiceSystems.Controllers
         {
             //user can only view his own purchases
             var userId = User.Identity.GetUserId();
-            return
-                Json(db.PurchaseItems.Where(x => x.Buyer.Id == userId).Select(purchaseItem => new PurchaseItemViewModel
-                {
-                    DatePurchased = purchaseItem.DatePurchased,
-                    ApprovalDate = purchaseItem.ApprovalDate,
-                    ItemName = purchaseItem.Item.ItemName,
-                    ItemId = purchaseItem.Item.Id,
-                    Status = purchaseItem.Status.ToString(),
-                    Seller = purchaseItem.Item.Seller.CompanyName,
-                    QuanityBought = purchaseItem.QuanityBought,
-                    Price = purchaseItem.QuanityBought*purchaseItem.PricePerUnitBoughtAt
-                }).ToList(), JsonRequestBehavior.AllowGet);
+            var model = db.PurchaseItems.Where(x => x.Buyer.Id == userId).ToList().Select(purchaseItem => new PurchaseItemViewModel
+            {
+                DatePurchased = purchaseItem.DatePurchased.ToShortDateString(),
+                ApprovalDate = purchaseItem.ApprovalDate,
+                ItemName = purchaseItem.Item.ItemName,
+                ItemId = purchaseItem.Item.Id,
+                Status = purchaseItem.Status.ToString(),
+                Seller = purchaseItem.Item.Seller.CompanyName,
+                QuanityBought = purchaseItem.QuanityBought,
+                Price = purchaseItem.QuanityBought * purchaseItem.PricePerUnitBoughtAt
+            }).ToList();
+
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         // POST: /Purchase/PurchaseRequest

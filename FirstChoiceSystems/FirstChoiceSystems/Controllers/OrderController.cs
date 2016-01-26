@@ -37,7 +37,7 @@ namespace FirstChoiceSystems.Controllers
             }
             else if (currentOrder.Items.Contains(i) && itemInOrder != null && itemInOrder.Quantity == i.Quantity)
             {
-                itemInOrder.Quantity = itemInOrder.Quantity;
+                itemInOrder.Quantity = i.Quantity;
             }
             else
             {

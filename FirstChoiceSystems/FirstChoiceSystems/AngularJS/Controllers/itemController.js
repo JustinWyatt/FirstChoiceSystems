@@ -16,12 +16,11 @@
         });
     }
 
-    //relatedItems($scope.itemDetails.ItemId);
+    relatedItems($routeParams.id);
 
     $scope.addItem = function (id) {
         $http.post('/order/additem?itemid=' + id).success(function () {
             console.log('success');
-            console.log('item id = ' + id);
         });
     }
 }])

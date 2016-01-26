@@ -17,7 +17,7 @@ namespace FirstChoiceSystems.Models.ViewModels
             Seller = x.Seller.CompanyName;
             Quantity = x.UnitsAvailable;
             Price = x.PricePerUnit;
-            Category = x.ItemCategory.CategoryName;
+            Category = x.ItemCategory.CategoryName ?? "";
             Images = x.Images;
         }
         public int ItemId { get; set; }

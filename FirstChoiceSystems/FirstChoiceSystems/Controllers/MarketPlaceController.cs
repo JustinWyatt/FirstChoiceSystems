@@ -10,10 +10,16 @@ namespace FirstChoiceSystems.Controllers
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
 
+        [HttpGet]
         public JsonResult RelatedItems(int id)
         {
             var item = db.Items.Find(id);
-            var relatedItems = db.Items.Where(x => x.ItemCategory == item.ItemCategory).Take(4).ToList();
+            var relatedItems = db.Items.Where(x => x.ItemCategory.CategoryName == item.ItemCategory.CategoryName)
+                                       .ToList()
+                                       .Take(4)
+                                       .Select(x => new MarketPlaceItemViewModel(x))
+                                       .ToList();
+
             return Json(relatedItems, JsonRequestBehavior.AllowGet);
         }
 
@@ -21,7 +27,10 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public JsonResult MarketPlace()
         {
-            var model = db.Items.Where(x => x.AvailableForMarket).ToList().Select(x => new MarketPlaceItemViewModel(x)).ToList();
+            var model = db.Items.Where(x => x.AvailableForMarket)
+                                .ToList()
+                                .Select(x => new MarketPlaceItemViewModel(x))
+                                .ToList();
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 

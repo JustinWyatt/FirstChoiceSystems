@@ -67,8 +67,7 @@ namespace FirstChoiceSystems.Controllers
                 PersonOfContact = x.PersonOfContact,
                 CompanyName = x.CompanyName,
                 CompanyWebsite = x.CompanyWebsite,
-                Photo = x.CompanyPhoto,
-                ItemsUpForSale = x.ItemsUpForSale.ToList().Select(item => new MarketPlaceItemViewModel(item)).ToList()
+                Photo = x.CompanyPhoto
             }).ToList();
             return Json(businesses, JsonRequestBehavior.AllowGet);
         }

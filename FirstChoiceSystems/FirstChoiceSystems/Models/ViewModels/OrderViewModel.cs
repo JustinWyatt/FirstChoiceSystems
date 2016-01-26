@@ -37,13 +37,9 @@ namespace FirstChoiceSystems.Models.ViewModels
             }
         }
 
-        public double? Tax => (SubTotal / 9.3).HasValue
-            ? (double?)Math.Round((SubTotal / 9.3).Value)
-            : null;
+        public double? Tax => (SubTotal / 9.3).HasValue ? (double?)Math.Round((SubTotal / 9.3).Value, 2) : null;
 
-        public double? BrokerFee => (SubTotal / 7.5).HasValue
-            ? (double?)Math.Round((SubTotal / 7.5).Value)
-            : null;
+        public double? BrokerFee => (SubTotal / 7.5).HasValue ? (double?)Math.Round((SubTotal / 7.5).Value, 2)  : null;
 
         public double? Total => SubTotal + Tax + BrokerFee;
     }
