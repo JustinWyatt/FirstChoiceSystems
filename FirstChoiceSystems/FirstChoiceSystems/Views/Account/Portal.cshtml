@@ -130,6 +130,8 @@
                                 </div>
                                 <div class="col-xs-4 text-center">
                                     <form action="/account/logoff" method="post">
+
+                                        @Html.AntiForgeryToken()
                                         <input type="submit" placeholder="LogOff"/>
                                     </form>
                                 </div>
