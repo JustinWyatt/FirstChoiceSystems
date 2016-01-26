@@ -60,6 +60,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         new Item()
                         {
+                            AvailableForMarket = true,
                             ItemName = "Chipotle Tortilla",
                             ItemDescription = "",
                             PricePerUnit = 41.25,
@@ -80,6 +81,8 @@ namespace FirstChoiceSystems.Migrations
                             PricePerUnit = 89.98,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                             UnitsAvailable = 100,
+                            AvailableForMarket = true,
+
                             Images = new List<ItemImage>()
                             {
                                 new ItemImage()
@@ -100,6 +103,8 @@ namespace FirstChoiceSystems.Migrations
                             PricePerUnit = 263.25,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                             UnitsAvailable = 0,
+                            AvailableForMarket = true,
+
                             Images = new List<ItemImage>()
                             {
                                 new ItemImage()
@@ -115,6 +120,8 @@ namespace FirstChoiceSystems.Migrations
                             PricePerUnit = 89.55,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                             UnitsAvailable = 185,
+                            AvailableForMarket = true,
+
                             Images = new List<ItemImage>()
                             {
                                 new ItemImage()
@@ -130,6 +137,8 @@ namespace FirstChoiceSystems.Migrations
                             PricePerUnit = 10.25,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                             UnitsAvailable = 78,
+                            AvailableForMarket = true,
+
                             Images = new List<ItemImage>()
                             {
                                 new ItemImage()
@@ -144,7 +153,9 @@ namespace FirstChoiceSystems.Migrations
                             ItemDescription = "",
                             PricePerUnit = 78.25,
                             ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
+                            AvailableForMarket = true,
                             UnitsAvailable = 29,
+
                             Images = new List<ItemImage>()
                             {
                                 new ItemImage()
@@ -183,6 +194,8 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 33.65,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 89,
+                            AvailableForMarket = true,
+
 
                     },
                     new Item()
@@ -190,6 +203,8 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Whole Hog Stationery",
                         ItemDescription = "",
                         PricePerUnit = 100.00,
+                            AvailableForMarket = true,
+
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
 
@@ -198,6 +213,8 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Whole Hog Signage",
                         ItemDescription = "",
                         PricePerUnit = 89.25,
+                            AvailableForMarket = true,
+
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
 
@@ -206,6 +223,8 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Whole Hog Knives",
                         ItemDescription = "",
                         PricePerUnit = 25.00,
+                            AvailableForMarket = true,
+
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 200,
 
@@ -214,6 +233,8 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Whole Hog Shirts",
                         ItemDescription = "",
                         PricePerUnit = 26.00,
+                            AvailableForMarket = true,
+
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 340,
 
@@ -221,6 +242,8 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "Whole Hog Screen Time",
                         ItemDescription = "",
+
+                            AvailableForMarket = true,
                         PricePerUnit = 2622.00,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 50,
@@ -253,6 +276,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "Cajun's Warf Soda",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Beverages"),
                         UnitsAvailable = 15,
@@ -264,6 +288,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Produce"),
+                            AvailableForMarket = true,
                         UnitsAvailable = 42,
 
                     },new Item()
@@ -272,12 +297,14 @@ namespace FirstChoiceSystems.Migrations
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
+                            AvailableForMarket = true,
                         UnitsAvailable = 6,
 
                     },new Item()
                     {
                         ItemName = "Cajun's License",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 15,
@@ -287,6 +314,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Cajun's Parking Lot Space",
                         ItemDescription = "",
                         PricePerUnit = 50.65,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Real Estate"),
                         UnitsAvailable = 34,
 
@@ -295,6 +323,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Cajun's Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
 
@@ -327,6 +356,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Bossa Nova License",
                         ItemDescription = "",
                         PricePerUnit = 230.25,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 15,
 
@@ -335,6 +365,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "Bossa Nova Wheat",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Dry Goods"),
                         UnitsAvailable = 42,
@@ -342,6 +373,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "Bossa Nova Rice",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Dry Goods"),
@@ -350,6 +382,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "Bossa Nova Knives",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -359,6 +392,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "Bossa Nova Shirts",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
@@ -366,6 +400,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "Bossa Nova Ice Cream Scoop",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -400,6 +435,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "One Eleven Spatula",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
 
@@ -407,6 +443,7 @@ namespace FirstChoiceSystems.Migrations
                     new Item()
                     {
                         ItemName = "One Eleven Stationery",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
@@ -417,6 +454,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "One Eleven Signage",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
 
@@ -424,6 +462,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "One Eleven Knives",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
@@ -432,6 +471,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "One Eleven Shirts",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
@@ -439,6 +479,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "One Eleven Hats",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -473,6 +514,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Restaurant Equipment For Sale - EJ's",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
 
@@ -480,6 +522,7 @@ namespace FirstChoiceSystems.Migrations
                     new Item()
                     {
                         ItemName = "EJ's Stationery",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
@@ -488,6 +531,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "EJ's Signage",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -495,6 +539,7 @@ namespace FirstChoiceSystems.Migrations
 
                     },new Item()
                     {
+                            AvailableForMarket = true,
                         ItemName = "EJ's Knives",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
@@ -504,6 +549,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "EJ's Shirts",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -512,6 +558,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "EJ's Hats",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
@@ -544,6 +591,7 @@ namespace FirstChoiceSystems.Migrations
                     new Item()
                     {
                         ItemName = "EJ's Dough Rollers",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -555,6 +603,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "EJ's Pizza Paper - Irania's Pizza",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
 
@@ -565,6 +614,7 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
+                            AvailableForMarket = true,
 
                     },new Item()
                     {
@@ -573,12 +623,14 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
+                            AvailableForMarket = true,
 
                     },new Item()
                     {
                         ItemName = "EJ's Irania's Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
 
@@ -586,6 +638,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "EJ's Pizza Hats",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
@@ -619,6 +672,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
+                            AvailableForMarket = true,
                         UnitsAvailable = 15,
                     },
                     new Item()
@@ -627,6 +681,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
+                            AvailableForMarket = true,
                         UnitsAvailable = 42,
 
                     },new Item()
@@ -634,6 +689,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Signage - Sushi Cafe Material",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 6,
 
@@ -642,6 +698,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Spoons And Delicates - Sushi Cafe",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
 
@@ -650,6 +707,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Sushi Shirts For Advertisement",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
 
@@ -658,6 +716,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Sushi Hats",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
 
@@ -691,6 +750,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
+                            AvailableForMarket = true,
                         UnitsAvailable = 15,
 
                     },
@@ -698,6 +758,7 @@ namespace FirstChoiceSystems.Migrations
                     {
                         ItemName = "Flying Stationery",
                         ItemDescription = "",
+                            AvailableForMarket = true,
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
                         UnitsAvailable = 42,
@@ -708,6 +769,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
+                            AvailableForMarket = true,
                         UnitsAvailable = 6,
                     },new Item()
                     {
@@ -716,12 +778,14 @@ namespace FirstChoiceSystems.Migrations
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
+                            AvailableForMarket = true,
 
                     },new Item()
                     {
                         ItemName = "Flying Fish Shirts",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 34,
 
@@ -730,6 +794,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Flyig Fish Hat Stock",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
                         UnitsAvailable = 24,
                     }
@@ -761,6 +826,7 @@ namespace FirstChoiceSystems.Migrations
                         ItemName = "Red Door Spoons",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
+                            AvailableForMarket = true,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
                         UnitsAvailable = 15,
 
@@ -768,6 +834,7 @@ namespace FirstChoiceSystems.Migrations
                     new Item()
                     {
                         ItemName = "Red Door Paper Products",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Stationery"),
@@ -775,6 +842,7 @@ namespace FirstChoiceSystems.Migrations
 
                     },new Item()
                     {
+                            AvailableForMarket = true,
                         ItemName = "Signs By Red Door",
                         ItemDescription = "",
                         PricePerUnit = 15.50,
@@ -784,6 +852,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "Red Door Knives",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Silverware"),
@@ -792,6 +861,7 @@ namespace FirstChoiceSystems.Migrations
                     },new Item()
                     {
                         ItemName = "Red Door Wine Bottles",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Beverages"),
@@ -801,6 +871,7 @@ namespace FirstChoiceSystems.Migrations
                         new Item()
                     {
                         ItemName = "Red Door Hats",
+                            AvailableForMarket = true,
                         ItemDescription = "",
                         PricePerUnit = 15.50,
                         ItemCategory = db.ItemCategories.FirstOrDefault(x=>x.CategoryName == "Advertisement Media"),
