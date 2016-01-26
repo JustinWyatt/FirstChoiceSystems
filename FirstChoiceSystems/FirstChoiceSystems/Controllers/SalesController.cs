@@ -17,19 +17,21 @@ namespace FirstChoiceSystems.Controllers
         public JsonResult SalesHistory()
         {
             var userId = User.Identity.GetUserId();
-            return
-                Json(
-                    db.PurchaseItems.Where(x => x.Item.Seller.Id == userId).Select(saleitem => new PurchaseItemViewModel
-                    {
-                        ItemId = saleitem.Item.Id,
-                        ItemName = saleitem.Item.ItemName,
-                        Seller = saleitem.Item.Seller.CompanyName,
-                        Price = saleitem.PricePerUnitBoughtAt*saleitem.QuanityBought,
-                        QuanityBought = saleitem.QuanityBought,
-                        Status = saleitem.Status.ToString(),
-                        ApprovalDate = saleitem.ApprovalDate,
-                        Buyer = saleitem.Buyer.CompanyName
-                    }).ToList(), JsonRequestBehavior.AllowGet);
+            var model =
+                db.PurchaseItems.Where(x => x.Item.Seller.Id == userId)
+                                .ToList()
+                                .Select(saleitem => new PurchaseItemViewModel
+                                {
+                                    ItemId = saleitem.Item.Id,
+                                    ItemName = saleitem.Item.ItemName,
+                                    Seller = saleitem.Item.Seller.CompanyName,
+                                    Price = saleitem.PricePerUnitBoughtAt * saleitem.QuanityBought,
+                                    QuanityBought = saleitem.QuanityBought,
+                                    Status = saleitem.Status.ToString(),
+                                    ApprovalDate = saleitem.ApprovalDate,
+                                    Buyer = saleitem.Buyer.CompanyName
+                                }).ToList();
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         // GET: /Sales/PendingSales
@@ -44,7 +46,7 @@ namespace FirstChoiceSystems.Controllers
                     ItemId = pi.Item.Id,
                     ItemName = pi.Item.ItemName,
                     Seller = pi.Item.Seller.CompanyName,
-                    Price = pi.PricePerUnitBoughtAt*pi.QuanityBought,
+                    Price = pi.PricePerUnitBoughtAt * pi.QuanityBought,
                     QuanityBought = pi.QuanityBought,
                     Status = pi.Status.ToString(),
                     ApprovalDate = pi.ApprovalDate,
@@ -59,14 +61,21 @@ namespace FirstChoiceSystems.Controllers
         {
             var purchaseItems = db.PurchaseItems.First(x => x.Item.Id == id);
             purchaseItems.ApprovalDate = DateTime.Now;
-            var totalPrice = purchaseItems.PricePerUnitBoughtAt*purchaseItems.QuanityBought;
+            var totalPrice = purchaseItems.PricePerUnitBoughtAt * purchaseItems.QuanityBought;
 
             purchaseItems.Item.Seller.Balance += totalPrice;
             purchaseItems.Buyer.Balance -= totalPrice;
             purchaseItems.Item.RevenueInTradeDollars += totalPrice;
 
-            purchaseItems.Item.UnitsAvailable -= purchaseItems.QuanityBought;
-
+            var dbItem = db.Items.Find(id);
+            if (dbItem.UnitsAvailable == 0)
+            {
+                dbItem.UnitsAvailable -= 0;
+            }
+            else
+            {
+                dbItem.UnitsAvailable -= purchaseItems.QuanityBought;
+            }
             purchaseItems.Status = TransactionStatus.Approved;
 
             db.SaveChanges();
@@ -91,30 +100,6 @@ namespace FirstChoiceSystems.Controllers
             var itemDetail = new MarketPlaceItemViewModel(item);
 
             return Json(itemDetail, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public ActionResult AddItem(int itemId)
-        {
-            var currentOrder = OrderViewModel.Retrieve();
-            var dbItem = db.Items.Find(itemId);
-
-            var i = currentOrder.Items.FirstOrDefault(x => x.ItemId == itemId);
-            if (i == null)
-            {
-                i = new MarketPlaceItemViewModel(dbItem);
-                currentOrder.Items.Add(i);
-            }
-            else
-            {
-                i.Quantity += 1;
-            }
-
-            //if they are asking for more than what is available, cap it to just whats avaiable.
-            i.Quantity = dbItem.UnitsAvailable < i.Quantity ? dbItem.UnitsAvailable : i.Quantity;
-
-            currentOrder.Save();
-            return RedirectToAction("Order", "Order");
         }
     }
 }

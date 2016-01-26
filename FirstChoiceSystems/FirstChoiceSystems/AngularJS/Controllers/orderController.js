@@ -3,8 +3,9 @@
     var order = function () {
         $http.get('/order/order').then(function (result) {
             $scope.order = result.data;
-            console.log('order');
-            console.log(result.data);
+            var tax = result.data.Tax;
+            var brokerFee = result.data.BrokerFee;
+            $scope.orderTotal = (tax + brokerFee).toFixed(2);
         });
     }
     order();
@@ -23,5 +24,4 @@
         });
     }
 
-    $scope.orderTotal = $scope.order.Tax + $scope.order.BrokerFee;
 }]);

@@ -31,15 +31,17 @@ namespace FirstChoiceSystems.Controllers
 
             var itemInOrder = currentOrder.Items.FirstOrDefault(x => x.ItemId == i.ItemId);
 
-            if (currentOrder.Items.Contains(i) && itemInOrder != null && itemInOrder.Quantity < i.Quantity)
+            if (currentOrder.Items.Contains(itemInOrder) && itemInOrder != null && itemInOrder.Quantity < dbItem.UnitsAvailable)
             {
-                itemInOrder.Quantity += 1;
+                itemInOrder.Quantity ++;
             }
-            else if (currentOrder.Items.Contains(i) && itemInOrder != null && itemInOrder.Quantity == i.Quantity)
+
+            if (currentOrder.Items.Contains(itemInOrder) && itemInOrder != null && itemInOrder.Quantity == dbItem.UnitsAvailable)
             {
                 itemInOrder.Quantity = i.Quantity;
             }
-            else
+
+            if(dbItem.UnitsAvailable > 0 && !currentOrder.Items.Contains(itemInOrder))
             {
                 currentOrder.Items.Add(i);
             }

@@ -46,7 +46,7 @@ namespace FirstChoiceSystems.Controllers
 
             var newPurchaseRequest = new List<PurchaseItem>();
             var date = DateTime.Now;
-            foreach (var itemVm in currentOrder.Items)
+            foreach (var itemVm in currentOrder.Items.ToList())
             {
                 var itemFromDb = db.Items.Find(itemVm.ItemId);
                 var newPurchaseItem = new PurchaseItem

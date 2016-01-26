@@ -14,6 +14,7 @@ namespace FirstChoiceSystems.Controllers
         public JsonResult RelatedItems(int id)
         {
             var item = db.Items.Find(id);
+            
             var relatedItems = db.Items.Where(x => x.ItemCategory.CategoryName == item.ItemCategory.CategoryName)
                                        .ToList()
                                        .Take(4)
@@ -27,7 +28,7 @@ namespace FirstChoiceSystems.Controllers
         [HttpGet]
         public JsonResult MarketPlace()
         {
-            var model = db.Items.Where(x => x.AvailableForMarket)
+            var model = db.Items.Where(x => x.AvailableForMarket && x.ItemCategory != null)
                                 .ToList()
                                 .Select(x => new MarketPlaceItemViewModel(x))
                                 .ToList();
