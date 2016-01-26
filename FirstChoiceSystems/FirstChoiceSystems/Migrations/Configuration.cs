@@ -24,7 +24,7 @@ namespace FirstChoiceSystems.Migrations
         {
             var db = new ApplicationDbContext();
 
-            /*  context.BusinessCategories.AddOrUpdate(b => b.CategoryName, new BusinessCategory { CategoryName = "Restaraunt" });
+            context.BusinessCategories.AddOrUpdate(b => b.CategoryName, new BusinessCategory { CategoryName = "Restaraunt" });
             context.ItemCategories.AddOrUpdate(i => i.CategoryName,
                 new ItemCategory { CategoryName = "Silverware" },
                 new ItemCategory { CategoryName = "Stationery" },
@@ -38,7 +38,7 @@ namespace FirstChoiceSystems.Migrations
             var userStore = new UserStore<BusinessUser>(context);
             var manager = new ApplicationUserManager(userStore);
 
-          if (!(context.Users.Any(x => x.UserName == "test@chipotle.com")))
+            if (!(context.Users.Any(x => x.UserName == "test@chipotle.com")))
             {
 
                 var user = new BusinessUser //Todo Business User 1
@@ -811,7 +811,7 @@ namespace FirstChoiceSystems.Migrations
                 };
                 manager.Create(userToInsert, "Password@123");
             }
-            */
+
         }
     }
 }
